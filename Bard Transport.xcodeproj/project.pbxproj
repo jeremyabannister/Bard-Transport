@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		873448B51CE7AE0C005A17AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448B41CE7AE0C005A17AC /* AppDelegate.swift */; };
+		873448B71CE7AE0C005A17AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448B61CE7AE0C005A17AC /* ViewController.swift */; };
+		873448BA1CE7AE0C005A17AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873448B81CE7AE0C005A17AC /* Main.storyboard */; };
+		873448BD1CE7AE0C005A17AC /* Bard_Transport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 873448BB1CE7AE0C005A17AC /* Bard_Transport.xcdatamodeld */; };
+		873448BF1CE7AE0C005A17AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873448BE1CE7AE0C005A17AC /* Assets.xcassets */; };
+		873448C21CE7AE0C005A17AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873448C01CE7AE0C005A17AC /* LaunchScreen.storyboard */; };
+		873448CD1CE7AE0C005A17AC /* Bard_TransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448CC1CE7AE0C005A17AC /* Bard_TransportTests.swift */; };
+		873448D81CE7AE0D005A17AC /* Bard_TransportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448D71CE7AE0D005A17AC /* Bard_TransportUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		873448C91CE7AE0C005A17AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 873448A91CE7AE0C005A17AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 873448B01CE7AE0C005A17AC;
+			remoteInfo = "Bard Transport";
+		};
+		873448D41CE7AE0D005A17AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 873448A91CE7AE0C005A17AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 873448B01CE7AE0C005A17AC;
+			remoteInfo = "Bard Transport";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		873448B11CE7AE0C005A17AC /* Bard Transport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bard Transport.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		873448B41CE7AE0C005A17AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		873448B61CE7AE0C005A17AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		873448B91CE7AE0C005A17AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		873448BC1CE7AE0C005A17AC /* Bard_Transport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bard_Transport.xcdatamodel; sourceTree = "<group>"; };
+		873448BE1CE7AE0C005A17AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		873448C11CE7AE0C005A17AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		873448C31CE7AE0C005A17AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		873448C81CE7AE0C005A17AC /* Bard TransportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bard TransportTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		873448CC1CE7AE0C005A17AC /* Bard_TransportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bard_TransportTests.swift; sourceTree = "<group>"; };
+		873448CE1CE7AE0C005A17AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		873448D31CE7AE0D005A17AC /* Bard TransportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bard TransportUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		873448D71CE7AE0D005A17AC /* Bard_TransportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bard_TransportUITests.swift; sourceTree = "<group>"; };
+		873448D91CE7AE0D005A17AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		873448AE1CE7AE0C005A17AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873448C51CE7AE0C005A17AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873448D01CE7AE0D005A17AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		873448A81CE7AE0C005A17AC = {
+			isa = PBXGroup;
+			children = (
+				873448B31CE7AE0C005A17AC /* Bard Transport */,
+				873448CB1CE7AE0C005A17AC /* Bard TransportTests */,
+				873448D61CE7AE0D005A17AC /* Bard TransportUITests */,
+				873448B21CE7AE0C005A17AC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		873448B21CE7AE0C005A17AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				873448B11CE7AE0C005A17AC /* Bard Transport.app */,
+				873448C81CE7AE0C005A17AC /* Bard TransportTests.xctest */,
+				873448D31CE7AE0D005A17AC /* Bard TransportUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		873448B31CE7AE0C005A17AC /* Bard Transport */ = {
+			isa = PBXGroup;
+			children = (
+				873448B41CE7AE0C005A17AC /* AppDelegate.swift */,
+				873448B61CE7AE0C005A17AC /* ViewController.swift */,
+				873448B81CE7AE0C005A17AC /* Main.storyboard */,
+				873448BE1CE7AE0C005A17AC /* Assets.xcassets */,
+				873448C01CE7AE0C005A17AC /* LaunchScreen.storyboard */,
+				873448C31CE7AE0C005A17AC /* Info.plist */,
+				873448BB1CE7AE0C005A17AC /* Bard_Transport.xcdatamodeld */,
+			);
+			path = "Bard Transport";
+			sourceTree = "<group>";
+		};
+		873448CB1CE7AE0C005A17AC /* Bard TransportTests */ = {
+			isa = PBXGroup;
+			children = (
+				873448CC1CE7AE0C005A17AC /* Bard_TransportTests.swift */,
+				873448CE1CE7AE0C005A17AC /* Info.plist */,
+			);
+			path = "Bard TransportTests";
+			sourceTree = "<group>";
+		};
+		873448D61CE7AE0D005A17AC /* Bard TransportUITests */ = {
+			isa = PBXGroup;
+			children = (
+				873448D71CE7AE0D005A17AC /* Bard_TransportUITests.swift */,
+				873448D91CE7AE0D005A17AC /* Info.plist */,
+			);
+			path = "Bard TransportUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		873448B01CE7AE0C005A17AC /* Bard Transport */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 873448DC1CE7AE0D005A17AC /* Build configuration list for PBXNativeTarget "Bard Transport" */;
+			buildPhases = (
+				873448AD1CE7AE0C005A17AC /* Sources */,
+				873448AE1CE7AE0C005A17AC /* Frameworks */,
+				873448AF1CE7AE0C005A17AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bard Transport";
+			productName = "Bard Transport";
+			productReference = 873448B11CE7AE0C005A17AC /* Bard Transport.app */;
+			productType = "com.apple.product-type.application";
+		};
+		873448C71CE7AE0C005A17AC /* Bard TransportTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 873448DF1CE7AE0D005A17AC /* Build configuration list for PBXNativeTarget "Bard TransportTests" */;
+			buildPhases = (
+				873448C41CE7AE0C005A17AC /* Sources */,
+				873448C51CE7AE0C005A17AC /* Frameworks */,
+				873448C61CE7AE0C005A17AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				873448CA1CE7AE0C005A17AC /* PBXTargetDependency */,
+			);
+			name = "Bard TransportTests";
+			productName = "Bard TransportTests";
+			productReference = 873448C81CE7AE0C005A17AC /* Bard TransportTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		873448D21CE7AE0D005A17AC /* Bard TransportUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 873448E21CE7AE0D005A17AC /* Build configuration list for PBXNativeTarget "Bard TransportUITests" */;
+			buildPhases = (
+				873448CF1CE7AE0D005A17AC /* Sources */,
+				873448D01CE7AE0D005A17AC /* Frameworks */,
+				873448D11CE7AE0D005A17AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				873448D51CE7AE0D005A17AC /* PBXTargetDependency */,
+			);
+			name = "Bard TransportUITests";
+			productName = "Bard TransportUITests";
+			productReference = 873448D31CE7AE0D005A17AC /* Bard TransportUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		873448A91CE7AE0C005A17AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Jeremy Bannister";
+				TargetAttributes = {
+					873448B01CE7AE0C005A17AC = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					873448C71CE7AE0C005A17AC = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 873448B01CE7AE0C005A17AC;
+					};
+					873448D21CE7AE0D005A17AC = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 873448B01CE7AE0C005A17AC;
+					};
+				};
+			};
+			buildConfigurationList = 873448AC1CE7AE0C005A17AC /* Build configuration list for PBXProject "Bard Transport" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 873448A81CE7AE0C005A17AC;
+			productRefGroup = 873448B21CE7AE0C005A17AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				873448B01CE7AE0C005A17AC /* Bard Transport */,
+				873448C71CE7AE0C005A17AC /* Bard TransportTests */,
+				873448D21CE7AE0D005A17AC /* Bard TransportUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		873448AF1CE7AE0C005A17AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873448C21CE7AE0C005A17AC /* LaunchScreen.storyboard in Resources */,
+				873448BF1CE7AE0C005A17AC /* Assets.xcassets in Resources */,
+				873448BA1CE7AE0C005A17AC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873448C61CE7AE0C005A17AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873448D11CE7AE0D005A17AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		873448AD1CE7AE0C005A17AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873448B71CE7AE0C005A17AC /* ViewController.swift in Sources */,
+				873448B51CE7AE0C005A17AC /* AppDelegate.swift in Sources */,
+				873448BD1CE7AE0C005A17AC /* Bard_Transport.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873448C41CE7AE0C005A17AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873448CD1CE7AE0C005A17AC /* Bard_TransportTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		873448CF1CE7AE0D005A17AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873448D81CE7AE0D005A17AC /* Bard_TransportUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		873448CA1CE7AE0C005A17AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 873448B01CE7AE0C005A17AC /* Bard Transport */;
+			targetProxy = 873448C91CE7AE0C005A17AC /* PBXContainerItemProxy */;
+		};
+		873448D51CE7AE0D005A17AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 873448B01CE7AE0C005A17AC /* Bard Transport */;
+			targetProxy = 873448D41CE7AE0D005A17AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		873448B81CE7AE0C005A17AC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				873448B91CE7AE0C005A17AC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		873448C01CE7AE0C005A17AC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				873448C11CE7AE0C005A17AC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		873448DA1CE7AE0D005A17AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		873448DB1CE7AE0D005A17AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		873448DD1CE7AE0D005A17AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Bard Transport/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-Transport";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		873448DE1CE7AE0D005A17AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Bard Transport/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-Transport";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		873448E01CE7AE0D005A17AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Bard TransportTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-TransportTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bard Transport.app/Bard Transport";
+			};
+			name = Debug;
+		};
+		873448E11CE7AE0D005A17AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Bard TransportTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-TransportTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bard Transport.app/Bard Transport";
+			};
+			name = Release;
+		};
+		873448E31CE7AE0D005A17AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Bard TransportUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-TransportUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Bard Transport";
+			};
+			name = Debug;
+		};
+		873448E41CE7AE0D005A17AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Bard TransportUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-TransportUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Bard Transport";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		873448AC1CE7AE0C005A17AC /* Build configuration list for PBXProject "Bard Transport" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				873448DA1CE7AE0D005A17AC /* Debug */,
+				873448DB1CE7AE0D005A17AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		873448DC1CE7AE0D005A17AC /* Build configuration list for PBXNativeTarget "Bard Transport" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				873448DD1CE7AE0D005A17AC /* Debug */,
+				873448DE1CE7AE0D005A17AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		873448DF1CE7AE0D005A17AC /* Build configuration list for PBXNativeTarget "Bard TransportTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				873448E01CE7AE0D005A17AC /* Debug */,
+				873448E11CE7AE0D005A17AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		873448E21CE7AE0D005A17AC /* Build configuration list for PBXNativeTarget "Bard TransportUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				873448E31CE7AE0D005A17AC /* Debug */,
+				873448E41CE7AE0D005A17AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		873448BB1CE7AE0C005A17AC /* Bard_Transport.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				873448BC1CE7AE0C005A17AC /* Bard_Transport.xcdatamodel */,
+			);
+			currentVersion = 873448BC1CE7AE0C005A17AC /* Bard_Transport.xcdatamodel */;
+			path = Bard_Transport.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 873448A91CE7AE0C005A17AC /* Project object */;
+}
