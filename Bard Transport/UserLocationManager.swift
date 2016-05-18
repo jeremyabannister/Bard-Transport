@@ -69,8 +69,6 @@ public class UserLocationManager: NSObject, CLLocationManagerDelegate {
         
         super.init()
         
-        print("here now!!!! \(locationManager)")
-        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone

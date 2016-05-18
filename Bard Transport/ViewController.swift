@@ -17,10 +17,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
         view.addSubview(applicationRoot)
         applicationRoot.frame = view.relativeFrame
-        
     }
     
     override func didReceiveMemoryWarning() {
