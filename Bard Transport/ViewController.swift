@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         view.addSubview(applicationRoot)
         applicationRoot.frame = view.relativeFrame
         
-        
     }
     
     override func didReceiveMemoryWarning() {

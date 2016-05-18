@@ -58,9 +58,13 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     private var versionCheckTimer: NSTimer? // The timer that triggers the version check
     private let versionCheckInterval: NSTimeInterval = 120 // Number of seconds user gets to use the app before update notification reappears
     
+    private let laboratoryEnabled = false
+    
     // MARK: UI
     private var mainSector = MainSector()
     private var updateNotification = UpdateNotification()
+    
+    private var laboratory = UIView() // The laboratory is a view which covers the entire app and is used as a test ground. Usually it is transparent and userInteractionEnabled is set to false, but when laboratoryEnabled is set to true at startup the laboratory takes the foreground and runExperiment() is called.
     
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
@@ -98,6 +102,13 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
             UIUserNotificationType.Badge], categories: nil
             ))
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        
+        
+        
+        
+        if laboratoryEnabled {
+            NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "runExperiment", userInfo: nil, repeats: false)
+        }
         
     }
     
@@ -138,6 +149,7 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
         
         addMainSector()
         addUpdateNotification()
+        addLaboratory()
         
     }
     
@@ -148,6 +160,11 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
         
         configureUpdateNotification()
         positionUpdateNotification()
+        
+        
+        
+        configureLaboratory()
+        positionLaboratory()
         
     }
     
@@ -160,6 +177,10 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     
     private func addUpdateNotification () {
         notificationLayer.addSubview(updateNotification)
+    }
+    
+    private func addLaboratory () {
+        addSubview(laboratory)
     }
     
     
@@ -209,6 +230,28 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
         updateNotification.frame = newFrame
         
         
+    }
+    
+    
+    
+    // MARK: Laboratory
+    private func configureLaboratory () {
+        if laboratoryEnabled {
+            laboratory.backgroundColor = whiteColor
+            laboratory.userInteractionEnabled = true
+        } else {
+            laboratory.backgroundColor = clearColor
+            laboratory.userInteractionEnabled = false
+        }
+        
+    }
+    
+    private func positionLaboratory () {
+        if laboratoryEnabled {
+            laboratory.frame = relativeFrame
+        } else {
+            laboratory.frame = CGRectZero
+        }
     }
     
     
@@ -264,6 +307,43 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
                 animatedUpdate()
             }
         }
+    }
+    
+    
+    
+    // MARK: Experiment
+    public func runExperiment () {
+        
+        let view1 = UIView()
+        view1.red()
+        print("width is \(width)")
+        view1.frame = CGRect(x: laboratory.width/2 - 2.0, y: laboratory.height/2 - 2.0, width: 4, height: 4)
+        
+        let width2 = CGFloat(50.0)
+        let height2 = CGFloat(100.0)
+        
+        let view2 = UIImageView()
+        view2.blue()
+        view2.image = UIImage(named: "botsteincolorheadbowtie100x100.png")
+        view2.frame = CGRect(x: view1.center.x - width2/2, y: view1.center.y - height2/2, width: width2, height: height2)
+        
+        let view3 = UIImageView()
+        view3.blue()
+        view3.image = UIImage(named: "botsteincolorheadbowtie100x100.png")
+        view3.frame = CGRect(x: view1.center.x - width2/2, y: view1.center.y - height2/2 + 200, width: width2, height: height2)
+        
+        
+        
+        
+        
+        laboratory.addSubview(view2)
+        laboratory.addSubview(view3)
+        
+        
+        laboratory.addSubview(view1)
+        
+        view2.transform = CGAffineTransformMakeRotation(CGFloat(pi)/4)
+        
     }
     
     

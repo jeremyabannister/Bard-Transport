@@ -85,11 +85,15 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
      */
     
     // MARK: UI
-    private var roadViews = [UIImageView]()
-    private var visibleRoadViews = [UIImageView]()
+    private var roadViewsLayer = UIView()
+    private var shuttleStopViewsLayer = UIView()
     
     private var shuttleStopViews = [ShuttleStopView]()
     private var visibleShuttleStopViews = [ShuttleStopView]()
+    
+    private var roadViews = [UIImageView]()
+    private var visibleRoadViews = [UIImageView]()
+    
     private let touchDetector = JABTouchableView()
     
     // MARK: Parameters
@@ -116,6 +120,7 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
         
         createShuttleStopViews()
         createRoadViews()
+        
         
     }
     
@@ -155,8 +160,12 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     // MARK: All
     override public func addAllUI() {
         
-        addRoadViews()
+        addRoadViewsLayer()
+        addShuttleStopViewsLayer()
+        
         addShuttleStopViews(mainStops: mode == .MainStops)
+        addRoadViews(mainStops: mode == .MainStops)
+        
         addTouchDetector()
         
     }
@@ -164,6 +173,14 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     override public func updateAllUI() {
         
         updateParameters()
+        
+        configureRoadViewsLayer()
+        positionRoadViewsLayer()
+        
+        configureShuttleStopViewsLayer()
+        positionShuttleStopViewsLayer()
+        
+        
         
         configureShuttleStopViews()
         positionShuttleStopViews()
@@ -180,18 +197,35 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     
     
     // MARK: Adding
-    private func addRoadViews () {
+    private func addRoadViewsLayer () {
+        addSubview(roadViewsLayer)
+    }
+    
+    private func addShuttleStopViewsLayer () {
+        addSubview(shuttleStopViewsLayer)
+    }
+    
+    
+    
+    
+    private func addRoadViews (mainStops mainStops: Bool) {
+        
+        var requiredNumber = shuttleStopManager.mainShuttleStops.count - 1
+        if !mainStops {
+            requiredNumber = shuttleStopManager.allShuttleStops.count - 1
+        }
+        
+        visibleRoadViews.removeAll(keepCapacity: true)
         
         var i = 0
-        
         for roadView in roadViews {
-            if i < visibleShuttleStopViews.count - 1 {
-                addSubview(roadView)
+            if i < requiredNumber {
+                roadViewsLayer.addSubview(roadView)
                 visibleRoadViews.append(roadView)
             } else {
                 roadView.removeFromSuperview()
             }
-            i++
+            i += 1
         }
         
     }
@@ -199,22 +233,19 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     
     private func addShuttleStopViews (mainStops mainStops: Bool) {
         
-        let shuttleStops: [ShuttleStop]
-        
-        if mainStops {
-            shuttleStops = shuttleStopManager.mainShuttleStops
-        } else {
+        var shuttleStops = shuttleStopManager.mainShuttleStops
+        if !mainStops {
             shuttleStops = shuttleStopManager.allShuttleStops
         }
         
-        visibleShuttleStopViews.removeAll()
+        visibleShuttleStopViews.removeAll(keepCapacity: true)
         
         for shuttleStopView in shuttleStopViews {
             var found = false
             for shuttleStop in shuttleStops {
-                if shuttleStop.title == shuttleStopView.shuttleStop.title {
+                if shuttleStop.absoluteIndex == shuttleStopView.shuttleStop.absoluteIndex {
                     found = true
-                    addSubview(shuttleStopView)
+                    shuttleStopViewsLayer.addSubview(shuttleStopView)
                     visibleShuttleStopViews.append(shuttleStopView)
                 }
             }
@@ -227,6 +258,33 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     
     private func addTouchDetector () {
         addSubview(touchDetector)
+    }
+    
+    
+    
+    
+    
+    
+    
+    // MARK: Road Views Layer
+    private func configureRoadViewsLayer () {
+        
+    }
+    
+    private func positionRoadViewsLayer () {
+        roadViewsLayer.frame = relativeFrame
+    }
+    
+    
+    
+    
+    // MARK: Shuttle Stop Views Layer
+    private func configureShuttleStopViewsLayer () {
+        
+    }
+    
+    private func positionShuttleStopViewsLayer () {
+        shuttleStopViewsLayer.frame = relativeFrame
     }
     
     
@@ -249,10 +307,8 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
         
         deleteShuttleStopViews()
         
-        let stops = shuttleStopManager.allShuttleStops
-        
         // Iterate through the stops and create corresponding shuttle stop views
-        for shuttleStop in stops {
+        for shuttleStop in shuttleStopManager.allShuttleStops {
             
             let shuttleStopView = ShuttleStopView(shuttleStop: shuttleStop)
             shuttleStopView.delegate = self
@@ -262,18 +318,13 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
         
         
         addShuttleStopViews(mainStops: mode == .MainStops)
-        updateAllUI()
         
     }
     
     private func configureShuttleStopViews () {
-        
-        for shuttleStopView in visibleShuttleStopViews {
-            
+        for shuttleStopView in shuttleStopViews {
             shuttleStopView.delegate = self
-            
         }
-        
     }
     
     private func positionShuttleStopViews () {
@@ -281,10 +332,10 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
         if mode == ShuttleStopStackMode.MainStops {
             
             let spaceBetweenStops = width/4
-            let heightOfStops = (height - (CGFloat((visibleShuttleStopViews.count - 1)) * spaceBetweenStops))/CGFloat(visibleShuttleStopViews.count)
+            let heightOfStops = (height - (CGFloat((shuttleStopManager.mainShuttleStops.count - 1)) * spaceBetweenStops))/CGFloat(shuttleStopManager.mainShuttleStops.count)
             
             
-            for i in 0..<(visibleShuttleStopViews.count) {
+            for i in 0..<(shuttleStopManager.mainShuttleStops.count) {
                 let shuttleStopView = visibleShuttleStopViews[i]
                 
                 var newFrame = CGRectZero
@@ -409,36 +460,35 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
             
         }
         
-        addRoadViews()
-        updateAllUI()
+        addRoadViews(mainStops: mode == .MainStops)
         
     }
     
     
     private func configureRoadViews () {
         
-        if mode == ShuttleStopStackMode.MainStops {
-            
-            for roadView in roadViews {
-                roadView.image = UIImage(named: "Road.png")
-            }
-            
-        } else if mode == ShuttleStopStackMode.AllStops {
-            
+        for roadView in roadViews {
+            roadView.image = UIImage(named: "Road.png")
         }
         
     }
     
     private func positionRoadViews () {
         
-        print("positioning")
-        if visibleRoadViews.count == visibleShuttleStopViews.count - 1 {
-            for i in 0 ..< visibleRoadViews.count {
-                print("i = \(i)")
-                
-                let roadView = roadViews[i]
+        
+        print("")
+        print("")
+        print("")
+        print("")
+        print("")
+        
+        for i in 0 ..< visibleRoadViews.count {
+            
+            if i < visibleShuttleStopViews.count - 1 {
+                let roadView = visibleRoadViews[i]
                 let topShuttleStopView = visibleShuttleStopViews[i]
                 let bottomShuttleStopView = visibleShuttleStopViews[i + 1]
+                
                 
                 if let size = roadView.image?.size {
                     if size.height != 0 {
@@ -446,36 +496,32 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
                         let verticalOffsetFromCenterOfStop = CGFloat(18)
                         
                         var newFrame = CGRectZero
-                        var angle = 0.0
-                        if topShuttleStopView.center.x - bottomShuttleStopView.center.x != 0 {
-                            angle = atan(Double((topShuttleStopView.center.y - bottomShuttleStopView.center.y)/(topShuttleStopView.center.x - bottomShuttleStopView.center.x))) - 90
+                        let difference = CGPoint(x: bottomShuttleStopView.center.x - topShuttleStopView.center.x, y: bottomShuttleStopView.center.y - topShuttleStopView.center.y)
+                        
+                        
+                        var angle = CGFloat(0.0)
+                        if difference.x != 0 {
+                            angle = atan(difference.y/difference.x) - CGFloat(pi)/2
                         }
                         
-                        print("top is \(topShuttleStopView.center) bottom is \(bottomShuttleStopView.center)")
-                        let difference = CGPoint(x: topShuttleStopView.center.x - bottomShuttleStopView.center.x, y: topShuttleStopView.center.y - bottomShuttleStopView.center.y)
                         
                         newFrame.size.height = CGFloat(sqrt(Double((difference.x * difference.x) + (difference.y * difference.y))))
                         newFrame.size.width = newFrame.size.height * widthToHeightRatio
                         
-                        // Expression was too complex, had to break it down
-                        let term1X = topShuttleStopView.center.x
-                        let term2X = newFrame.size.height * CGFloat(cos(angle) * sin(angle))
-                        let term3X = (newFrame.size.height/2) * CGFloat(sin(angle))
-                        let term4X = newFrame.size.width/2
-                        newFrame.origin.x = term1X + term2X - term3X - term4X
+                        print("width is \(newFrame.size.width)")
+                        print("ratio is \(newFrame.size.width/newFrame.size.height)")
                         
-                        let term1Y = topShuttleStopView.center.y
-                        let term2Y = (newFrame.size.height/2) * CGFloat(cos(2 * angle))
-                        let term3Y = (newFrame.size.height/2) * CGFloat(cos(angle))
-                        newFrame.origin.y = term1Y - term2Y + term3Y
+                        newFrame.origin.x = topShuttleStopView.center.x + difference.x/2 - newFrame.size.width/2
+                        newFrame.origin.y = topShuttleStopView.center.y + difference.y/2 - newFrame.size.height/2
                         
                         roadView.frame = newFrame
-                        roadView.printFrame()
-                        print("")
+                        
+                        roadView.transform = CGAffineTransformMakeRotation(CGFloat(angle))
                     }
                 }
             }
         }
+            
         
         
         
@@ -548,32 +594,38 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     // MARK: Transition
     public func transition (completion: (Bool) -> ()) {
         
+        print("Beginning transition...")
         if mode == .MainStops {
             
+            print("Mode was .MainStops.")
+            
             mode = .CollapsedSingle
-            animatedUpdate(0.5) { (Bool) -> () in
-                
+            animatedUpdate(0.4) { (Bool) -> () in
+                print("Finished first animation, calling addShuttleStopViews.")
                 self.addShuttleStopViews(mainStops: false)
-                self.addRoadViews()
+                print("Calling addRoadViews.")
+                self.addRoadViews(mainStops: false)
                 
+                print("Starting next animation.")
                 self.mode = .CollapsedDouble
-                self.animatedUpdate(0.5, completion: { (Bool) -> () in
+                self.animatedUpdate(0.4, completion: { (Bool) -> () in
+                    print("Finished animating to collapsedDouble. Starting final animation to .AllStops.")
                     self.mode = .AllStops
-                    self.animatedUpdate(0.5, completion: completion)
+                    self.animatedUpdate(0.4, completion: completion)
                 })
             }
             
         } else {
             mode = .CollapsedDouble
-            animatedUpdate(0.5) { (Bool) -> () in
+            animatedUpdate(0.4) { (Bool) -> () in
                 self.mode = .CollapsedSingle
-                self.animatedUpdate(0.5, completion: { (Bool) -> () in
+                self.animatedUpdate(0.4, completion: { (Bool) -> () in
                     
                     self.addShuttleStopViews(mainStops: true)
-                    self.addRoadViews()
+                    self.addRoadViews(mainStops: true)
                     
                     self.mode = .MainStops
-                    self.animatedUpdate(0.5, completion: completion)
+                    self.animatedUpdate(0.4, completion: completion)
                 })
             }
         }

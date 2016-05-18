@@ -120,7 +120,7 @@
 		873448C31CE7AE0C005A17AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		873448C81CE7AE0C005A17AC /* Bard TransportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bard TransportTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		873448CC1CE7AE0C005A17AC /* Bard_TransportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bard_TransportTests.swift; sourceTree = "<group>"; };
-		873448CE1CE7AE0C005A17AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		873448CE1CE7AE0C005A17AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Bard TransportTests/Info.plist"; sourceTree = SOURCE_ROOT; };
 		873448D31CE7AE0D005A17AC /* Bard TransportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bard TransportUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		873448D71CE7AE0D005A17AC /* Bard_TransportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bard_TransportUITests.swift; sourceTree = "<group>"; };
 		873448D91CE7AE0D005A17AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -914,6 +914,7 @@
 				TargetAttributes = {
 					873448B01CE7AE0C005A17AC = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = H5N9FLA33R;
 					};
 					873448C71CE7AE0C005A17AC = {
 						CreatedOnToolsVersion = 7.3;
@@ -1305,10 +1306,14 @@
 			baseConfigurationReference = F042C0A0343C97F0493D0380 /* Pods-Bard Transport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Bard Transport/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-Transport";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1317,10 +1322,14 @@
 			baseConfigurationReference = 1F911AD00ED426CF518C2F03 /* Pods-Bard Transport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Bard Transport/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-Transport";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
