@@ -97,7 +97,7 @@ public class ShuttleStopManager: NSObject {
         triangle.title = triangle.name + " Shuttle Stop"
         
         
-        let churchSt = ShuttleStop(name: "Church St.", absoluteIndex: 8)
+        let churchSt = ShuttleStop(name: "Church St", absoluteIndex: 8)
         churchSt.icon = UIImage(named: churchSt.name + ".png")
         churchSt.flagImage = UIImage(named: churchSt.name + " Fancy Flag.png")
         churchSt.coordinate = CLLocationCoordinate2D(latitude: 42.0220182, longitude: -73.9083328)
@@ -111,7 +111,7 @@ public class ShuttleStopManager: NSObject {
         redHook.title = redHook.name + " Shuttle Stop"
         
         
-        let matUbs = ShuttleStop(name: "MAT/UBS", absoluteIndex: 10)
+        let matUbs = ShuttleStop(name: "MAT-UBS", absoluteIndex: 10)
         matUbs.icon = UIImage(named: matUbs.name + ".png")
         matUbs.flagImage = UIImage(named: matUbs.name + " Fancy Flag.png")
         matUbs.coordinate = CLLocationCoordinate2D(latitude: 42.0220182, longitude: -73.9083328)
