@@ -211,7 +211,7 @@ public class ScheduleSheet: JABView, ScheduleSheetHeaderDelegate, ScheduleSheetB
         body.itineraries = [[Itinerary]]()
         
         for i in 0 ..< 7 {
-            body.itineraries.append(schedule.itinerariesStopsForDay(i, origin: origin, destination: destination))
+            body.itineraries.append(schedule.itinerariesForStopsAndDay(i, origin: origin, destination: destination))
         }
         
         body.reloadTableData()
