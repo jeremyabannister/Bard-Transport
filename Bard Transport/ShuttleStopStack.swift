@@ -588,42 +588,41 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     // MARK: Transition
     public func transition (completion: (Bool) -> ()) {
         
-        let duration = 0.9
+        let duration = 0.7
         
         transitioning = true
         
         if mode == .MainStops {
             
             mode = .CollapsedSingle
-            animatedUpdate(duration/3) { (Bool) -> () in
-                
+            animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveLinear, completion: { (Bool) in
                 self.addShuttleStopViews(mainStops: false)
                 self.addRoadViews(mainStops: false)
                 self.positionShuttleStopViews()
                 self.positionRoadViews()
                 
                 self.mode = .CollapsedDouble
-                self.animatedUpdate(duration/3, completion: { (Bool) -> () in
+                self.animatedUpdate(duration/4, options: UIViewAnimationOptions.CurveLinear, completion: { (Bool) -> () in
                     self.mode = .AllStops
-                    self.animatedUpdate(duration/3, completion: completion)
+                    self.animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveLinear, completion: completion)
                     self.transitioning = false
                 })
-            }
+            })
             
         } else {
             mode = .CollapsedDouble
-            animatedUpdate(duration/3) { (Bool) -> () in
+            animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveLinear, completion: { (Bool) in
                 self.mode = .CollapsedSingle
-                self.animatedUpdate(duration/3, completion: { (Bool) -> () in
+                self.animatedUpdate(duration/4, options: UIViewAnimationOptions.CurveLinear, completion: { (Bool) -> () in
                     
                     self.addShuttleStopViews(mainStops: true)
                     self.addRoadViews(mainStops: true)
                     
                     self.mode = .MainStops
-                    self.animatedUpdate(duration/3, completion: completion)
+                    self.animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveLinear, completion: completion)
                     self.transitioning = false
                 })
-            }
+            })
         }
     }
     
