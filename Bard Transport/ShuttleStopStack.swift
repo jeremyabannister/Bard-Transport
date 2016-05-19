@@ -606,7 +606,7 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
                 self.animatedUpdate(duration/3, completion: { (Bool) -> () in
                     self.mode = .AllStops
                     self.animatedUpdate(duration/3, completion: completion)
-                    
+                    self.transitioning = false
                 })
             }
             
@@ -621,6 +621,7 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
                     
                     self.mode = .MainStops
                     self.animatedUpdate(duration/3, completion: completion)
+                    self.transitioning = false
                 })
             }
         }
