@@ -40,7 +40,9 @@
 		873449041CE7B37C005A17AC /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449031CE7B37C005A17AC /* Itinerary.swift */; };
 		873449061CE7B3C8005A17AC /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449051CE7B3C8005A17AC /* Schedule.swift */; };
 		873449081CE7B3FA005A17AC /* SmartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449071CE7B3FA005A17AC /* SmartTime.swift */; };
-		87C3C50B1CED988700005CDF /* UpdateNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789C41CE7B5C600D6CD06 /* UpdateNotification.swift */; };
+		87C3C50D1CEE439300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
+		87C3C50E1CEE43C300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
+		87C3C50F1CEE43F000005CDF /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789E01CE7B7D300D6CD06 /* SidebarItem.swift */; };
 		87ECF3DD1CE7B8140093C2AE /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */; };
 		87ECF3E41CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E31CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift */; };
 		87ECF3E61CE7B9070093C2AE /* SidebarMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E51CE7B9070093C2AE /* SidebarMenuHeader.swift */; };
@@ -96,29 +98,11 @@
 		87FA069C1CED9658009375F1 /* ScheduledStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448FD1CE7B301005A17AC /* ScheduledStop.swift */; };
 		87FA069D1CED9658009375F1 /* ScheduledTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448F91CE7B2AC005A17AC /* ScheduledTime.swift */; };
 		87FA069E1CED9658009375F1 /* SmartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449071CE7B3FA005A17AC /* SmartTime.swift */; };
-		87FA069F1CED9658009375F1 /* ApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF40F1CE7BBBC0093C2AE /* ApplicationRoot.swift */; };
-		87FA06A01CED9658009375F1 /* MainSector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF40D1CE7BBA00093C2AE /* MainSector.swift */; };
-		87FA06A11CED9658009375F1 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */; };
-		87FA06A21CED9658009375F1 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789E01CE7B7D300D6CD06 /* SidebarItem.swift */; };
 		87FA06A31CED9658009375F1 /* SmartTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789DE1CE7B7AE00D6CD06 /* SmartTimes.swift */; };
 		87FA06A41CED9658009375F1 /* SmartTimePane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789DC1CE7B78700D6CD06 /* SmartTimePane.swift */; };
 		87FA06A51CED9658009375F1 /* SmartTimesPaneEndOfLineErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789DA1CE7B74200D6CD06 /* SmartTimesPaneEndOfLineErrorView.swift */; };
 		87FA06A61CED9658009375F1 /* SmartTimesTooFarFromCampusErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789D81CE7B72B00D6CD06 /* SmartTimesTooFarFromCampusErrorView.swift */; };
 		87FA06A71CED9658009375F1 /* SmartTimesInsufficientAccessPrivilegesErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789D61CE7B70100D6CD06 /* SmartTimesInsufficientAccessPrivilegesErrorView.swift */; };
-		87FA06A81CED9658009375F1 /* SidebarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E91CE7B9350093C2AE /* SidebarMenu.swift */; };
-		87FA06A91CED9658009375F1 /* SidebarMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E71CE7B91D0093C2AE /* SidebarMenuItem.swift */; };
-		87FA06AA1CED9658009375F1 /* SidebarMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E51CE7B9070093C2AE /* SidebarMenuHeader.swift */; };
-		87FA06AB1CED9658009375F1 /* SidebarMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E31CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift */; };
-		87FA06AC1CED9658009375F1 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3EB1CE7B9810093C2AE /* Map.swift */; };
-		87FA06AD1CED9658009375F1 /* ScheduleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF40B1CE7BB680093C2AE /* ScheduleSelector.swift */; };
-		87FA06AE1CED9658009375F1 /* ShuttleStopStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4091CE7BB4D0093C2AE /* ShuttleStopStack.swift */; };
-		87FA06AF1CED9658009375F1 /* ShuttleStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4071CE7BB370093C2AE /* ShuttleStopView.swift */; };
-		87FA06B01CED9658009375F1 /* ScheduleSelectorHelpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4051CE7BB180093C2AE /* ScheduleSelectorHelpScreen.swift */; };
-		87FA06B11CED9658009375F1 /* ScheduleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4031CE7BAFC0093C2AE /* ScheduleSheet.swift */; };
-		87FA06B21CED9658009375F1 /* ScheduleSheetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4011CE7BAE50093C2AE /* ScheduleSheetHeader.swift */; };
-		87FA06B31CED9658009375F1 /* ScheduleSheetBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3FF1CE7BAC40093C2AE /* ScheduleSheetBody.swift */; };
-		87FA06B41CED9658009375F1 /* ScheduledSheetTableViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3FD1CE7BA980093C2AE /* ScheduledSheetTableViewSectionHeader.swift */; };
-		87FA06B51CED9658009375F1 /* ScheduledTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3FB1CE7BA700093C2AE /* ScheduledTimeTableViewCell.swift */; };
 		C9E020D06975074D146011F0 /* Pods_Bard_Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFE4C7379C2E8C885D5F87D /* Pods_Bard_Transport.framework */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +189,7 @@
 		873449051CE7B3C8005A17AC /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		873449071CE7B3FA005A17AC /* SmartTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartTime.swift; sourceTree = "<group>"; };
 		87C3C5091CED983500005CDF /* JABSwiftCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JABSwiftCore.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Bard_Transport-aitqzrafcmlrxeavsghabjjcylij/Build/Products/Debug-iphoneos/JABSwiftCore/JABSwiftCore.framework"; sourceTree = "<group>"; };
+		87C3C50C1CEE439300005CDF /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		87ECF3E31CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarMenuTableViewCell.swift; sourceTree = "<group>"; };
 		87ECF3E51CE7B9070093C2AE /* SidebarMenuHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarMenuHeader.swift; sourceTree = "<group>"; };
@@ -568,6 +553,7 @@
 			children = (
 				873448B41CE7AE0C005A17AC /* AppDelegate.swift */,
 				873448B61CE7AE0C005A17AC /* ViewController.swift */,
+				87C3C50C1CEE439300005CDF /* Global.swift */,
 				873448EA1CE7B1D9005A17AC /* Other */,
 			);
 			name = Default;
@@ -1274,6 +1260,7 @@
 				873448B71CE7AE0C005A17AC /* ViewController.swift in Sources */,
 				872789BD1CE7B48E00D6CD06 /* ShuttleStopManager.swift in Sources */,
 				87ECF3EC1CE7B9810093C2AE /* Map.swift in Sources */,
+				87C3C50D1CEE439300005CDF /* Global.swift in Sources */,
 				87ECF4061CE7BB180093C2AE /* ScheduleSelectorHelpScreen.swift in Sources */,
 				872789DB1CE7B74200D6CD06 /* SmartTimesPaneEndOfLineErrorView.swift in Sources */,
 				87ECF40A1CE7BB4D0093C2AE /* ShuttleStopStack.swift in Sources */,
@@ -1330,40 +1317,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87C3C50B1CED988700005CDF /* UpdateNotification.swift in Sources */,
 				87FA06991CED9658009375F1 /* Schedule.swift in Sources */,
-				87FA06B41CED9658009375F1 /* ScheduledSheetTableViewSectionHeader.swift in Sources */,
 				87FA06A51CED9658009375F1 /* SmartTimesPaneEndOfLineErrorView.swift in Sources */,
-				87FA06A01CED9658009375F1 /* MainSector.swift in Sources */,
 				87FA069A1CED9658009375F1 /* ScheduledDay.swift in Sources */,
-				87FA06A21CED9658009375F1 /* SidebarItem.swift in Sources */,
 				87FA06A31CED9658009375F1 /* SmartTimes.swift in Sources */,
-				87FA06B31CED9658009375F1 /* ScheduleSheetBody.swift in Sources */,
 				87FA068A1CED95D9009375F1 /* TodayViewController.swift in Sources */,
 				87FA069C1CED9658009375F1 /* ScheduledStop.swift in Sources */,
 				87FA069B1CED9658009375F1 /* ScheduledRun.swift in Sources */,
-				87FA06AD1CED9658009375F1 /* ScheduleSelector.swift in Sources */,
-				87FA06AA1CED9658009375F1 /* SidebarMenuHeader.swift in Sources */,
+				87C3C50E1CEE43C300005CDF /* Global.swift in Sources */,
 				87FA06A71CED9658009375F1 /* SmartTimesInsufficientAccessPrivilegesErrorView.swift in Sources */,
-				87FA06AB1CED9658009375F1 /* SidebarMenuTableViewCell.swift in Sources */,
 				87FA06951CED9630009375F1 /* ShuttleStopManager.swift in Sources */,
-				87FA06B11CED9658009375F1 /* ScheduleSheet.swift in Sources */,
-				87FA06B01CED9658009375F1 /* ScheduleSelectorHelpScreen.swift in Sources */,
 				87FA06A41CED9658009375F1 /* SmartTimePane.swift in Sources */,
 				87FA06A61CED9658009375F1 /* SmartTimesTooFarFromCampusErrorView.swift in Sources */,
-				87FA069F1CED9658009375F1 /* ApplicationRoot.swift in Sources */,
 				87FA069D1CED9658009375F1 /* ScheduledTime.swift in Sources */,
+				87C3C50F1CEE43F000005CDF /* SidebarItem.swift in Sources */,
 				87FA06961CED9633009375F1 /* UserLocationManager.swift in Sources */,
 				87FA06971CED9636009375F1 /* ShuttleStop.swift in Sources */,
-				87FA06B21CED9658009375F1 /* ScheduleSheetHeader.swift in Sources */,
-				87FA06AE1CED9658009375F1 /* ShuttleStopStack.swift in Sources */,
 				87FA06981CED9658009375F1 /* Itinerary.swift in Sources */,
-				87FA06AC1CED9658009375F1 /* Map.swift in Sources */,
-				87FA06B51CED9658009375F1 /* ScheduledTimeTableViewCell.swift in Sources */,
-				87FA06A81CED9658009375F1 /* SidebarMenu.swift in Sources */,
-				87FA06A11CED9658009375F1 /* Sidebar.swift in Sources */,
-				87FA06A91CED9658009375F1 /* SidebarMenuItem.swift in Sources */,
-				87FA06AF1CED9658009375F1 /* ShuttleStopView.swift in Sources */,
 				87FA069E1CED9658009375F1 /* SmartTime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1453,7 +1423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1493,7 +1463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

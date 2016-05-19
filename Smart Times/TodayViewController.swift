@@ -58,6 +58,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         test.backgroundColor = UIColor.whiteColor()
         test.text = "width is \(view.width) and then \(newFrame.origin.x)"
         
+        
     }
     
     override func didReceiveMemoryWarning() {

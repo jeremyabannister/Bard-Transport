@@ -11,27 +11,6 @@
 //
 // Add +/- button to lower right corner to switch between All Stops and Main Stops
 
-public var userLocationManager = UserLocationManager()
-public var shuttleStopManager = ShuttleStopManager()
-public var schedule = Schedule()
-
-public let lateNightThreshold = 300
-
-
-public func distanceBetweenPoints (point1: CGPoint, point2: CGPoint) -> CGFloat {
-    
-    let difference = CGPoint(x: point1.x - point2.x, y: point1.y - point2.y)
-    return sqrt(pow(difference.x, 2) + pow(difference.y, 2))
-    
-}
-
-
-public var rightNow: NSDate {
-get {
-    return NSDate()
-}
-}
-
 import UIKit
 import JABSwiftCore
 
@@ -97,12 +76,10 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
         
         versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: "retrieveVersionNumberFromInternet", userInfo: nil, repeats: true)
         
-        /*
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert,
             UIUserNotificationType.Badge], categories: nil
             ))
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-        */
         
         
         
@@ -384,7 +361,7 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     public func updateNotificationUpdateButtonWasPressed(updateNotification: UpdateNotification) {
         
         if let url = NSURL(string: "itms-apps://itunes.apple.com/app/id789572922") {
-//            UIApplication.sharedApplication().openURL(url)
+            UIApplication.sharedApplication().openURL(url)
         }
         
         versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: "retrieveVersionNumberFromInternet", userInfo: nil, repeats: true)
