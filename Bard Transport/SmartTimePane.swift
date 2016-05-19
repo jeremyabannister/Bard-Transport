@@ -110,7 +110,7 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
         heightOfShuttleStopIcon = 0.1
         
         bufferBetweenDirectionLabelAndShuttleStopIcon = 0.007
-        bufferBetweenShuttleStopIconAndShuttleStopLabel = 0.01
+        bufferBetweenShuttleStopIconAndShuttleStopLabel = 0.02
         
         
         rightBufferForMinutesTitleLabel = 0.07

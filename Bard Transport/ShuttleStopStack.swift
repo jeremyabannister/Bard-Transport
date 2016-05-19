@@ -61,6 +61,11 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
             touchDetector.userInteractionEnabled = !emptyingStops
         }
     }
+    private var transitioning = false {
+        didSet {
+            touchDetector.userInteractionEnabled = !transitioning
+        }
+    }
     private var touchLocation: CGPoint?
     
     
@@ -583,7 +588,9 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     // MARK: Transition
     public func transition (completion: (Bool) -> ()) {
         
-        let duration = 1.2
+        let duration = 0.9
+        
+        transitioning = true
         
         if mode == .MainStops {
             

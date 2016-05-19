@@ -40,6 +40,7 @@
 		873449041CE7B37C005A17AC /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449031CE7B37C005A17AC /* Itinerary.swift */; };
 		873449061CE7B3C8005A17AC /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449051CE7B3C8005A17AC /* Schedule.swift */; };
 		873449081CE7B3FA005A17AC /* SmartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449071CE7B3FA005A17AC /* SmartTime.swift */; };
+		87B838E71CEE564D0088F77C /* JABSwiftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C3C5091CED983500005CDF /* JABSwiftCore.framework */; };
 		87C3C50D1CEE439300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
 		87C3C50E1CEE43C300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
 		87C3C50F1CEE43F000005CDF /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789E01CE7B7D300D6CD06 /* SidebarItem.swift */; };
@@ -160,7 +161,6 @@
 		2CFE4C7379C2E8C885D5F87D /* Pods_Bard_Transport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_Transport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD68225478E78229D345496 /* Pods-Bard TransportUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B57EC7312302FEC73EB4CF7 /* libPods-Bard TransportUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bard TransportUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F4CE53D916BDC3036B391F7 /* Pods-Bard Transport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.release.xcconfig"; sourceTree = "<group>"; };
 		7CD51063176D469D7FF775F0 /* Pods-Bard TransportUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8720E7531CED038F002E6187 /* Triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Triangle.png; sourceTree = "<group>"; };
 		8720E7551CED03F1002E6187 /* Church St.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Church St.png"; sourceTree = "<group>"; };
@@ -248,9 +248,10 @@
 		87FA06891CED95D9009375F1 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		87FA068C1CED95D9009375F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		87FA068E1CED95D9009375F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A98A60C99DD29862DC509336 /* Pods-Bard Transport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.debug.xcconfig"; sourceTree = "<group>"; };
 		C31E7096300E189A51B4ACBB /* Pods-Bard TransportTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE76ED6E6D31ED7136B6B32A /* Pods-Bard Transport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.debug.xcconfig"; sourceTree = "<group>"; };
 		F0B14DF8D9376EF28EB32F0E /* libPods-Bard TransportTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bard TransportTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9A81179F26047D46D697A83 /* Pods-Bard Transport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +283,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87B838E71CEE564D0088F77C /* JABSwiftCore.framework in Frameworks */,
 				87FA06871CED95D9009375F1 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,12 +294,12 @@
 		206524F181581F43BE64944B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A98A60C99DD29862DC509336 /* Pods-Bard Transport.debug.xcconfig */,
-				5F4CE53D916BDC3036B391F7 /* Pods-Bard Transport.release.xcconfig */,
 				C31E7096300E189A51B4ACBB /* Pods-Bard TransportTests.debug.xcconfig */,
 				2B57D946C888C432C82FF583 /* Pods-Bard TransportTests.release.xcconfig */,
 				4AD68225478E78229D345496 /* Pods-Bard TransportUITests.debug.xcconfig */,
 				7CD51063176D469D7FF775F0 /* Pods-Bard TransportUITests.release.xcconfig */,
+				EE76ED6E6D31ED7136B6B32A /* Pods-Bard Transport.debug.xcconfig */,
+				F9A81179F26047D46D697A83 /* Pods-Bard Transport.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1495,7 +1497,7 @@
 		};
 		873448DD1CE7AE0D005A17AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A98A60C99DD29862DC509336 /* Pods-Bard Transport.debug.xcconfig */;
+			baseConfigurationReference = EE76ED6E6D31ED7136B6B32A /* Pods-Bard Transport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1512,7 +1514,7 @@
 		};
 		873448DE1CE7AE0D005A17AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F4CE53D916BDC3036B391F7 /* Pods-Bard Transport.release.xcconfig */;
+			baseConfigurationReference = F9A81179F26047D46D697A83 /* Pods-Bard Transport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1579,7 +1581,7 @@
 		};
 		87FA06931CED95D9009375F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A98A60C99DD29862DC509336 /* Pods-Bard Transport.debug.xcconfig */;
+			baseConfigurationReference = EE76ED6E6D31ED7136B6B32A /* Pods-Bard Transport.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1597,7 +1599,7 @@
 		};
 		87FA06941CED95D9009375F1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F4CE53D916BDC3036B391F7 /* Pods-Bard Transport.release.xcconfig */;
+			baseConfigurationReference = F9A81179F26047D46D697A83 /* Pods-Bard Transport.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
