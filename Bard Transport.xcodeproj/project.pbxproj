@@ -43,6 +43,17 @@
 		87C3C50D1CEE439300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
 		87C3C50E1CEE43C300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
 		87C3C50F1CEE43F000005CDF /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789E01CE7B7D300D6CD06 /* SidebarItem.swift */; };
+		87C3C5101CEE4E0200005CDF /* Tivoli.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF43D1CE7BC420093C2AE /* Tivoli.png */; };
+		87C3C5111CEE4E0200005CDF /* Monument.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7671CED0A7D002E6187 /* Monument.png */; };
+		87C3C5121CEE4E0200005CDF /* Campus Road.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7691CED0AC3002E6187 /* Campus Road.png */; };
+		87C3C5131CEE4E0200005CDF /* Robbins.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF43E1CE7BC420093C2AE /* Robbins.png */; };
+		87C3C5141CEE4E0200005CDF /* Ward Gate.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E75D1CED071E002E6187 /* Ward Gate.png */; };
+		87C3C5151CEE4E0200005CDF /* Kline.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF43F1CE7BC420093C2AE /* Kline.png */; };
+		87C3C5161CEE4E0200005CDF /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7531CED038F002E6187 /* Triangle.png */; };
+		87C3C5171CEE4E0200005CDF /* Church St.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7551CED03F1002E6187 /* Church St.png */; };
+		87C3C5181CEE4E0200005CDF /* Red Hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF4401CE7BC420093C2AE /* Red Hook.png */; };
+		87C3C5191CEE4E0200005CDF /* MAT-UBS.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E75F1CED078C002E6187 /* MAT-UBS.png */; };
+		87C3C51A1CEE4E0200005CDF /* Hannaford.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF4411CE7BC420093C2AE /* Hannaford.png */; };
 		87ECF3DD1CE7B8140093C2AE /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */; };
 		87ECF3E41CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E31CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift */; };
 		87ECF3E61CE7B9070093C2AE /* SidebarMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E51CE7B9070093C2AE /* SidebarMenuHeader.swift */; };
@@ -1122,7 +1133,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87C3C5111CEE4E0200005CDF /* Monument.png in Resources */,
+				87C3C5181CEE4E0200005CDF /* Red Hook.png in Resources */,
+				87C3C5131CEE4E0200005CDF /* Robbins.png in Resources */,
+				87C3C5151CEE4E0200005CDF /* Kline.png in Resources */,
+				87C3C5121CEE4E0200005CDF /* Campus Road.png in Resources */,
+				87C3C51A1CEE4E0200005CDF /* Hannaford.png in Resources */,
+				87C3C5101CEE4E0200005CDF /* Tivoli.png in Resources */,
+				87C3C5171CEE4E0200005CDF /* Church St.png in Resources */,
+				87C3C5161CEE4E0200005CDF /* Triangle.png in Resources */,
 				87FA068D1CED95D9009375F1 /* MainInterface.storyboard in Resources */,
+				87C3C5191CEE4E0200005CDF /* MAT-UBS.png in Resources */,
+				87C3C5141CEE4E0200005CDF /* Ward Gate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,8 +17,10 @@ public class SmartTimes: SidebarItem, SmartTimeErrorSubscriber, SmartTimesInsuff
     // MARK:
     
     // MARK: Delegate
+    public var delegate: SmartTimesDelegate?
     
     // MARK: State
+    public var todayWidget = false
     private var error: SmartTimeError?
     
     // MARK: UI
@@ -273,6 +275,8 @@ public class SmartTimes: SidebarItem, SmartTimeErrorSubscriber, SmartTimesInsuff
         
         insufficientAccessPrivilegesErrorView.delegate = self
         
+        insufficientAccessPrivilegesErrorView.tappable = !todayWidget
+        
         if error == .InsufficientAccessPrivileges {
             insufficientAccessPrivilegesErrorView.opacity = 1
         } else {
@@ -296,12 +300,7 @@ public class SmartTimes: SidebarItem, SmartTimeErrorSubscriber, SmartTimesInsuff
     // MARK:
     
     // MARK: Error Views
-    /// Sends the user to app settings
-    public func sendUserToAppSettings () {
-        if let settingsURL = NSURL(string: UIApplicationOpenSettingsURLString) {
-//            UIApplication.sharedApplication().openURL(settingsURL)
-        }
-    }
+    
     
     
     
@@ -311,7 +310,8 @@ public class SmartTimes: SidebarItem, SmartTimeErrorSubscriber, SmartTimesInsuff
     
     // MARK: Insufficient
     public func smartTimesInsufficientAccessPrivilegesErrorViewWasPressed(smartTimesInsufficientAccessPrivilegesErrorView: SmartTimesInsufficientAccessPrivilegesErrorView) {
-        sendUserToAppSettings()
+        
+        delegate?.smartTimesSettingsLinkWasPressed(self)
     }
     
     
@@ -326,4 +326,9 @@ public class SmartTimes: SidebarItem, SmartTimeErrorSubscriber, SmartTimesInsuff
         animatedUpdate()
         
     }
+}
+
+
+public protocol SmartTimesDelegate: class {
+    func smartTimesSettingsLinkWasPressed(smartTimes: SmartTimes)
 }

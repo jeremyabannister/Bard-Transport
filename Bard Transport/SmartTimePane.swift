@@ -37,6 +37,7 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
     
     // MARK: UI
     private let directionLabel = UILabel()
+    private let shuttleStopIcon = UIImageView()
     private let shuttleStopLabel = UILabel()
     
     
@@ -54,7 +55,10 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
     private var leftBufferForDirectionLabel = CGFloat(0)
     private var topBufferForDirectionLabel = CGFloat(0)
     
-    private var bufferBetweenDirectionLabelAndShuttleStopLabel = CGFloat(0)
+    private var heightOfShuttleStopIcon = CGFloat(0)
+    
+    private var bufferBetweenDirectionLabelAndShuttleStopIcon = CGFloat(0)
+    private var bufferBetweenShuttleStopIconAndShuttleStopLabel = CGFloat(0)
     
     private var rightBufferForMinutesTitleLabel = CGFloat(0)
     private var bufferBetweenMinutesLabelAndMinutesTitleLabel = CGFloat(0)
@@ -103,7 +107,11 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
         leftBufferForDirectionLabel = 0.07
         topBufferForDirectionLabel = 0.07
         
-        bufferBetweenDirectionLabelAndShuttleStopLabel = 0.007
+        heightOfShuttleStopIcon = 0.1
+        
+        bufferBetweenDirectionLabelAndShuttleStopIcon = 0.007
+        bufferBetweenShuttleStopIconAndShuttleStopLabel = 0.01
+        
         
         rightBufferForMinutesTitleLabel = 0.07
         bufferBetweenMinutesLabelAndMinutesTitleLabel = -0.04
@@ -138,6 +146,7 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
     override public func addAllUI() {
         
         addDirectionLabel()
+        addShuttleStopIcon()
         addShuttleStopLabel()
         
         
@@ -160,6 +169,9 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
         
         configureDirectionLabel()
         positionDirectionLabel()
+        
+        configureShuttleStopIcon()
+        positionShuttleStopIcon()
         
         configureShuttleStopLabel()
         positionShuttleStopLabel()
@@ -192,6 +204,10 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
     // MARK: Adding
     private func addDirectionLabel () {
         addSubview(directionLabel)
+    }
+    
+    private func addShuttleStopIcon () {
+        addSubview(shuttleStopIcon)
     }
     
     private func addShuttleStopLabel () {
@@ -273,6 +289,34 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
     
     
     
+    // MARK: Shuttle Stop Icon
+    private func configureShuttleStopIcon () {
+        
+        shuttleStopIcon.image = smartTime.closestShuttleStop?.icon
+        
+        if state == .HoursAndMinutes || state == .Minutes {
+            shuttleStopIcon.opacity = 1
+        } else {
+            shuttleStopIcon.opacity = 0
+        }
+    }
+    
+    private func positionShuttleStopIcon () {
+        
+        var newFrame = CGRectZero
+        
+        newFrame.size.width = width * heightOfShuttleStopIcon
+        newFrame.size.height = newFrame.size.width
+        
+        newFrame.origin.x = directionLabel.x
+        newFrame.origin.y = directionLabel.bottom + width * bufferBetweenDirectionLabelAndShuttleStopIcon
+        
+        shuttleStopIcon.frame = newFrame
+        
+    }
+    
+    
+    
     // MARK: Shuttle Stop Label
     private func configureShuttleStopLabel () {
         
@@ -300,8 +344,8 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
             newFrame.size.width = size.width
             newFrame.size.height = size.height
             
-            newFrame.origin.x = directionLabel.x
-            newFrame.origin.y = directionLabel.bottom + (width * bufferBetweenDirectionLabelAndShuttleStopLabel)
+            newFrame.origin.x = shuttleStopIcon.right + width * bufferBetweenShuttleStopIconAndShuttleStopLabel
+            newFrame.origin.y = shuttleStopIcon.y + (shuttleStopIcon.height - newFrame.size.height)/2
             
             shuttleStopLabel.frame = newFrame
         }

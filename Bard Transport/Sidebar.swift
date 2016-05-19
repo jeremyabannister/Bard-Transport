@@ -9,7 +9,7 @@
 import UIKit
 import JABSwiftCore
 
-public class Sidebar: JABView {
+public class Sidebar: JABView, SmartTimesDelegate {
     
     // MARK:
     // MARK: Properties
@@ -124,6 +124,8 @@ public class Sidebar: JABView {
     // MARK: Smart Times
     private func configureSmartTimes () {
         
+        smartTimes.delegate = self
+        
         smartTimes.backgroundColor = whiteColor
         smartTimes.cornerRadius = 10
         smartTimes.clipsToBounds = true
@@ -177,9 +179,20 @@ public class Sidebar: JABView {
     // MARK: Actions
     // MARK:
     
+    /// Sends the user to app settings
+    public func sendUserToAppSettings () {
+        if let settingsURL = NSURL(string: UIApplicationOpenSettingsURLString) {
+            UIApplication.sharedApplication().openURL(settingsURL)
+        }
+    }
     
     // MARK:
     // MARK: Delegate Methods
     // MARK:
+    
+    // MARK: Smart Times
+    public func smartTimesSettingsLinkWasPressed(smartTimes: SmartTimes) {
+        sendUserToAppSettings()
+    }
     
 }

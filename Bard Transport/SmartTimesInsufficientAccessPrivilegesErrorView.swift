@@ -19,6 +19,7 @@ public class SmartTimesInsufficientAccessPrivilegesErrorView: JABView, JABButton
     public var delegate: SmartTimesInsufficientAccessPrivilegesErrorViewDelegate?
     
     // MARK: State
+    public var tappable = true
     
     // MARK: UI
     private let errorLabel = UILabel()
@@ -117,7 +118,12 @@ public class SmartTimesInsufficientAccessPrivilegesErrorView: JABView, JABButton
     // MARK: Error Label
     private func configureErrorLabel () {
         
-        errorLabel.text = "You have not allowed this app to access your location. To start using SmartTimes and other advanced features, tap this message and enable Location Services."
+        if tappable {
+            errorLabel.text = "You have not allowed this app to access your location. To start using SmartTimes and other advanced features, tap this message and enable Location Services."
+        } else {
+            errorLabel.text = "You have not allowed this app to access your location. To start using SmartTimes and other advanced features, open Settings and go to Privacy, then Location Services and then scroll down to enable Location Services for this app."
+        }
+        
         errorLabel.textAlignment = .Center
         errorLabel.textColor = blackColor
         errorLabel.font = UIFont(name: "Avenir", size: 14)
@@ -196,7 +202,7 @@ public class SmartTimesInsufficientAccessPrivilegesErrorView: JABView, JABButton
 }
 
 
-public protocol SmartTimesInsufficientAccessPrivilegesErrorViewDelegate {
+public protocol SmartTimesInsufficientAccessPrivilegesErrorViewDelegate: class {
     func smartTimesInsufficientAccessPrivilegesErrorViewWasPressed (smartTimesInsufficientAccessPrivilegesErrorView: SmartTimesInsufficientAccessPrivilegesErrorView)
 }
 

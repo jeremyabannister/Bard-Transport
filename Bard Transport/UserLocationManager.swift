@@ -140,9 +140,9 @@ public class UserLocationManager: NSObject, CLLocationManagerDelegate {
             if debugMode == .Off {
                 currentUserLocation = locations[0]
             } else if debugMode == .Tivoli {
-                currentUserLocation = CLLocation(latitude: 42.0599000, longitude: -73.9100421) // Tivoli
+                currentUserLocation = CLLocation(latitude: 42.059947, longitude: -73.911267) // Tivoli
             } else if debugMode == .Hannaford {
-                currentUserLocation = CLLocation(latitude: 41.9799000, longitude: -73.8808082) // Hannaford
+                currentUserLocation = CLLocation(latitude: 41.979838, longitude: -73.880832) // Hannaford
             }
             
             error = nil
