@@ -277,9 +277,9 @@ public class ScheduledTimeTableViewCell: UITableViewCell, GlobalVariablesInitial
         arrivalTimeLabel.textAlignment = NSTextAlignment.Center
         
         if nextShuttle {
-            arrivalTimeLabel.font = UIFont(name: "Avenir", size: 14)
+            arrivalTimeLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
         } else {
-            arrivalTimeLabel.font = UIFont(name: "Avenir", size: 14)
+            arrivalTimeLabel.font = UIFont(name: "Avenir", size: 12)
         }
         
         

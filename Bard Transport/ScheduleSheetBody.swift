@@ -52,7 +52,6 @@ public class ScheduleSheetBody: JABView, UITableViewDataSource, UITableViewDeleg
     
     public var itineraries = [[Itinerary]]() {
         didSet {
-            print(itineraries)
             determineIndexPathOfNextShuttle()
             reloadTableData()
         }

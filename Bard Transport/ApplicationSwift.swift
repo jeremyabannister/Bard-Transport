@@ -97,12 +97,12 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
         
         versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: "retrieveVersionNumberFromInternet", userInfo: nil, repeats: true)
         
-        
+        /*
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert,
             UIUserNotificationType.Badge], categories: nil
             ))
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-        
+        */
         
         
         
@@ -384,7 +384,7 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     public func updateNotificationUpdateButtonWasPressed(updateNotification: UpdateNotification) {
         
         if let url = NSURL(string: "itms-apps://itunes.apple.com/app/id789572922") {
-            UIApplication.sharedApplication().openURL(url)
+//            UIApplication.sharedApplication().openURL(url)
         }
         
         versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: "retrieveVersionNumberFromInternet", userInfo: nil, repeats: true)

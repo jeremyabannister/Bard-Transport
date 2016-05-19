@@ -46,6 +46,10 @@ public class Schedule: NSObject {
     }
     
     
+    // MARK:
+    // MARK: Creating the Schedule
+    // MARK:
+    
     public func createSchedule () {
         
         // Schedule.scheduleForDay(weekday: Bool, lateNight: Bool) is a method that returns a ScheduledDay object corresponding to the inputs. Monday, Tuesday and Wednesday are identical, and Thursday and Friday are identical, so there are only four distinct schedules, which are represented by the four possible combinations of the two boolean values weekday and lateNight.
@@ -240,7 +244,14 @@ public class Schedule: NSObject {
             let timeString = times[i].0
             if timeString != "**" {
                 if shuttleStops.count > i {
-                    let scheduledStop = ScheduledStop(shuttleStop: shuttleStops[i], arrivalString: timeString, intervalToDeparture: times[i].1)
+                    
+                    var shuttleStopIndex = i
+                    if direction == .Northbound {
+                        shuttleStopIndex = 11 - i
+                    }
+                    
+                    
+                    let scheduledStop = ScheduledStop(shuttleStop: shuttleStops[shuttleStopIndex], arrivalString: timeString, intervalToDeparture: times[i].1)
                     run.scheduledStops.append(scheduledStop)
                 }
             }
@@ -251,13 +262,16 @@ public class Schedule: NSObject {
     
     
     
+    
+    
+    
+    
     // MARK:
-    // MARK: Query
+    // MARK: Querying the Schedule
     // MARK:
     
     public func itinerariesForStopsAndDay (day: Int, origin: ShuttleStop, destination: ShuttleStop) -> [Itinerary] {
         
-        print("Getting itineraries for stops (\(origin.title) to \(destination.title)), on day #\(day)")
         
         var itineraries = [Itinerary]()
         let scheduledDay = days[day]
@@ -271,28 +285,17 @@ public class Schedule: NSObject {
             return itineraries // Return an empty array if the origin is equal to the destination
         }
         
-        if direction == .Northbound {
-            print("Northbound")
-        } else {
-            print("Southbound")
-        }
         
         for run in scheduledDay.runs { // Iterate over all of the runs for that day
-            print("Checking this run...")
             if run.direction == direction { // Only check the runs which go in the correct direction
                 // Check if this run stops at both the origin and the destination. Save the origin stop if it is found because that is the data that needs to be returned
-                print("Run direction matched!")
                 var scheduledStopAtOrigin: ScheduledStop?
                 var scheduledStopAtDestination: ScheduledStop?
                 
-                print("About to iterate over \(run.scheduledStops)")
                 for scheduledStop in run.scheduledStops {
-                    print("Checking this stop...")
                     if scheduledStop.shuttleStop == origin {
-                        print("This run stops at the origin!")
                         scheduledStopAtOrigin = scheduledStop
                     } else if scheduledStop.shuttleStop == destination {
-                        print("This run stops at the destination!")
                         scheduledStopAtDestination = scheduledStop
                     }
                 }
@@ -300,17 +303,12 @@ public class Schedule: NSObject {
                 
                 // If the run stops at the origin and the destination then append the origin stop to the array
                 if let originStop = scheduledStopAtOrigin {
-                    print("Found an origin")
                     if let destinationStop = scheduledStopAtDestination {
-                        print("Found a destination")
                         itineraries.append(Itinerary(departure: originStop, arrival: destinationStop))
                     }
                 }
             }
         }
-        
-        
-        print("Itineraries: \(itineraries)")
         
         // Return all stops at the origin that were found to also stop at the destination on that day
         return itineraries

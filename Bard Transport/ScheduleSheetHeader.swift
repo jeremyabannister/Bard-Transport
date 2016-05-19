@@ -224,8 +224,8 @@ public class ScheduleSheetHeader: JABView, JABTouchableViewDelegate {
         
         originLabel.text = origin.name.uppercaseString
         originLabel.textColor = blackColor
-        originLabel.textAlignment = NSTextAlignment.Center
-        originLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
+        originLabel.textAlignment = NSTextAlignment.Right
+        originLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
         
     }
     
@@ -252,8 +252,8 @@ public class ScheduleSheetHeader: JABView, JABTouchableViewDelegate {
         
         destinationLabel.text = destination.name.uppercaseString
         destinationLabel.textColor = blackColor
-        destinationLabel.textAlignment = NSTextAlignment.Center
-        destinationLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
+        destinationLabel.textAlignment = NSTextAlignment.Left
+        destinationLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
         
     }
     

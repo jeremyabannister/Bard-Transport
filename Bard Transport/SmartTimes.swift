@@ -299,7 +299,7 @@ public class SmartTimes: SidebarItem, SmartTimeErrorSubscriber, SmartTimesInsuff
     /// Sends the user to app settings
     public func sendUserToAppSettings () {
         if let settingsURL = NSURL(string: UIApplicationOpenSettingsURLString) {
-            UIApplication.sharedApplication().openURL(settingsURL)
+//            UIApplication.sharedApplication().openURL(settingsURL)
         }
     }
     

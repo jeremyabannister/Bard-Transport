@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A0025516FC22EAF549DE600 /* Pods_Bard_TransportUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0432C3314AA2DAABF881720E /* Pods_Bard_TransportUITests.framework */; };
+		0701B18C03854FF20801DCA4 /* libPods-Bard TransportTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB9CA88D18A8884B94061AA /* libPods-Bard TransportTests.a */; };
 		8720E7541CED038F002E6187 /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7531CED038F002E6187 /* Triangle.png */; };
 		8720E7561CED03F1002E6187 /* Church St.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7551CED03F1002E6187 /* Church St.png */; };
 		8720E75E1CED071E002E6187 /* Ward Gate.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E75D1CED071E002E6187 /* Ward Gate.png */; };
@@ -39,6 +39,7 @@
 		873449041CE7B37C005A17AC /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449031CE7B37C005A17AC /* Itinerary.swift */; };
 		873449061CE7B3C8005A17AC /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449051CE7B3C8005A17AC /* Schedule.swift */; };
 		873449081CE7B3FA005A17AC /* SmartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449071CE7B3FA005A17AC /* SmartTime.swift */; };
+		87C3C50B1CED988700005CDF /* UpdateNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789C41CE7B5C600D6CD06 /* UpdateNotification.swift */; };
 		87ECF3DD1CE7B8140093C2AE /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */; };
 		87ECF3E41CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E31CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift */; };
 		87ECF3E61CE7B9070093C2AE /* SidebarMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E51CE7B9070093C2AE /* SidebarMenuHeader.swift */; };
@@ -80,8 +81,45 @@
 		87ECF4441CE7BC420093C2AE /* Kline.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF43F1CE7BC420093C2AE /* Kline.png */; };
 		87ECF4451CE7BC420093C2AE /* Red Hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF4401CE7BC420093C2AE /* Red Hook.png */; };
 		87ECF4461CE7BC420093C2AE /* Hannaford.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF4411CE7BC420093C2AE /* Hannaford.png */; };
-		9928900B42BC186B810F135F /* Pods_Bard_Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296BB031B85B01167A29EDD0 /* Pods_Bard_Transport.framework */; };
-		A6D2DEEB57445F7A4BBB19D2 /* Pods_Bard_TransportTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E36C54C10BB8B0D515828C5 /* Pods_Bard_TransportTests.framework */; };
+		87FA06871CED95D9009375F1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FA064E1CED8ACE009375F1 /* NotificationCenter.framework */; };
+		87FA068A1CED95D9009375F1 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FA06891CED95D9009375F1 /* TodayViewController.swift */; };
+		87FA068D1CED95D9009375F1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FA068B1CED95D9009375F1 /* MainInterface.storyboard */; };
+		87FA06911CED95D9009375F1 /* Smart Times.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 87FA06861CED95D9009375F1 /* Smart Times.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		87FA06951CED9630009375F1 /* ShuttleStopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789BC1CE7B48E00D6CD06 /* ShuttleStopManager.swift */; };
+		87FA06961CED9633009375F1 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789BE1CE7B4A100D6CD06 /* UserLocationManager.swift */; };
+		87FA06971CED9636009375F1 /* ShuttleStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448FB1CE7B2E4005A17AC /* ShuttleStop.swift */; };
+		87FA06981CED9658009375F1 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449031CE7B37C005A17AC /* Itinerary.swift */; };
+		87FA06991CED9658009375F1 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449051CE7B3C8005A17AC /* Schedule.swift */; };
+		87FA069A1CED9658009375F1 /* ScheduledDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449011CE7B33D005A17AC /* ScheduledDay.swift */; };
+		87FA069B1CED9658009375F1 /* ScheduledRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448FF1CE7B326005A17AC /* ScheduledRun.swift */; };
+		87FA069C1CED9658009375F1 /* ScheduledStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448FD1CE7B301005A17AC /* ScheduledStop.swift */; };
+		87FA069D1CED9658009375F1 /* ScheduledTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873448F91CE7B2AC005A17AC /* ScheduledTime.swift */; };
+		87FA069E1CED9658009375F1 /* SmartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449071CE7B3FA005A17AC /* SmartTime.swift */; };
+		87FA069F1CED9658009375F1 /* ApplicationSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF40F1CE7BBBC0093C2AE /* ApplicationSwift.swift */; };
+		87FA06A01CED9658009375F1 /* MainSector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF40D1CE7BBA00093C2AE /* MainSector.swift */; };
+		87FA06A11CED9658009375F1 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */; };
+		87FA06A21CED9658009375F1 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789E01CE7B7D300D6CD06 /* SidebarItem.swift */; };
+		87FA06A31CED9658009375F1 /* SmartTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789DE1CE7B7AE00D6CD06 /* SmartTimes.swift */; };
+		87FA06A41CED9658009375F1 /* SmartTimePane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789DC1CE7B78700D6CD06 /* SmartTimePane.swift */; };
+		87FA06A51CED9658009375F1 /* SmartTimesPaneEndOfLineErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789DA1CE7B74200D6CD06 /* SmartTimesPaneEndOfLineErrorView.swift */; };
+		87FA06A61CED9658009375F1 /* SmartTimesTooFarFromCampusErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789D81CE7B72B00D6CD06 /* SmartTimesTooFarFromCampusErrorView.swift */; };
+		87FA06A71CED9658009375F1 /* SmartTimesInsufficientAccessPrivilegesErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789D61CE7B70100D6CD06 /* SmartTimesInsufficientAccessPrivilegesErrorView.swift */; };
+		87FA06A81CED9658009375F1 /* SidebarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E91CE7B9350093C2AE /* SidebarMenu.swift */; };
+		87FA06A91CED9658009375F1 /* SidebarMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E71CE7B91D0093C2AE /* SidebarMenuItem.swift */; };
+		87FA06AA1CED9658009375F1 /* SidebarMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E51CE7B9070093C2AE /* SidebarMenuHeader.swift */; };
+		87FA06AB1CED9658009375F1 /* SidebarMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E31CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift */; };
+		87FA06AC1CED9658009375F1 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3EB1CE7B9810093C2AE /* Map.swift */; };
+		87FA06AD1CED9658009375F1 /* ScheduleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF40B1CE7BB680093C2AE /* ScheduleSelector.swift */; };
+		87FA06AE1CED9658009375F1 /* ShuttleStopStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4091CE7BB4D0093C2AE /* ShuttleStopStack.swift */; };
+		87FA06AF1CED9658009375F1 /* ShuttleStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4071CE7BB370093C2AE /* ShuttleStopView.swift */; };
+		87FA06B01CED9658009375F1 /* ScheduleSelectorHelpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4051CE7BB180093C2AE /* ScheduleSelectorHelpScreen.swift */; };
+		87FA06B11CED9658009375F1 /* ScheduleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4031CE7BAFC0093C2AE /* ScheduleSheet.swift */; };
+		87FA06B21CED9658009375F1 /* ScheduleSheetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF4011CE7BAE50093C2AE /* ScheduleSheetHeader.swift */; };
+		87FA06B31CED9658009375F1 /* ScheduleSheetBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3FF1CE7BAC40093C2AE /* ScheduleSheetBody.swift */; };
+		87FA06B41CED9658009375F1 /* ScheduledSheetTableViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3FD1CE7BA980093C2AE /* ScheduledSheetTableViewSectionHeader.swift */; };
+		87FA06B51CED9658009375F1 /* ScheduledTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3FB1CE7BA700093C2AE /* ScheduledTimeTableViewCell.swift */; };
+		8EB85F273DF0FA97B3B3B491 /* Pods_Bard_Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E378EC682624392ED38A88C /* Pods_Bard_Transport.framework */; };
+		A0CEF31F24D41A6BFAA78B21 /* libPods-Bard TransportUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA00F50FAC61E1A2A5CFD9C /* libPods-Bard TransportUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,14 +137,34 @@
 			remoteGlobalIDString = 873448B01CE7AE0C005A17AC;
 			remoteInfo = "Bard Transport";
 		};
+		87FA068F1CED95D9009375F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 873448A91CE7AE0C005A17AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87FA06851CED95D9009375F1;
+			remoteInfo = "Smart Times";
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		87FA065D1CED8ACE009375F1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				87FA06911CED95D9009375F1 /* Smart Times.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		0432C3314AA2DAABF881720E /* Pods_Bard_TransportUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_TransportUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F911AD00ED426CF518C2F03 /* Pods-Bard Transport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.release.xcconfig"; sourceTree = "<group>"; };
-		296BB031B85B01167A29EDD0 /* Pods_Bard_Transport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_Transport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E36C54C10BB8B0D515828C5 /* Pods_Bard_TransportTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_TransportTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AE3CB9DD5FF24BB7F589BF9 /* Pods-Bard TransportUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.release.xcconfig"; sourceTree = "<group>"; };
+		02BDD8690951F5BB9A662911 /* Pods-Bard TransportUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.release.xcconfig"; sourceTree = "<group>"; };
+		16326782FF01CE8E447784F4 /* Pods-Bard Transport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.release.xcconfig"; sourceTree = "<group>"; };
+		2E378EC682624392ED38A88C /* Pods_Bard_Transport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_Transport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38491C4C30834728030414EC /* Pods-Bard TransportTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8720E7531CED038F002E6187 /* Triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Triangle.png; sourceTree = "<group>"; };
 		8720E7551CED03F1002E6187 /* Church St.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Church St.png"; sourceTree = "<group>"; };
 		8720E75D1CED071E002E6187 /* Ward Gate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ward Gate.png"; sourceTree = "<group>"; };
@@ -144,7 +202,8 @@
 		873449031CE7B37C005A17AC /* Itinerary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		873449051CE7B3C8005A17AC /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		873449071CE7B3FA005A17AC /* SmartTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartTime.swift; sourceTree = "<group>"; };
-		87BE62970294ED9BA4F0534B /* Pods-Bard TransportUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		87C3C5071CED982500005CDF /* Pods_Bard_Transport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Bard_Transport.framework; path = "Pods/../build/Debug-iphoneos/Pods_Bard_Transport.framework"; sourceTree = "<group>"; };
+		87C3C5091CED983500005CDF /* JABSwiftCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JABSwiftCore.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Bard_Transport-aitqzrafcmlrxeavsghabjjcylij/Build/Products/Debug-iphoneos/JABSwiftCore/JABSwiftCore.framework"; sourceTree = "<group>"; };
 		87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		87ECF3E31CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarMenuTableViewCell.swift; sourceTree = "<group>"; };
 		87ECF3E51CE7B9070093C2AE /* SidebarMenuHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarMenuHeader.swift; sourceTree = "<group>"; };
@@ -186,9 +245,16 @@
 		87ECF43F1CE7BC420093C2AE /* Kline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kline.png; sourceTree = "<group>"; };
 		87ECF4401CE7BC420093C2AE /* Red Hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red Hook.png"; sourceTree = "<group>"; };
 		87ECF4411CE7BC420093C2AE /* Hannaford.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hannaford.png; sourceTree = "<group>"; };
-		B2611271503A6122B3086A2B /* Pods-Bard TransportTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.release.xcconfig"; sourceTree = "<group>"; };
-		B6F2567D103BA18FE3D04B95 /* Pods-Bard TransportTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F042C0A0343C97F0493D0380 /* Pods-Bard Transport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.debug.xcconfig"; sourceTree = "<group>"; };
+		87FA064E1CED8ACE009375F1 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		87FA06861CED95D9009375F1 /* Smart Times.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Smart Times.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87FA06891CED95D9009375F1 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		87FA068C1CED95D9009375F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		87FA068E1CED95D9009375F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8995B47FBCFD3A20099920A4 /* Pods-Bard Transport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.debug.xcconfig"; sourceTree = "<group>"; };
+		AFB9CA88D18A8884B94061AA /* libPods-Bard TransportTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bard TransportTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B62E10688AC401183A254CDB /* Pods-Bard TransportTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.release.xcconfig"; sourceTree = "<group>"; };
+		C2C3A71106A509DA2C83E9E7 /* Pods-Bard TransportUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CDA00F50FAC61E1A2A5CFD9C /* libPods-Bard TransportUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bard TransportUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +262,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9928900B42BC186B810F135F /* Pods_Bard_Transport.framework in Frameworks */,
+				8EB85F273DF0FA97B3B3B491 /* Pods_Bard_Transport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6D2DEEB57445F7A4BBB19D2 /* Pods_Bard_TransportTests.framework in Frameworks */,
+				0701B18C03854FF20801DCA4 /* libPods-Bard TransportTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,26 +278,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A0025516FC22EAF549DE600 /* Pods_Bard_TransportUITests.framework in Frameworks */,
+				A0CEF31F24D41A6BFAA78B21 /* libPods-Bard TransportUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87FA06831CED95D9009375F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87FA06871CED95D9009375F1 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		862D90073D868246A9EEDFEF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F042C0A0343C97F0493D0380 /* Pods-Bard Transport.debug.xcconfig */,
-				1F911AD00ED426CF518C2F03 /* Pods-Bard Transport.release.xcconfig */,
-				B6F2567D103BA18FE3D04B95 /* Pods-Bard TransportTests.debug.xcconfig */,
-				B2611271503A6122B3086A2B /* Pods-Bard TransportTests.release.xcconfig */,
-				87BE62970294ED9BA4F0534B /* Pods-Bard TransportUITests.debug.xcconfig */,
-				6AE3CB9DD5FF24BB7F589BF9 /* Pods-Bard TransportUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		872789C01CE7B57200D6CD06 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,9 +465,10 @@
 				873448B31CE7AE0C005A17AC /* Bard Transport */,
 				873448CB1CE7AE0C005A17AC /* Bard TransportTests */,
 				873448D61CE7AE0D005A17AC /* Bard TransportUITests */,
+				87FA06881CED95D9009375F1 /* Smart Times */,
 				873448B21CE7AE0C005A17AC /* Products */,
-				862D90073D868246A9EEDFEF /* Pods */,
 				DA1E0C01C156696CC5D268D4 /* Frameworks */,
+				9A3A9F65180F48B19737600E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -416,6 +478,7 @@
 				873448B11CE7AE0C005A17AC /* Bard Transport.app */,
 				873448C81CE7AE0C005A17AC /* Bard TransportTests.xctest */,
 				873448D31CE7AE0D005A17AC /* Bard TransportUITests.xctest */,
+				87FA06861CED95D9009375F1 /* Smart Times.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -846,12 +909,38 @@
 			name = "Shuttle Stop Icons";
 			sourceTree = "<group>";
 		};
+		87FA06881CED95D9009375F1 /* Smart Times */ = {
+			isa = PBXGroup;
+			children = (
+				87FA06891CED95D9009375F1 /* TodayViewController.swift */,
+				87FA068B1CED95D9009375F1 /* MainInterface.storyboard */,
+				87FA068E1CED95D9009375F1 /* Info.plist */,
+			);
+			path = "Smart Times";
+			sourceTree = "<group>";
+		};
+		9A3A9F65180F48B19737600E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8995B47FBCFD3A20099920A4 /* Pods-Bard Transport.debug.xcconfig */,
+				16326782FF01CE8E447784F4 /* Pods-Bard Transport.release.xcconfig */,
+				38491C4C30834728030414EC /* Pods-Bard TransportTests.debug.xcconfig */,
+				B62E10688AC401183A254CDB /* Pods-Bard TransportTests.release.xcconfig */,
+				C2C3A71106A509DA2C83E9E7 /* Pods-Bard TransportUITests.debug.xcconfig */,
+				02BDD8690951F5BB9A662911 /* Pods-Bard TransportUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DA1E0C01C156696CC5D268D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				296BB031B85B01167A29EDD0 /* Pods_Bard_Transport.framework */,
-				5E36C54C10BB8B0D515828C5 /* Pods_Bard_TransportTests.framework */,
-				0432C3314AA2DAABF881720E /* Pods_Bard_TransportUITests.framework */,
+				87C3C5091CED983500005CDF /* JABSwiftCore.framework */,
+				87C3C5071CED982500005CDF /* Pods_Bard_Transport.framework */,
+				87FA064E1CED8ACE009375F1 /* NotificationCenter.framework */,
+				2E378EC682624392ED38A88C /* Pods_Bard_Transport.framework */,
+				AFB9CA88D18A8884B94061AA /* libPods-Bard TransportTests.a */,
+				CDA00F50FAC61E1A2A5CFD9C /* libPods-Bard TransportUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -863,17 +952,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 873448DC1CE7AE0D005A17AC /* Build configuration list for PBXNativeTarget "Bard Transport" */;
 			buildPhases = (
-				DE15198BC6DB9FB9B8CCBF08 /* 📦 Check Pods Manifest.lock */,
+				2D74BE53E39C269CCC096231 /* 📦 Check Pods Manifest.lock */,
 				873448AD1CE7AE0C005A17AC /* Sources */,
 				873448AE1CE7AE0C005A17AC /* Frameworks */,
 				873448AF1CE7AE0C005A17AC /* Resources */,
-				1F9A417539960ADC682E2B97 /* 📦 Embed Pods Frameworks */,
-				C65F090B51A5AFCC2FC73713 /* 📦 Copy Pods Resources */,
-				446AF232D0A839AF2A9CD567 /* Embed Pods Frameworks */,
+				87FA065D1CED8ACE009375F1 /* Embed App Extensions */,
+				9AC107734D2ADB018D5FF62E /* 📦 Embed Pods Frameworks */,
+				A558A31B1C4C60B14024D2E2 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				87FA06901CED95D9009375F1 /* PBXTargetDependency */,
 			);
 			name = "Bard Transport";
 			productName = "Bard Transport";
@@ -884,12 +974,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 873448DF1CE7AE0D005A17AC /* Build configuration list for PBXNativeTarget "Bard TransportTests" */;
 			buildPhases = (
-				37FB7834FEBE575F9D8EC7F5 /* 📦 Check Pods Manifest.lock */,
+				0EE6A8D865EF531A29C54022 /* 📦 Check Pods Manifest.lock */,
 				873448C41CE7AE0C005A17AC /* Sources */,
 				873448C51CE7AE0C005A17AC /* Frameworks */,
 				873448C61CE7AE0C005A17AC /* Resources */,
-				A0D3E56C9E00F136D42F6EE5 /* 📦 Embed Pods Frameworks */,
-				85100908CC420A392604676F /* 📦 Copy Pods Resources */,
+				5A3F56BB4C2A1CA7843B1C7A /* 📦 Embed Pods Frameworks */,
+				FC1B65A47E2A3D1A1E03B84B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -905,11 +995,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 873448E21CE7AE0D005A17AC /* Build configuration list for PBXNativeTarget "Bard TransportUITests" */;
 			buildPhases = (
-				4E32FF76118B80B7B7673E42 /* 📦 Check Pods Manifest.lock */,
+				750364820CA1A3FCC7DD3A36 /* 📦 Check Pods Manifest.lock */,
 				873448CF1CE7AE0D005A17AC /* Sources */,
 				873448D01CE7AE0D005A17AC /* Frameworks */,
 				873448D11CE7AE0D005A17AC /* Resources */,
-				E5497A9D97A87B021646BD09 /* 📦 Copy Pods Resources */,
+				652C1F098347545E1E4E7681 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -920,6 +1010,23 @@
 			productName = "Bard TransportUITests";
 			productReference = 873448D31CE7AE0D005A17AC /* Bard TransportUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		87FA06851CED95D9009375F1 /* Smart Times */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87FA06921CED95D9009375F1 /* Build configuration list for PBXNativeTarget "Smart Times" */;
+			buildPhases = (
+				87FA06821CED95D9009375F1 /* Sources */,
+				87FA06831CED95D9009375F1 /* Frameworks */,
+				87FA06841CED95D9009375F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Smart Times";
+			productName = "Smart Times";
+			productReference = 87FA06861CED95D9009375F1 /* Smart Times.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -943,6 +1050,10 @@
 						CreatedOnToolsVersion = 7.3;
 						TestTargetID = 873448B01CE7AE0C005A17AC;
 					};
+					87FA06851CED95D9009375F1 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = H5N9FLA33R;
+					};
 				};
 			};
 			buildConfigurationList = 873448AC1CE7AE0C005A17AC /* Build configuration list for PBXProject "Bard Transport" */;
@@ -961,6 +1072,7 @@
 				873448B01CE7AE0C005A17AC /* Bard Transport */,
 				873448C71CE7AE0C005A17AC /* Bard TransportTests */,
 				873448D21CE7AE0D005A17AC /* Bard TransportUITests */,
+				87FA06851CED95D9009375F1 /* Smart Times */,
 			);
 		};
 /* End PBXProject section */
@@ -1020,25 +1132,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		87FA06841CED95D9009375F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87FA068D1CED95D9009375F1 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F9A417539960ADC682E2B97 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		37FB7834FEBE575F9D8EC7F5 /* 📦 Check Pods Manifest.lock */ = {
+		0EE6A8D865EF531A29C54022 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1053,22 +1158,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		446AF232D0A839AF2A9CD567 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4E32FF76118B80B7B7673E42 /* 📦 Check Pods Manifest.lock */ = {
+		2D74BE53E39C269CCC096231 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1083,22 +1173,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		85100908CC420A392604676F /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A0D3E56C9E00F136D42F6EE5 /* 📦 Embed Pods Frameworks */ = {
+		5A3F56BB4C2A1CA7843B1C7A /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1113,7 +1188,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C65F090B51A5AFCC2FC73713 /* 📦 Copy Pods Resources */ = {
+		652C1F098347545E1E4E7681 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1125,10 +1200,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DE15198BC6DB9FB9B8CCBF08 /* 📦 Check Pods Manifest.lock */ = {
+		750364820CA1A3FCC7DD3A36 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1143,7 +1218,22 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E5497A9D97A87B021646BD09 /* 📦 Copy Pods Resources */ = {
+		9AC107734D2ADB018D5FF62E /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A558A31B1C4C60B14024D2E2 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1155,7 +1245,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC1B65A47E2A3D1A1E03B84B /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1221,6 +1326,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		87FA06821CED95D9009375F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87C3C50B1CED988700005CDF /* UpdateNotification.swift in Sources */,
+				87FA06991CED9658009375F1 /* Schedule.swift in Sources */,
+				87FA06B41CED9658009375F1 /* ScheduledSheetTableViewSectionHeader.swift in Sources */,
+				87FA06A51CED9658009375F1 /* SmartTimesPaneEndOfLineErrorView.swift in Sources */,
+				87FA06A01CED9658009375F1 /* MainSector.swift in Sources */,
+				87FA069A1CED9658009375F1 /* ScheduledDay.swift in Sources */,
+				87FA06A21CED9658009375F1 /* SidebarItem.swift in Sources */,
+				87FA06A31CED9658009375F1 /* SmartTimes.swift in Sources */,
+				87FA06B31CED9658009375F1 /* ScheduleSheetBody.swift in Sources */,
+				87FA068A1CED95D9009375F1 /* TodayViewController.swift in Sources */,
+				87FA069C1CED9658009375F1 /* ScheduledStop.swift in Sources */,
+				87FA069B1CED9658009375F1 /* ScheduledRun.swift in Sources */,
+				87FA06AD1CED9658009375F1 /* ScheduleSelector.swift in Sources */,
+				87FA06AA1CED9658009375F1 /* SidebarMenuHeader.swift in Sources */,
+				87FA06A71CED9658009375F1 /* SmartTimesInsufficientAccessPrivilegesErrorView.swift in Sources */,
+				87FA06AB1CED9658009375F1 /* SidebarMenuTableViewCell.swift in Sources */,
+				87FA06951CED9630009375F1 /* ShuttleStopManager.swift in Sources */,
+				87FA06B11CED9658009375F1 /* ScheduleSheet.swift in Sources */,
+				87FA06B01CED9658009375F1 /* ScheduleSelectorHelpScreen.swift in Sources */,
+				87FA06A41CED9658009375F1 /* SmartTimePane.swift in Sources */,
+				87FA06A61CED9658009375F1 /* SmartTimesTooFarFromCampusErrorView.swift in Sources */,
+				87FA069F1CED9658009375F1 /* ApplicationSwift.swift in Sources */,
+				87FA069D1CED9658009375F1 /* ScheduledTime.swift in Sources */,
+				87FA06961CED9633009375F1 /* UserLocationManager.swift in Sources */,
+				87FA06971CED9636009375F1 /* ShuttleStop.swift in Sources */,
+				87FA06B21CED9658009375F1 /* ScheduleSheetHeader.swift in Sources */,
+				87FA06AE1CED9658009375F1 /* ShuttleStopStack.swift in Sources */,
+				87FA06981CED9658009375F1 /* Itinerary.swift in Sources */,
+				87FA06AC1CED9658009375F1 /* Map.swift in Sources */,
+				87FA06B51CED9658009375F1 /* ScheduledTimeTableViewCell.swift in Sources */,
+				87FA06A81CED9658009375F1 /* SidebarMenu.swift in Sources */,
+				87FA06A11CED9658009375F1 /* Sidebar.swift in Sources */,
+				87FA06A91CED9658009375F1 /* SidebarMenuItem.swift in Sources */,
+				87FA06AF1CED9658009375F1 /* ShuttleStopView.swift in Sources */,
+				87FA069E1CED9658009375F1 /* SmartTime.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1233,6 +1380,11 @@
 			isa = PBXTargetDependency;
 			target = 873448B01CE7AE0C005A17AC /* Bard Transport */;
 			targetProxy = 873448D41CE7AE0D005A17AC /* PBXContainerItemProxy */;
+		};
+		87FA06901CED95D9009375F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87FA06851CED95D9009375F1 /* Smart Times */;
+			targetProxy = 87FA068F1CED95D9009375F1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1251,6 +1403,14 @@
 				873448C11CE7AE0C005A17AC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		87FA068B1CED95D9009375F1 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87FA068C1CED95D9009375F1 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1343,11 +1503,12 @@
 		};
 		873448DD1CE7AE0D005A17AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F042C0A0343C97F0493D0380 /* Pods-Bard Transport.debug.xcconfig */;
+			baseConfigurationReference = 8995B47FBCFD3A20099920A4 /* Pods-Bard Transport.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Bard Transport/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1359,11 +1520,12 @@
 		};
 		873448DE1CE7AE0D005A17AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F911AD00ED426CF518C2F03 /* Pods-Bard Transport.release.xcconfig */;
+			baseConfigurationReference = 16326782FF01CE8E447784F4 /* Pods-Bard Transport.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Bard Transport/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1375,7 +1537,7 @@
 		};
 		873448E01CE7AE0D005A17AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6F2567D103BA18FE3D04B95 /* Pods-Bard TransportTests.debug.xcconfig */;
+			baseConfigurationReference = 38491C4C30834728030414EC /* Pods-Bard TransportTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Bard TransportTests/Info.plist";
@@ -1388,7 +1550,7 @@
 		};
 		873448E11CE7AE0D005A17AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2611271503A6122B3086A2B /* Pods-Bard TransportTests.release.xcconfig */;
+			baseConfigurationReference = B62E10688AC401183A254CDB /* Pods-Bard TransportTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Bard TransportTests/Info.plist";
@@ -1401,7 +1563,7 @@
 		};
 		873448E31CE7AE0D005A17AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87BE62970294ED9BA4F0534B /* Pods-Bard TransportUITests.debug.xcconfig */;
+			baseConfigurationReference = C2C3A71106A509DA2C83E9E7 /* Pods-Bard TransportUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Bard TransportUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1413,13 +1575,49 @@
 		};
 		873448E41CE7AE0D005A17AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AE3CB9DD5FF24BB7F589BF9 /* Pods-Bard TransportUITests.release.xcconfig */;
+			baseConfigurationReference = 02BDD8690951F5BB9A662911 /* Pods-Bard TransportUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Bard TransportUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-TransportUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = "Bard Transport";
+			};
+			name = Release;
+		};
+		87FA06931CED95D9009375F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8995B47FBCFD3A20099920A4 /* Pods-Bard Transport.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "Smart Times/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-Transport.Smart-Times";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		87FA06941CED95D9009375F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16326782FF01CE8E447784F4 /* Pods-Bard Transport.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "Smart Times/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JAB.Bard-Transport.Smart-Times";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -1458,6 +1656,15 @@
 			buildConfigurations = (
 				873448E31CE7AE0D005A17AC /* Debug */,
 				873448E41CE7AE0D005A17AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87FA06921CED95D9009375F1 /* Build configuration list for PBXNativeTarget "Smart Times" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87FA06931CED95D9009375F1 /* Debug */,
+				87FA06941CED95D9009375F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

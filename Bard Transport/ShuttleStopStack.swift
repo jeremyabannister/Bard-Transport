@@ -56,7 +56,11 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     }
     private var originIsStale = false
     private var fillingStops = false
-    private var emptyingStops = false
+    private var emptyingStops = false {
+        didSet {
+            touchDetector.userInteractionEnabled = !emptyingStops
+        }
+    }
     private var touchLocation: CGPoint?
     
     
@@ -99,7 +103,7 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
     
-    private let selectionDuration = NSTimeInterval(0.4)
+    private let selectionDuration = NSTimeInterval(0.3)
     
     
     // **********************************************************************************************************************
