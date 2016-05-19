@@ -162,7 +162,7 @@ public class Map: JABView, MKMapViewDelegate, JABTouchableViewDelegate, JABButto
     
     private func addAnnotations () {
         
-        for shuttleStop in shuttleStopManager.mainShuttleStops {
+        for shuttleStop in shuttleStopManager.allShuttleStops {
             mapView.addAnnotation(shuttleStop)
         }
         
