@@ -29,6 +29,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private var scheduleSheetOpen = false
     private var panGestureInitiated = false
     private var shuttleStopStackIsAnimating = false // This is used to disable the transition button during a transition
+    private var buttonsDisabled = false
     
     // MARK: UI
     private let backgroundImageView = UIImageView()
@@ -722,6 +723,18 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     // MARK:
     
     // MARK: Shuttle Stop Stack
+    public func shuttleStopStackSelectionInProgress() {
+        
+        buttonsDisabled = true
+        
+    }
+    
+    public func shuttleStopStackSelectionNoLongerInProgress() {
+        
+        buttonsDisabled = false
+        
+    }
+    
     public func shuttleStopStack(shuttleStopStack: ShuttleStopStack, didSelectOrigin origin: ShuttleStop, destination: ShuttleStop) {
         
         scheduleSheet.loadWithOrigin(origin, destination: destination)
@@ -808,18 +821,20 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     public func buttonWasUntouched(button: JABButton, triggered: Bool) {
         
-        if triggered {
-            switch button {
-            case sidebarButton:
-                sidebarButtonPressed()
-            case mapButton:
-                mapButtonPressed()
-            case stackTransitionButton:
-                stackTransitionButtonPressed()
-            case helpButton:
-                helpButtonPressed()
-            default:
-                print("Hit default when switching over button in ScheduleSelector.buttonWasTouched:")
+        if !buttonsDisabled {
+            if triggered {
+                switch button {
+                case sidebarButton:
+                    sidebarButtonPressed()
+                case mapButton:
+                    mapButtonPressed()
+                case stackTransitionButton:
+                    stackTransitionButtonPressed()
+                case helpButton:
+                    helpButtonPressed()
+                default:
+                    print("Hit default when switching over button in ScheduleSelector.buttonWasTouched:")
+                }
             }
         }
     }

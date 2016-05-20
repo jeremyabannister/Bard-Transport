@@ -249,7 +249,7 @@ public class SidebarMenu: SidebarItem, SidebarMenuHeaderDelegate, UITableViewDat
         
         let localCabServices = SidebarMenuItem()
         localCabServices.title = "Local Cab Services"
-        localCabServices.text = "\nBard Area \n\nVillage Taxi: (845) 532-5926 \n-------------------------------------------\n\nKingston Area\n\nKingston Kabs: (845) 331-8294\nSonia Cabs: (845) 336-2400\n-------------------------------------------\n\nDutchess Area\n\n Kingston Kabs: (845) 758-8294\n\n"
+        localCabServices.text = "\nBard Area \n\nVillage Taxi: (845) 757-2244 \n-------------------------------------------\n\nKingston Area\n\nKingston Kabs: (845) 331-8294\nSonia Cabs: (845) 336-2400\n-------------------------------------------\n\nDutchess Area\n\n Kingston Kabs: (845) 758-8294\n\n"
         
         let bardSecurity = SidebarMenuItem()
         bardSecurity.title = "Bard Security"

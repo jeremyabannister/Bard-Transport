@@ -589,37 +589,52 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     public func transition (completion: (Bool) -> ()) {
         
         let duration = 0.7
-        
         transitioning = true
         
         if mode == .MainStops {
             
             mode = .CollapsedSingle
-            animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveLinear, completion: { (Bool) in
+            animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveEaseOut, completion: { (Bool) in
                 self.addShuttleStopViews(mainStops: false)
                 self.addRoadViews(mainStops: false)
                 self.positionShuttleStopViews()
                 self.positionRoadViews()
                 
                 self.mode = .CollapsedDouble
-                self.animatedUpdate(duration/4, options: UIViewAnimationOptions.CurveLinear, completion: { (Bool) -> () in
+                self.animatedUpdate(duration/4, options: UIViewAnimationOptions.CurveEaseInOut, completion: { (Bool) -> () in
                     self.mode = .AllStops
-                    self.animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveLinear, completion: completion)
+                    self.animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveEaseOut, completion: completion)
                     self.transitioning = false
                 })
             })
             
         } else {
+            
+            if let origin = selectedOrigin {
+                var found = false
+                for stop in shuttleStopManager.mainShuttleStops {
+                    if stop.absoluteIndex == origin.shuttleStop.absoluteIndex {
+                        found = true
+                    }
+                }
+                if !found {
+                    animateDeselection()
+                    selectedOrigin = nil
+                    originIsStale = false
+                }
+            }
+            
+            
             mode = .CollapsedDouble
-            animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveLinear, completion: { (Bool) in
+            animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveEaseOut, completion: { (Bool) in
                 self.mode = .CollapsedSingle
-                self.animatedUpdate(duration/4, options: UIViewAnimationOptions.CurveLinear, completion: { (Bool) -> () in
+                self.animatedUpdate(duration/4, options: UIViewAnimationOptions.CurveEaseInOut, completion: { (Bool) -> () in
                     
                     self.addShuttleStopViews(mainStops: true)
                     self.addRoadViews(mainStops: true)
                     
                     self.mode = .MainStops
-                    self.animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveLinear, completion: completion)
+                    self.animatedUpdate(duration*(3.0/8.0), options: UIViewAnimationOptions.CurveEaseOut, completion: completion)
                     self.transitioning = false
                 })
             })
@@ -859,6 +874,7 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
     public func touchableViewTouchDidBegin(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer) {
         
         touchLocation = gestureRecognizer.locationInView(self)
+        delegate?.shuttleStopStackSelectionInProgress()
         
         if let touchedStop = determineTouchedStop(gestureRecognizer.locationInView(self), strict: true) {
             
@@ -1047,7 +1063,7 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
             }
         }
         
-        
+        delegate?.shuttleStopStackSelectionNoLongerInProgress()
         
     }
     
@@ -1055,6 +1071,8 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
         
         
         touchLocation = nil
+        delegate?.shuttleStopStackSelectionNoLongerInProgress()
+        
     }
     
     
@@ -1065,6 +1083,8 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
 
 public protocol ShuttleStopStackDelegate {
     
+    func shuttleStopStackSelectionInProgress ()
+    func shuttleStopStackSelectionNoLongerInProgress ()
     func shuttleStopStack (shuttleStopStack: ShuttleStopStack, didSelectOrigin origin: ShuttleStop, destination: ShuttleStop)
     
 }

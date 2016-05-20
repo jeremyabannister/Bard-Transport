@@ -21,7 +21,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         view.addSubview(smartTimes)
         
         smartTimes.cornerRadius = 10
-        smartTimes.backgroundColor = UIColor.whiteColor()
+        smartTimes.backgroundColor = UIColor(white: 1, alpha: 0.5)
         smartTimes.todayWidget = true
         
         let widthOfSmartTimes = CGFloat(0.9)
@@ -47,7 +47,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         shade.opacity = 0.05
         shade.frame = smartTimes.frame
         shade.cornerRadius = smartTimes.cornerRadius
-        view.addSubview(shade)
+//        view.addSubview(shade)
         
         
         
