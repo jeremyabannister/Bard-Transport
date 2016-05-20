@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12475E61BD86D647EBD09819 /* libPods-Bard TransportUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B57EC7312302FEC73EB4CF7 /* libPods-Bard TransportUITests.a */; };
-		743B4589DE871B8D9D710152 /* libPods-Bard TransportTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B14DF8D9376EF28EB32F0E /* libPods-Bard TransportTests.a */; };
+		1988174C653FEABDA51E28EE /* Pods_Bard_TransportUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC54BE5BFA53E0B2609F310 /* Pods_Bard_TransportUITests.framework */; };
+		25C6B9771E816A19300AD302 /* Pods_Smart_Times.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85F07E6325BA3288176A496 /* Pods_Smart_Times.framework */; };
+		2AFF5F3456728913D7E014DF /* Pods_Bard_TransportTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BFA7788A6236CA6033B2E4 /* Pods_Bard_TransportTests.framework */; };
 		8720E7541CED038F002E6187 /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7531CED038F002E6187 /* Triangle.png */; };
 		8720E7561CED03F1002E6187 /* Church St.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7551CED03F1002E6187 /* Church St.png */; };
 		8720E75E1CED071E002E6187 /* Ward Gate.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E75D1CED071E002E6187 /* Ward Gate.png */; };
-		8720E7601CED078C002E6187 /* MAT-UBS.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E75F1CED078C002E6187 /* MAT-UBS.png */; };
 		8720E7681CED0A7D002E6187 /* Monument.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7671CED0A7D002E6187 /* Monument.png */; };
 		8720E76A1CED0AC3002E6187 /* Campus Road.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7691CED0AC3002E6187 /* Campus Road.png */; };
 		872789BD1CE7B48E00D6CD06 /* ShuttleStopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789BC1CE7B48E00D6CD06 /* ShuttleStopManager.swift */; };
@@ -40,6 +40,11 @@
 		873449041CE7B37C005A17AC /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449031CE7B37C005A17AC /* Itinerary.swift */; };
 		873449061CE7B3C8005A17AC /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449051CE7B3C8005A17AC /* Schedule.swift */; };
 		873449081CE7B3FA005A17AC /* SmartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873449071CE7B3FA005A17AC /* SmartTime.swift */; };
+		8767BBB71CEE980400A71C32 /* JABSwiftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C3C5091CED983500005CDF /* JABSwiftCore.framework */; };
+		8767BBBC1CEE999000A71C32 /* MAT-UBS.png in Resources */ = {isa = PBXBuildFile; fileRef = 8767BBBB1CEE999000A71C32 /* MAT-UBS.png */; };
+		8767BBBD1CEE999000A71C32 /* MAT-UBS.png in Resources */ = {isa = PBXBuildFile; fileRef = 8767BBBB1CEE999000A71C32 /* MAT-UBS.png */; };
+		8767BBC21CEE9DEF00A71C32 /* Gahagan.png in Resources */ = {isa = PBXBuildFile; fileRef = 8767BBC11CEE9DEF00A71C32 /* Gahagan.png */; };
+		8767BBC31CEE9DEF00A71C32 /* Gahagan.png in Resources */ = {isa = PBXBuildFile; fileRef = 8767BBC11CEE9DEF00A71C32 /* Gahagan.png */; };
 		87B838E71CEE564D0088F77C /* JABSwiftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C3C5091CED983500005CDF /* JABSwiftCore.framework */; };
 		87C3C50D1CEE439300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
 		87C3C50E1CEE43C300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
@@ -53,7 +58,6 @@
 		87C3C5161CEE4E0200005CDF /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7531CED038F002E6187 /* Triangle.png */; };
 		87C3C5171CEE4E0200005CDF /* Church St.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7551CED03F1002E6187 /* Church St.png */; };
 		87C3C5181CEE4E0200005CDF /* Red Hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF4401CE7BC420093C2AE /* Red Hook.png */; };
-		87C3C5191CEE4E0200005CDF /* MAT-UBS.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E75F1CED078C002E6187 /* MAT-UBS.png */; };
 		87C3C51A1CEE4E0200005CDF /* Hannaford.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ECF4411CE7BC420093C2AE /* Hannaford.png */; };
 		87ECF3DD1CE7B8140093C2AE /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */; };
 		87ECF3E41CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECF3E31CE7B8F40093C2AE /* SidebarMenuTableViewCell.swift */; };
@@ -160,12 +164,11 @@
 		2B57D946C888C432C82FF583 /* Pods-Bard TransportTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.release.xcconfig"; sourceTree = "<group>"; };
 		2CFE4C7379C2E8C885D5F87D /* Pods_Bard_Transport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_Transport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD68225478E78229D345496 /* Pods-Bard TransportUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		5B57EC7312302FEC73EB4CF7 /* libPods-Bard TransportUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bard TransportUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		630C1296C35DD35F9BAAFFAC /* Pods-Smart Times.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Times.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Times/Pods-Smart Times.release.xcconfig"; sourceTree = "<group>"; };
 		7CD51063176D469D7FF775F0 /* Pods-Bard TransportUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8720E7531CED038F002E6187 /* Triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Triangle.png; sourceTree = "<group>"; };
 		8720E7551CED03F1002E6187 /* Church St.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Church St.png"; sourceTree = "<group>"; };
 		8720E75D1CED071E002E6187 /* Ward Gate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ward Gate.png"; sourceTree = "<group>"; };
-		8720E75F1CED078C002E6187 /* MAT-UBS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MAT-UBS.png"; sourceTree = "<group>"; };
 		8720E7671CED0A7D002E6187 /* Monument.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Monument.png; sourceTree = "<group>"; };
 		8720E7691CED0AC3002E6187 /* Campus Road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Campus Road.png"; sourceTree = "<group>"; };
 		872789BC1CE7B48E00D6CD06 /* ShuttleStopManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShuttleStopManager.swift; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 		873449031CE7B37C005A17AC /* Itinerary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		873449051CE7B3C8005A17AC /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		873449071CE7B3FA005A17AC /* SmartTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartTime.swift; sourceTree = "<group>"; };
+		8767BBBB1CEE999000A71C32 /* MAT-UBS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MAT-UBS.png"; sourceTree = "<group>"; };
+		8767BBC11CEE9DEF00A71C32 /* Gahagan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gahagan.png; sourceTree = "<group>"; };
 		87C3C5091CED983500005CDF /* JABSwiftCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JABSwiftCore.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Bard_Transport-aitqzrafcmlrxeavsghabjjcylij/Build/Products/Debug-iphoneos/JABSwiftCore/JABSwiftCore.framework"; sourceTree = "<group>"; };
 		87C3C50C1CEE439300005CDF /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
@@ -248,10 +253,13 @@
 		87FA06891CED95D9009375F1 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		87FA068C1CED95D9009375F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		87FA068E1CED95D9009375F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90BFA7788A6236CA6033B2E4 /* Pods_Bard_TransportTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_TransportTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B85F07E6325BA3288176A496 /* Pods_Smart_Times.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Times.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C31E7096300E189A51B4ACBB /* Pods-Bard TransportTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C9936E375E140065813268E0 /* Pods-Smart Times.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Times.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Times/Pods-Smart Times.debug.xcconfig"; sourceTree = "<group>"; };
 		EE76ED6E6D31ED7136B6B32A /* Pods-Bard Transport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.debug.xcconfig"; sourceTree = "<group>"; };
-		F0B14DF8D9376EF28EB32F0E /* libPods-Bard TransportTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bard TransportTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A81179F26047D46D697A83 /* Pods-Bard Transport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.release.xcconfig"; sourceTree = "<group>"; };
+		FEC54BE5BFA53E0B2609F310 /* Pods_Bard_TransportUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_TransportUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +267,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8767BBB71CEE980400A71C32 /* JABSwiftCore.framework in Frameworks */,
 				C9E020D06975074D146011F0 /* Pods_Bard_Transport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,7 +276,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				743B4589DE871B8D9D710152 /* libPods-Bard TransportTests.a in Frameworks */,
+				2AFF5F3456728913D7E014DF /* Pods_Bard_TransportTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +284,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12475E61BD86D647EBD09819 /* libPods-Bard TransportUITests.a in Frameworks */,
+				1988174C653FEABDA51E28EE /* Pods_Bard_TransportUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +294,7 @@
 			files = (
 				87B838E71CEE564D0088F77C /* JABSwiftCore.framework in Frameworks */,
 				87FA06871CED95D9009375F1 /* NotificationCenter.framework in Frameworks */,
+				25C6B9771E816A19300AD302 /* Pods_Smart_Times.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +310,8 @@
 				7CD51063176D469D7FF775F0 /* Pods-Bard TransportUITests.release.xcconfig */,
 				EE76ED6E6D31ED7136B6B32A /* Pods-Bard Transport.debug.xcconfig */,
 				F9A81179F26047D46D697A83 /* Pods-Bard Transport.release.xcconfig */,
+				C9936E375E140065813268E0 /* Pods-Smart Times.debug.xcconfig */,
+				630C1296C35DD35F9BAAFFAC /* Pods-Smart Times.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -912,10 +924,11 @@
 				87ECF43E1CE7BC420093C2AE /* Robbins.png */,
 				8720E75D1CED071E002E6187 /* Ward Gate.png */,
 				87ECF43F1CE7BC420093C2AE /* Kline.png */,
+				8767BBC11CEE9DEF00A71C32 /* Gahagan.png */,
 				8720E7531CED038F002E6187 /* Triangle.png */,
 				8720E7551CED03F1002E6187 /* Church St.png */,
 				87ECF4401CE7BC420093C2AE /* Red Hook.png */,
-				8720E75F1CED078C002E6187 /* MAT-UBS.png */,
+				8767BBBB1CEE999000A71C32 /* MAT-UBS.png */,
 				87ECF4411CE7BC420093C2AE /* Hannaford.png */,
 			);
 			name = "Shuttle Stop Icons";
@@ -938,8 +951,9 @@
 				87C3C5091CED983500005CDF /* JABSwiftCore.framework */,
 				87FA064E1CED8ACE009375F1 /* NotificationCenter.framework */,
 				2CFE4C7379C2E8C885D5F87D /* Pods_Bard_Transport.framework */,
-				F0B14DF8D9376EF28EB32F0E /* libPods-Bard TransportTests.a */,
-				5B57EC7312302FEC73EB4CF7 /* libPods-Bard TransportUITests.a */,
+				90BFA7788A6236CA6033B2E4 /* Pods_Bard_TransportTests.framework */,
+				FEC54BE5BFA53E0B2609F310 /* Pods_Bard_TransportUITests.framework */,
+				B85F07E6325BA3288176A496 /* Pods_Smart_Times.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1014,9 +1028,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87FA06921CED95D9009375F1 /* Build configuration list for PBXNativeTarget "Smart Times" */;
 			buildPhases = (
+				5BB67D18CA53605581369418 /* 📦 Check Pods Manifest.lock */,
 				87FA06821CED95D9009375F1 /* Sources */,
 				87FA06831CED95D9009375F1 /* Frameworks */,
 				87FA06841CED95D9009375F1 /* Resources */,
+				EF09CDF45E651A98ADFC9495 /* 📦 Embed Pods Frameworks */,
+				16B7B779EE6A0118005FFAA8 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1082,6 +1099,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87ECF4341CE7BC2D0093C2AE /* Help Button.png in Resources */,
+				8767BBC21CEE9DEF00A71C32 /* Gahagan.png in Resources */,
 				8720E7541CED038F002E6187 /* Triangle.png in Resources */,
 				87ECF43B1CE7BC2D0093C2AE /* X Button.png in Resources */,
 				87ECF41C1CE7BC0D0093C2AE /* Hannaford Fancy Flag.png in Resources */,
@@ -1091,7 +1109,6 @@
 				87ECF4391CE7BC2D0093C2AE /* Sidebar Button.png in Resources */,
 				87ECF4331CE7BC2D0093C2AE /* Clock Icon.png in Resources */,
 				87ECF4351CE7BC2D0093C2AE /* Map Button 2D.png in Resources */,
-				8720E7601CED078C002E6187 /* MAT-UBS.png in Resources */,
 				87ECF4361CE7BC2D0093C2AE /* Map Button.png in Resources */,
 				873448C21CE7AE0C005A17AC /* LaunchScreen.storyboard in Resources */,
 				87ECF4141CE7BBF10093C2AE /* Main Background-4 Inch.JPG in Resources */,
@@ -1102,6 +1119,7 @@
 				8720E75E1CED071E002E6187 /* Ward Gate.png in Resources */,
 				8720E7561CED03F1002E6187 /* Church St.png in Resources */,
 				87ECF41D1CE7BC0D0093C2AE /* Kline Fancy Flag.png in Resources */,
+				8767BBBC1CEE999000A71C32 /* MAT-UBS.png in Resources */,
 				8720E76A1CED0AC3002E6187 /* Campus Road.png in Resources */,
 				873448BF1CE7AE0C005A17AC /* Assets.xcassets in Resources */,
 				87ECF4261CE7BC1C0093C2AE /* shuttleStopSquareRegularSmaller.png in Resources */,
@@ -1141,18 +1159,34 @@
 				87C3C5151CEE4E0200005CDF /* Kline.png in Resources */,
 				87C3C5121CEE4E0200005CDF /* Campus Road.png in Resources */,
 				87C3C51A1CEE4E0200005CDF /* Hannaford.png in Resources */,
+				8767BBC31CEE9DEF00A71C32 /* Gahagan.png in Resources */,
 				87C3C5101CEE4E0200005CDF /* Tivoli.png in Resources */,
 				87C3C5171CEE4E0200005CDF /* Church St.png in Resources */,
 				87C3C5161CEE4E0200005CDF /* Triangle.png in Resources */,
 				87FA068D1CED95D9009375F1 /* MainInterface.storyboard in Resources */,
-				87C3C5191CEE4E0200005CDF /* MAT-UBS.png in Resources */,
 				87C3C5141CEE4E0200005CDF /* Ward Gate.png in Resources */,
+				8767BBBD1CEE999000A71C32 /* MAT-UBS.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		16B7B779EE6A0118005FFAA8 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Smart Times/Pods-Smart Times-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2E1CC59BCB03108055BCC0BA /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1184,6 +1218,21 @@
 			showEnvVarsInLog = 0;
 		};
 		59E2A8C6BA151168E5719031 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5BB67D18CA53605581369418 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1271,6 +1320,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF09CDF45E651A98ADFC9495 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Smart Times/Pods-Smart Times-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1581,7 +1645,7 @@
 		};
 		87FA06931CED95D9009375F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE76ED6E6D31ED7136B6B32A /* Pods-Bard Transport.debug.xcconfig */;
+			baseConfigurationReference = C9936E375E140065813268E0 /* Pods-Smart Times.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1599,7 +1663,7 @@
 		};
 		87FA06941CED95D9009375F1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9A81179F26047D46D697A83 /* Pods-Bard Transport.release.xcconfig */;
+			baseConfigurationReference = 630C1296C35DD35F9BAAFFAC /* Pods-Smart Times.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
