@@ -70,8 +70,8 @@ public class Schedule: NSObject {
         let day = ScheduledDay()
         
         
-        // Tivoli, Monument, Campus Road, Robbins, Ward Gate, Kline, Gahagan, Triangle, Red Hook, MAT/UBS, Hannaford
-        // Hannaford, MAT/UBS, Red Hook, Church St., Triangle, Gahagan, Kline, Robbins, Campus Road, Monument, Tivoli
+        // Tivoli, Monument, Campus Rd, Robbins, Ward Gate, Kline, Gahagan, Triangle, Red Hook, MAT/UBS, Hannaford
+        // Hannaford, MAT/UBS, Red Hook, Church St., Triangle, Gahagan, Kline, Robbins, Campus Rd, Monument, Tivoli
         
         
         var dayRuns = [([(String, Int)], ScheduledRunDirection)]()

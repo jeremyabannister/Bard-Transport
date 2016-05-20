@@ -379,16 +379,24 @@ public class Map: JABView, MKMapViewDelegate, JABTouchableViewDelegate, JABButto
     // MARK: Map View
     public func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
+        let iconSize = CGFloat(50)
+        
         if annotation.isKindOfClass(ShuttleStop.self) {
             let stop = annotation as! ShuttleStop
             if let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("ShuttleStopIconAnnotationView") {
+                
+                if let icon = resizeImage(UIImage(named: "\(stop.name) Map.png"), newWidth: iconSize) {
+                    annotationView.image = icon
+                }
                 
                 return annotationView
             }
             
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "ShuttleStopIconAnnotationView")
             annotationView.canShowCallout = true
-            annotationView.image = stop.icon
+            if let icon = resizeImage(UIImage(named: "\(stop.name) Map.png"), newWidth: iconSize) {
+                annotationView.image = icon
+            }
             
             return annotationView
         }

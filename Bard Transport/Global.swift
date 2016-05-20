@@ -29,3 +29,19 @@ get {
     return NSDate()
 }
 }
+
+
+public func resizeImage(image: UIImage?, newWidth: CGFloat) -> UIImage? {
+    
+    if let nonNilImage = image {
+        let scale = newWidth / nonNilImage.size.width
+        let newHeight = nonNilImage.size.height * scale
+        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
+        nonNilImage.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    return image
+}

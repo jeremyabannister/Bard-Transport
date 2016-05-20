@@ -38,8 +38,8 @@ public class ShuttleStopManager: NSObject {
     private func createStops () {
         
         
-        // Southbound: Tivoli, Monument, Campus Road, Robbins, Ward Gate, Kline, Gahagan, Triangle, Red Hook, MAT/UBS, Hannaford
-        // Northbound: Hannaford, MAT/UBS, Red Hook, Church St., Triangle, Gahagan, Kline, Robbins, Campus Road, Monument, Tivoli
+        // Southbound: Tivoli, Monument, Campus Rd, Robbins, Ward Gate, Kline, Gahagan, Triangle, Red Hook, MAT/UBS, Hannaford
+        // Northbound: Hannaford, MAT/UBS, Red Hook, Church St., Triangle, Gahagan, Kline, Robbins, Campus Rd, Monument, Tivoli
         
         let tivoli = ShuttleStop(name: "Tivoli", absoluteIndex: 0)
         tivoli.icon = UIImage(named: tivoli.name + ".png")
@@ -55,11 +55,11 @@ public class ShuttleStopManager: NSObject {
         monument.title = monument.name + " Shuttle Stop"
         
         
-        let campusRoad = ShuttleStop(name: "Campus Road", absoluteIndex: 2)
-        campusRoad.icon = UIImage(named: campusRoad.name + ".png")
-        campusRoad.flagImage = UIImage(named: campusRoad.name + " Fancy Flag.png")
-        campusRoad.coordinate = CLLocationCoordinate2D(latitude: 42.026458, longitude: -73.903514)
-        campusRoad.title = campusRoad.name + " Shuttle Stop"
+        let campusRd = ShuttleStop(name: "Campus Rd", absoluteIndex: 2)
+        campusRd.icon = UIImage(named: campusRd.name + ".png")
+        campusRd.flagImage = UIImage(named: campusRd.name + " Fancy Flag.png")
+        campusRd.coordinate = CLLocationCoordinate2D(latitude: 42.026458, longitude: -73.903514)
+        campusRd.title = campusRd.name + " Shuttle Stop"
         
         
         let robbins = ShuttleStop(name: "Robbins", absoluteIndex: 3)
@@ -127,7 +127,7 @@ public class ShuttleStopManager: NSObject {
         
         
         mainShuttleStops = [tivoli, robbins, kline, redHook, hannaford]
-        allShuttleStops = [tivoli, monument, campusRoad, robbins, wardGate, kline, gahagan, triangle, churchSt, redHook, matUbs, hannaford]
+        allShuttleStops = [tivoli, monument, campusRd, robbins, wardGate, kline, gahagan, triangle, churchSt, redHook, matUbs, hannaford]
         
     }
     
