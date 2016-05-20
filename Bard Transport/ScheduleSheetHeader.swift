@@ -328,7 +328,7 @@ public class ScheduleSheetHeader: JABView, JABTouchableViewDelegate {
                 dayOfWeekPicker.selectedSegmentIndex = index
             }
             
-            dayOfWeekPicker.addTarget(self, action: "dayOfWeekPickerPressed", forControlEvents: UIControlEvents.ValueChanged)
+            dayOfWeekPicker.addTarget(self, action: #selector(ScheduleSheetHeader.dayOfWeekPickerPressed), forControlEvents: UIControlEvents.ValueChanged)
         }
         
         

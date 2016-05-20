@@ -125,6 +125,7 @@
 		87FEF2351CEEB7B70009EF84 /* Campus Road Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF2341CEEB7B70009EF84 /* Campus Road Fancy Flag.png */; };
 		87FEF2371CEEB8180009EF84 /* Monument Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF2361CEEB8180009EF84 /* Monument Fancy Flag.png */; };
 		87FEF2391CEEB8E00009EF84 /* MAT-UBS Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF2381CEEB8E00009EF84 /* MAT-UBS Fancy Flag.png */; };
+		87FEF23B1CEEC96A0009EF84 /* Launch Image 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF23A1CEEC96A0009EF84 /* Launch Image 640x1136.png */; };
 		C9E020D06975074D146011F0 /* Pods_Bard_Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFE4C7379C2E8C885D5F87D /* Pods_Bard_Transport.framework */; };
 /* End PBXBuildFile section */
 
@@ -265,6 +266,7 @@
 		87FEF2341CEEB7B70009EF84 /* Campus Road Fancy Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Campus Road Fancy Flag.png"; sourceTree = "<group>"; };
 		87FEF2361CEEB8180009EF84 /* Monument Fancy Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Monument Fancy Flag.png"; sourceTree = "<group>"; };
 		87FEF2381CEEB8E00009EF84 /* MAT-UBS Fancy Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MAT-UBS Fancy Flag.png"; sourceTree = "<group>"; };
+		87FEF23A1CEEC96A0009EF84 /* Launch Image 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch Image 640x1136.png"; sourceTree = "<group>"; };
 		90BFA7788A6236CA6033B2E4 /* Pods_Bard_TransportTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_TransportTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85F07E6325BA3288176A496 /* Pods_Smart_Times.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Times.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C31E7096300E189A51B4ACBB /* Pods-Bard TransportTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -873,6 +875,7 @@
 			children = (
 				87ECF4121CE7BBE80093C2AE /* Main Background */,
 				87ECF43C1CE7BC310093C2AE /* Shuttle Stop Icons */,
+				87FEF23C1CEEC96D0009EF84 /* Launch Image */,
 				87ECF4291CE7BC220093C2AE /* Buttons */,
 				87ECF4221CE7BC110093C2AE /* General */,
 				87ECF4151CE7BBFF0093C2AE /* Fancy Flags */,
@@ -960,6 +963,14 @@
 				87FA068E1CED95D9009375F1 /* Info.plist */,
 			);
 			path = "Smart Times";
+			sourceTree = "<group>";
+		};
+		87FEF23C1CEEC96D0009EF84 /* Launch Image */ = {
+			isa = PBXGroup;
+			children = (
+				87FEF23A1CEEC96A0009EF84 /* Launch Image 640x1136.png */,
+			);
+			name = "Launch Image";
 			sourceTree = "<group>";
 		};
 		DA1E0C01C156696CC5D268D4 /* Frameworks */ = {
@@ -1149,6 +1160,7 @@
 				87ECF4271CE7BC1C0093C2AE /* botsteincolorheadbowtie100x100.png in Resources */,
 				87ECF4441CE7BC420093C2AE /* Kline.png in Resources */,
 				87ECF4451CE7BC420093C2AE /* Red Hook.png in Resources */,
+				87FEF23B1CEEC96A0009EF84 /* Launch Image 640x1136.png in Resources */,
 				87ECF4381CE7BC2D0093C2AE /* Plus Button.png in Resources */,
 				87FEF2311CEEB6040009EF84 /* Church St Fancy Flag.png in Resources */,
 				87ECF4431CE7BC420093C2AE /* Robbins.png in Resources */,
@@ -1502,6 +1514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1548,6 +1561,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

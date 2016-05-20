@@ -258,7 +258,7 @@ public class ScheduleSheet: JABView, ScheduleSheetHeaderDelegate, ScheduleSheetB
             if header.dayOfWeekIndex == 0 {
                 header.dayOfWeekIndex = 6
             } else {
-                header.dayOfWeekIndex--
+                header.dayOfWeekIndex -= 1
             }
         }
         

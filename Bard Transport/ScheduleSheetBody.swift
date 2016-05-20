@@ -83,7 +83,7 @@ public class ScheduleSheetBody: JABView, UITableViewDataSource, UITableViewDeleg
         super.init()
         
         
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "determineIndexPathOfNextShuttle", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ScheduleSheetBody.determineIndexPathOfNextShuttle), userInfo: nil, repeats: true)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -156,11 +156,11 @@ public class ScheduleSheetBody: JABView, UITableViewDataSource, UITableViewDeleg
         
         if !gestureRecognizerAddedToTable {
             
-            let leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: "leftSwipeDetected")
+            let leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ScheduleSheetBody.leftSwipeDetected))
             leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirection.Left
             tableView.addGestureRecognizer(leftSwipeRecognizer)
             
-            let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: "rightSwipeDetected")
+            let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ScheduleSheetBody.rightSwipeDetected))
             rightSwipeRecognizer.direction = UISwipeGestureRecognizerDirection.Right
             tableView.addGestureRecognizer(rightSwipeRecognizer)
             
@@ -195,7 +195,7 @@ public class ScheduleSheetBody: JABView, UITableViewDataSource, UITableViewDeleg
             
             var adjustedDayOfWeek = rightNow.dayOfWeek
             if rightNowTime.time < lateNightThreshold {
-                adjustedDayOfWeek--
+                adjustedDayOfWeek -= 1
                 
                 if adjustedDayOfWeek < 0 {
                     adjustedDayOfWeek = 6
@@ -296,7 +296,7 @@ public class ScheduleSheetBody: JABView, UITableViewDataSource, UITableViewDeleg
         if let indexPath = nextShuttleIndexPath {
             var adjustedRow = indexPath.row
             if adjustedRow > 0 {
-                adjustedRow--
+                adjustedRow -= 1
             }
             
             let adjustedIndexPath = NSIndexPath(forRow: adjustedRow, inSection: indexPath.section)

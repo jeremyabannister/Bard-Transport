@@ -270,8 +270,6 @@ public class ShuttleStopView: JABView {
             selectionLabel.text = "From:"
         case .Destination:
             selectionLabel.text = "To:"
-        default:
-            print("Hit default in switch over selectionState in configureSelectionLabel")
         }
         
         selectionLabel.textAlignment = NSTextAlignment.Center
@@ -337,8 +335,6 @@ public class ShuttleStopView: JABView {
             fluid.opacity = 1
         case .Transparent:
             fluid.opacity = 0
-        default:
-            print("Hit default in switch over fluidOpacity in ShuttleStopView.configureFluid")
         }
         
     }
@@ -368,8 +364,6 @@ public class ShuttleStopView: JABView {
             } else {
                 newFrame.origin.y = 0
             }
-        default:
-            print("Hit default in switch over fluidState in ShuttleStopView.positionFluid")
         }
         
         fluid.frame = newFrame

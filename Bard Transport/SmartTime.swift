@@ -62,11 +62,11 @@ public class SmartTime: NSObject, UserLocationManagerSubscriber {
         super.init()
         
         userLocationManager.addSubscriber(self)
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "determineMinutesUntilNextDeparture", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(SmartTime.determineMinutesUntilNextDeparture), userInfo: nil, repeats: true)
         
         // Give location manager enough time to update error status (1 second), then check for closest shuttle stop. Check every 10 seconds after that
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "determineClosestShuttleStopAndNotify", userInfo: nil, repeats: false)
-        NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "determineClosestShuttleStopAndNotify", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(SmartTime.determineClosestShuttleStopAndNotify), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(SmartTime.determineClosestShuttleStopAndNotify), userInfo: nil, repeats: true)
     }
     
     

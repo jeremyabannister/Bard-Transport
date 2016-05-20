@@ -72,9 +72,9 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
         
         //        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "breakApp", userInfo: nil, repeats: true)
         
-        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "retrieveVersionNumberFromInternet", userInfo: nil, repeats: false) // This timer is here so that the user is immediately informed of the new version, after which the notification will reappear regularly
+        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ApplicationRoot.retrieveVersionNumberFromInternet), userInfo: nil, repeats: false) // This timer is here so that the user is immediately informed of the new version, after which the notification will reappear regularly
         
-        versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: "retrieveVersionNumberFromInternet", userInfo: nil, repeats: true)
+        versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: #selector(ApplicationRoot.retrieveVersionNumberFromInternet), userInfo: nil, repeats: true)
         
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert,
             UIUserNotificationType.Badge], categories: nil
@@ -84,7 +84,7 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
         
         
         if laboratoryEnabled {
-            NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "runExperiment", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ApplicationRoot.runExperiment), userInfo: nil, repeats: false)
         }
         
     }
@@ -340,7 +340,7 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     override public func touchableViewTouchDidEnd(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         if !updateNotification.frame.contains ( gestureRecognizer.locationInView(notificationLayer) ) {
-            versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: "retrieveVersionNumberFromInternet", userInfo: nil, repeats: true)
+            versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: #selector(ApplicationRoot.retrieveVersionNumberFromInternet), userInfo: nil, repeats: true)
             notificationState = ApplicationRootNotificationState.None
             animatedUpdate()
         }
@@ -364,7 +364,7 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
             UIApplication.sharedApplication().openURL(url)
         }
         
-        versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: "retrieveVersionNumberFromInternet", userInfo: nil, repeats: true)
+        versionCheckTimer = NSTimer.scheduledTimerWithTimeInterval(versionCheckInterval, target: self, selector: #selector(ApplicationRoot.retrieveVersionNumberFromInternet), userInfo: nil, repeats: true)
     }
     
 }

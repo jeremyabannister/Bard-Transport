@@ -490,7 +490,6 @@ public class ShuttleStopStack: JABView, ShuttleStopViewDelegate, JABTouchableVie
                 if let size = roadView.image?.size {
                     if size.height != 0 {
                         let widthToHeightRatio = (size.width/size.height) * 0.6 // Changing the ratio of the image to taste
-                        let verticalOffsetFromCenterOfStop = CGFloat(18)
                         
                         var newFrame = CGRectZero
                         let difference = CGPoint(x: bottomShuttleStopView.center.x - topShuttleStopView.center.x, y: bottomShuttleStopView.center.y - topShuttleStopView.center.y)
