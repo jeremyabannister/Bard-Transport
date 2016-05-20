@@ -380,6 +380,7 @@ public class Map: JABView, MKMapViewDelegate, JABTouchableViewDelegate, JABButto
     public func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation.isKindOfClass(ShuttleStop.self) {
+            let stop = annotation as! ShuttleStop
             if let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("ShuttleStopIconAnnotationView") {
                 
                 return annotationView
@@ -387,7 +388,7 @@ public class Map: JABView, MKMapViewDelegate, JABTouchableViewDelegate, JABButto
             
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "ShuttleStopIconAnnotationView")
             annotationView.canShowCallout = true
-            annotationView.image = UIImage(named: "shuttleStopSquareRegularSmaller.png")
+            annotationView.image = stop.icon
             
             return annotationView
         }
