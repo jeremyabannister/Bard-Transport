@@ -45,6 +45,7 @@
 		8767BBBD1CEE999000A71C32 /* MAT-UBS.png in Resources */ = {isa = PBXBuildFile; fileRef = 8767BBBB1CEE999000A71C32 /* MAT-UBS.png */; };
 		8767BBC21CEE9DEF00A71C32 /* Gahagan.png in Resources */ = {isa = PBXBuildFile; fileRef = 8767BBC11CEE9DEF00A71C32 /* Gahagan.png */; };
 		8767BBC31CEE9DEF00A71C32 /* Gahagan.png in Resources */ = {isa = PBXBuildFile; fileRef = 8767BBC11CEE9DEF00A71C32 /* Gahagan.png */; };
+		8767BBC51CEEA11C00A71C32 /* Gahagan Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 8767BBC41CEEA11C00A71C32 /* Gahagan Fancy Flag.png */; };
 		87B838E71CEE564D0088F77C /* JABSwiftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C3C5091CED983500005CDF /* JABSwiftCore.framework */; };
 		87C3C50D1CEE439300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
 		87C3C50E1CEE43C300005CDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3C50C1CEE439300005CDF /* Global.swift */; };
@@ -119,6 +120,11 @@
 		87FA06A51CED9658009375F1 /* SmartTimesPaneEndOfLineErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789DA1CE7B74200D6CD06 /* SmartTimesPaneEndOfLineErrorView.swift */; };
 		87FA06A61CED9658009375F1 /* SmartTimesTooFarFromCampusErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789D81CE7B72B00D6CD06 /* SmartTimesTooFarFromCampusErrorView.swift */; };
 		87FA06A71CED9658009375F1 /* SmartTimesInsufficientAccessPrivilegesErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872789D61CE7B70100D6CD06 /* SmartTimesInsufficientAccessPrivilegesErrorView.swift */; };
+		87FEF22F1CEEB5380009EF84 /* Ward Gate Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF22E1CEEB5380009EF84 /* Ward Gate Fancy Flag.png */; };
+		87FEF2311CEEB6040009EF84 /* Church St Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF2301CEEB6040009EF84 /* Church St Fancy Flag.png */; };
+		87FEF2351CEEB7B70009EF84 /* Campus Road Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF2341CEEB7B70009EF84 /* Campus Road Fancy Flag.png */; };
+		87FEF2371CEEB8180009EF84 /* Monument Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF2361CEEB8180009EF84 /* Monument Fancy Flag.png */; };
+		87FEF2391CEEB8E00009EF84 /* MAT-UBS Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF2381CEEB8E00009EF84 /* MAT-UBS Fancy Flag.png */; };
 		C9E020D06975074D146011F0 /* Pods_Bard_Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFE4C7379C2E8C885D5F87D /* Pods_Bard_Transport.framework */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +210,7 @@
 		873449071CE7B3FA005A17AC /* SmartTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartTime.swift; sourceTree = "<group>"; };
 		8767BBBB1CEE999000A71C32 /* MAT-UBS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MAT-UBS.png"; sourceTree = "<group>"; };
 		8767BBC11CEE9DEF00A71C32 /* Gahagan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gahagan.png; sourceTree = "<group>"; };
+		8767BBC41CEEA11C00A71C32 /* Gahagan Fancy Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gahagan Fancy Flag.png"; sourceTree = "<group>"; };
 		87C3C5091CED983500005CDF /* JABSwiftCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JABSwiftCore.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Bard_Transport-aitqzrafcmlrxeavsghabjjcylij/Build/Products/Debug-iphoneos/JABSwiftCore/JABSwiftCore.framework"; sourceTree = "<group>"; };
 		87C3C50C1CEE439300005CDF /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		87ECF3DC1CE7B8140093C2AE /* Sidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
@@ -253,6 +260,11 @@
 		87FA06891CED95D9009375F1 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		87FA068C1CED95D9009375F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		87FA068E1CED95D9009375F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87FEF22E1CEEB5380009EF84 /* Ward Gate Fancy Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ward Gate Fancy Flag.png"; sourceTree = "<group>"; };
+		87FEF2301CEEB6040009EF84 /* Church St Fancy Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Church St Fancy Flag.png"; sourceTree = "<group>"; };
+		87FEF2341CEEB7B70009EF84 /* Campus Road Fancy Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Campus Road Fancy Flag.png"; sourceTree = "<group>"; };
+		87FEF2361CEEB8180009EF84 /* Monument Fancy Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Monument Fancy Flag.png"; sourceTree = "<group>"; };
+		87FEF2381CEEB8E00009EF84 /* MAT-UBS Fancy Flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MAT-UBS Fancy Flag.png"; sourceTree = "<group>"; };
 		90BFA7788A6236CA6033B2E4 /* Pods_Bard_TransportTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_TransportTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85F07E6325BA3288176A496 /* Pods_Smart_Times.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Times.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C31E7096300E189A51B4ACBB /* Pods-Bard TransportTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -879,12 +891,18 @@
 		87ECF4151CE7BBFF0093C2AE /* Fancy Flags */ = {
 			isa = PBXGroup;
 			children = (
-				87ECF4161CE7BC0D0093C2AE /* Hannaford Fancy Flag.png */,
-				87ECF4171CE7BC0D0093C2AE /* Kline Fancy Flag.png */,
-				87ECF4181CE7BC0D0093C2AE /* Red Hook Fancy Flag.png */,
-				87ECF4191CE7BC0D0093C2AE /* Robbins Fancy Flag.png */,
 				87ECF41A1CE7BC0D0093C2AE /* Tivoli Fancy Flag.png */,
+				87FEF2361CEEB8180009EF84 /* Monument Fancy Flag.png */,
+				87FEF2341CEEB7B70009EF84 /* Campus Road Fancy Flag.png */,
+				87ECF4191CE7BC0D0093C2AE /* Robbins Fancy Flag.png */,
+				87FEF22E1CEEB5380009EF84 /* Ward Gate Fancy Flag.png */,
+				87ECF4171CE7BC0D0093C2AE /* Kline Fancy Flag.png */,
+				8767BBC41CEEA11C00A71C32 /* Gahagan Fancy Flag.png */,
 				87ECF41B1CE7BC0D0093C2AE /* Triangle Fancy Flag.png */,
+				87FEF2301CEEB6040009EF84 /* Church St Fancy Flag.png */,
+				87ECF4181CE7BC0D0093C2AE /* Red Hook Fancy Flag.png */,
+				87FEF2381CEEB8E00009EF84 /* MAT-UBS Fancy Flag.png */,
+				87ECF4161CE7BC0D0093C2AE /* Hannaford Fancy Flag.png */,
 			);
 			name = "Fancy Flags";
 			sourceTree = "<group>";
@@ -1109,12 +1127,16 @@
 				87ECF4391CE7BC2D0093C2AE /* Sidebar Button.png in Resources */,
 				87ECF4331CE7BC2D0093C2AE /* Clock Icon.png in Resources */,
 				87ECF4351CE7BC2D0093C2AE /* Map Button 2D.png in Resources */,
+				87FEF2351CEEB7B70009EF84 /* Campus Road Fancy Flag.png in Resources */,
 				87ECF4361CE7BC2D0093C2AE /* Map Button.png in Resources */,
+				87FEF2391CEEB8E00009EF84 /* MAT-UBS Fancy Flag.png in Resources */,
 				873448C21CE7AE0C005A17AC /* LaunchScreen.storyboard in Resources */,
+				87FEF22F1CEEB5380009EF84 /* Ward Gate Fancy Flag.png in Resources */,
 				87ECF4141CE7BBF10093C2AE /* Main Background-4 Inch.JPG in Resources */,
 				87ECF4201CE7BC0D0093C2AE /* Tivoli Fancy Flag.png in Resources */,
 				87ECF4371CE7BC2D0093C2AE /* Minus Button.png in Resources */,
 				87ECF4421CE7BC420093C2AE /* Tivoli.png in Resources */,
+				87FEF2371CEEB8180009EF84 /* Monument Fancy Flag.png in Resources */,
 				87ECF41F1CE7BC0D0093C2AE /* Robbins Fancy Flag.png in Resources */,
 				8720E75E1CED071E002E6187 /* Ward Gate.png in Resources */,
 				8720E7561CED03F1002E6187 /* Church St.png in Resources */,
@@ -1128,10 +1150,12 @@
 				87ECF4441CE7BC420093C2AE /* Kline.png in Resources */,
 				87ECF4451CE7BC420093C2AE /* Red Hook.png in Resources */,
 				87ECF4381CE7BC2D0093C2AE /* Plus Button.png in Resources */,
+				87FEF2311CEEB6040009EF84 /* Church St Fancy Flag.png in Resources */,
 				87ECF4431CE7BC420093C2AE /* Robbins.png in Resources */,
 				8720E7681CED0A7D002E6187 /* Monument.png in Resources */,
 				873448BA1CE7AE0C005A17AC /* Main.storyboard in Resources */,
 				87ECF4281CE7BC1C0093C2AE /* Road.png in Resources */,
+				8767BBC51CEEA11C00A71C32 /* Gahagan Fancy Flag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
