@@ -48,8 +48,6 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
     
-    private var widthOfUpdateNotification = CGFloat(0)
-    private var heightOfUpdateNotification = CGFloat(0)
     
     
     // **********************************************************************************************************************
@@ -104,8 +102,6 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     // MARK: Parameters
     override public func updateParameters() {
         
-        widthOfUpdateNotification = 0.6
-        heightOfUpdateNotification = 0.555
         
         if iPad {
             
@@ -198,8 +194,8 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
         
         var newFrame = CGRectZero
         
-        newFrame.size.width = width * widthOfUpdateNotification
-        newFrame.size.height = width * heightOfUpdateNotification
+        newFrame.size.width = width * widthOfNotifications
+        newFrame.size.height = width * heightOfNotifications
         
         newFrame.origin.x = (notificationLayer.width - newFrame.size.width)/2
         newFrame.origin.y = (notificationLayer.height - newFrame.size.height)/2

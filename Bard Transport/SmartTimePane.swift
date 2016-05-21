@@ -421,7 +421,7 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
                 minutesLabel.textColor = redColor
             }
         } else {
-            minutesLabel.text = "n/a"
+            minutesLabel.text = "..."
             minutesLabel.textColor = cyanColor
         }
         
@@ -513,7 +513,7 @@ public class SmartTimePane: JABView, SmartTimeDataSubscriber {
         if let minutes = smartTime.minutesUntilNextDeparture {
             hoursLabel.text = "\((minutes - (minutes % 60))/60)"
         } else {
-            hoursLabel.text = "n/a"
+            hoursLabel.text = ""
         }
         
         hoursLabel.textAlignment = .Center

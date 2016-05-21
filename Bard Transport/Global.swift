@@ -13,6 +13,10 @@ public var userLocationManager = UserLocationManager()
 public var shuttleStopManager = ShuttleStopManager()
 public var schedule = Schedule()
 
+
+public var widthOfNotifications = CGFloat(0.6)
+public var heightOfNotifications = CGFloat(0.555)
+
 public let lateNightThreshold = 300
 
 

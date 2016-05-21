@@ -83,9 +83,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private var bottomBufferForShuttleStopStack = CGFloat(0)
     private var widthOfShuttleStopStack = CGFloat(0)
     
-    private var widthOfHelpScreen = CGFloat(0)
-    private var heightOfHelpScreen = CGFloat(0)
-    
     private var topBufferForScheduleSheet = CGFloat(0)
     private var widthOfScheduleSheet = CGFloat(0)
     
@@ -160,9 +157,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         bottomBufferForShuttleStopStack = 0.1
         widthOfShuttleStopStack = 0.23
         widthOfShuttleStopStack = 0.35
-        
-        widthOfHelpScreen = 0.65
-        heightOfHelpScreen = 0.94
         
         topBufferForScheduleSheet = 0.42
         widthOfScheduleSheet = 0.95
@@ -547,8 +541,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         if state == .HelpOpen {
             
-            newFrame.size.width = width * widthOfHelpScreen
-            newFrame.size.height = width * heightOfHelpScreen
+            newFrame.size.width = width * widthOfNotifications
+            newFrame.size.height = width * heightOfNotifications
             
             newFrame.origin.x = (width - newFrame.size.width)/2
             newFrame.origin.y = shuttleStopStack.y + (shuttleStopStack.height - newFrame.size.height)/2
