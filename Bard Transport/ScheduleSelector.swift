@@ -194,6 +194,17 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
     }
     
+    
+    public func addBlur () {
+        
+        
+        let blurEffect = UIBlurEffect(style: .Light)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = CGRect(x: 100, y: 100, width: 200, height: 300)
+        addSubview(blurredEffectView)
+        
+    }
+    
     override public func updateAllUI() {
         
         updateParameters()
