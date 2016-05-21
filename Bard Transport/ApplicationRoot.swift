@@ -41,6 +41,7 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     
     // MARK: UI
     private var mainSector = MainSector()
+    private var notificationBackgroundBlur = UIVisualEffectView()
     private var updateNotification = UpdateNotification()
     
     private var laboratory = UIView() // The laboratory is a view which covers the entire app and is used as a test ground. Usually it is transparent and userInteractionEnabled is set to false, but when laboratoryEnabled is set to true at startup the laboratory takes the foreground and runExperiment() is called.
@@ -121,6 +122,7 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     override public func addAllUI() {
         
         addMainSector()
+        addNotificationBackgroundBlur()
         addUpdateNotification()
         addLaboratory()
         
@@ -130,6 +132,9 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
         
         configureMainSector()
         positionMainSector()
+        
+        configureNotificationBackgroundBlur()
+        positionNotificationBackgroundBlur()
         
         configureUpdateNotification()
         positionUpdateNotification()
@@ -146,6 +151,10 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     // MARK: Adding
     private func addMainSector () {
         addSubview(mainSector)
+    }
+    
+    private func addNotificationBackgroundBlur () {
+        addSubview(notificationBackgroundBlur)
     }
     
     private func addUpdateNotification () {
@@ -165,6 +174,27 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     private func positionMainSector () {
         
         mainSector.frame = relativeFrame
+        
+    }
+    
+    
+    
+    // MARK: Notification Background Blur
+    private func configureNotificationBackgroundBlur () {
+        
+        notificationBackgroundBlur.effect = UIBlurEffect(style: .Light)
+        
+        if notificationState == .None {
+            notificationBackgroundBlur.opacity = 0
+        } else {
+            notificationBackgroundBlur.opacity = 1
+        }
+        
+    }
+    
+    private func positionNotificationBackgroundBlur () {
+        
+        notificationBackgroundBlur.frame = bounds
         
     }
     

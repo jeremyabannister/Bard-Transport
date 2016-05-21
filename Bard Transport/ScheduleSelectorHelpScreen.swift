@@ -20,8 +20,10 @@ public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
     
     // MARK: State
     public var open = false
+    private var textColor = UIColor(white: 0.2, alpha: 1)
     
     // MARK: UI
+    private let blurredBackground = UIVisualEffectView()
     private let instructionLabel = UILabel()
     private let closeButton = JABButton()
     
@@ -95,6 +97,7 @@ public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
     // MARK: All
     override public func addAllUI() {
         
+        addBlurredBackground()
         addInstructionLabel()
         addCloseButton()
         
@@ -104,6 +107,9 @@ public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
         
         updateParameters()
         
+        
+        configureBlurredBackground()
+        positionBlurredBackground()
         
         configureInstructionLabel()
         positionInstructionLabel()
@@ -115,6 +121,10 @@ public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
     
     
     // MARK: Adding
+    private func addBlurredBackground () {
+        addSubview(blurredBackground)
+    }
+    
     private func addInstructionLabel () {
         addSubview(instructionLabel)
     }
@@ -124,12 +134,31 @@ public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
     }
     
     
+    
+    
+    
+    // MARK: Blurred Background
+    private func configureBlurredBackground () {
+        
+        blurredBackground.effect = UIBlurEffect(style: .Light)
+        blurredBackground.cornerRadius = cornerRadius
+        
+    }
+    
+    private func positionBlurredBackground () {
+        
+        blurredBackground.frame = bounds
+        
+    }
+    
+    
+    
     // MARK: Instruction Label
     private func configureInstructionLabel () {
         
         instructionLabel.text = "To view the shuttle schedule, drag your finger along your route and let go."
         instructionLabel.textAlignment = NSTextAlignment.Center
-        instructionLabel.textColor = whiteColor
+        instructionLabel.textColor = textColor
         instructionLabel.font = UIFont(name: "Avenir", size: 15)
         
         instructionLabel.numberOfLines = 0
@@ -171,7 +200,7 @@ public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
         
         closeButton.text = "x"
         closeButton.textAlignment = NSTextAlignment.Center
-        closeButton.textColor = whiteColor
+        closeButton.textColor = textColor
         closeButton.font = UIFont(name: "Avenir", size: 26)
         
         closeButton.dimsWhenPressed = true

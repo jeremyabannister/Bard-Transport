@@ -18,10 +18,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         // Smart Times
         let smartTimes = SmartTimes()
-        view.addSubview(smartTimes)
         
         smartTimes.cornerRadius = 10
-        smartTimes.backgroundColor = UIColor(white: 1, alpha: 0.5)
+//        smartTimes.backgroundColor = UIColor(white: 1, alpha: 0.5)
         smartTimes.todayWidget = true
         
         let widthOfSmartTimes = CGFloat(0.9)
@@ -37,6 +36,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         smartTimes.frame = newFrame
         
+        
+        // Blurred Background
+        let blurredBackground = UIVisualEffectView()
+        
+        blurredBackground.effect = UIBlurEffect(style: .ExtraLight)
+        blurredBackground.frame = smartTimes.frame
+        blurredBackground.cornerRadius = smartTimes.cornerRadius
+        blurredBackground.clipsToBounds = true
+        
+        view.addSubview(blurredBackground)
+        view.addSubview(smartTimes)
         
         
         
@@ -56,10 +66,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         let test = UILabel()
         test.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
-        //        view.addSubview(test)
         test.backgroundColor = UIColor.whiteColor()
-        test.text = "width is \(view.width) and then \(newFrame.origin.x)"
+        test.text = "corner radius is \(blurredBackground.cornerRadius) and then \(smartTimes.cornerRadius)"
         
+//        view.addSubview(test)
         
     }
     

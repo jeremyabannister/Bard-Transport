@@ -534,7 +534,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private func configureHelpScreen () {
         
         helpScreen.delegate = self
-        helpScreen.backgroundColor = blackColor
+//        helpScreen.backgroundColor = blackColor
         helpScreen.cornerRadius = 10
         helpScreen.clipsToBounds = true
         
