@@ -35,20 +35,24 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private let backgroundImageView = UIImageView()
     private let omniPanTouchCover = JABTouchableView()
     
+    private let dimmer = UIView()
+    private let shuttleStopStack = ShuttleStopStack()
+    private let helpScreen = ScheduleSelectorHelpScreen()
+    
     private let sidebarButton = JABButton()
     private let mapButton = JABButton()
     private let stackTransitionButton = JABButton()
     private let helpButton = JABButton()
     
-    
-    private let dimmer = UIView()
-    private let shuttleStopStack = ShuttleStopStack()
-    private let helpScreen = ScheduleSelectorHelpScreen()
-    
     private let scheduleSheet = ScheduleSheet()
     
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
+    
+    private var topBufferForShuttleStopStack = CGFloat(0)
+    private var bottomBufferForShuttleStopStack = CGFloat(0)
+    private var widthOfShuttleStopStack = CGFloat(0)
+    
     
     private var leftBufferForSidebarButton = CGFloat(0)
     private var topBufferForSidebarButton = CGFloat(0)
@@ -78,10 +82,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private var horizontalContentInsetForHelpButton = CGFloat(0)
     private var verticalContentInsetForHelpButton = CGFloat(0)
     
-    
-    private var topBufferForShuttleStopStack = CGFloat(0)
-    private var bottomBufferForShuttleStopStack = CGFloat(0)
-    private var widthOfShuttleStopStack = CGFloat(0)
     
     private var topBufferForScheduleSheet = CGFloat(0)
     private var widthOfScheduleSheet = CGFloat(0)
@@ -123,6 +123,14 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     // MARK: Parameters
     override public func updateParameters() {
         
+        
+        topBufferForShuttleStopStack = 0.18
+        bottomBufferForShuttleStopStack = 0.1
+        widthOfShuttleStopStack = 0.23
+        widthOfShuttleStopStack = 0.35
+        
+        
+        
         leftBufferForSidebarButton = 0.04
         topBufferForSidebarButton = 0.1
         widthOfSidebarButton = 0.075
@@ -152,12 +160,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         verticalContentInsetForHelpButton = horizontalContentInsetForHelpButton
         
         
-        
-        topBufferForShuttleStopStack = 0.18
-        bottomBufferForShuttleStopStack = 0.1
-        widthOfShuttleStopStack = 0.23
-        widthOfShuttleStopStack = 0.35
-        
         topBufferForScheduleSheet = 0.42
         widthOfScheduleSheet = 0.95
         
@@ -181,29 +183,19 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         addBackgroundImageView()
         addOmniPanTouchCover()
         
+        addDimmer()
+        addShuttleStopStack()
+        addHelpScreen()
+        
         addSidebarButton()
         addMapButton()
         addStackTransitionButton()
         addHelpButton()
         
-        addDimmer()
-        addShuttleStopStack()
-        addHelpScreen()
-        
         addScheduleSheet()
         
     }
     
-    
-    public func addBlur () {
-        
-        
-        let blurEffect = UIBlurEffect(style: .Light)
-        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-        blurredEffectView.frame = CGRect(x: 100, y: 100, width: 200, height: 300)
-        addSubview(blurredEffectView)
-        
-    }
     
     override public func updateAllUI() {
         
@@ -215,6 +207,18 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         configureOmniPanTouchCover()
         positionOmniPanTouchCover()
+        
+        
+        
+        
+        configureDimmer()
+        positionDimmer()
+        
+        configureShuttleStopStack()
+        positionShuttleStopStack()
+        
+        configureHelpScreen()
+        positionHelpScreen()
         
         
         
@@ -230,17 +234,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         configureHelpButton()
         positionHelpButton()
         
-        
-        
-        
-        configureDimmer()
-        positionDimmer()
-        
-        configureShuttleStopStack()
-        positionShuttleStopStack()
-        
-        configureHelpScreen()
-        positionHelpScreen()
         
         
         
