@@ -756,6 +756,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     // MARK: Touchable View
     public func touchableViewTouchDidBegin(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer) {
         
+        print("1")
+        
         let location = gestureRecognizer.locationInView(self)
         
         if scheduleSheetOpen {

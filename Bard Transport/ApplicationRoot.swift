@@ -182,14 +182,13 @@ public class ApplicationRoot: JABApplicationRoot, UpdateNotificationDelegate {
     // MARK: Notification Background Blur
     private func configureNotificationBackgroundBlur () {
         
-        notificationBackgroundBlur.effect = UIBlurEffect(style: .Light)
-        
         if notificationState == .None {
-            notificationBackgroundBlur.opacity = 0
+            notificationBackgroundBlur.effect = nil
         } else {
-            notificationBackgroundBlur.opacity = 1
+            notificationBackgroundBlur.effect = UIBlurEffect(style: .Light)
         }
         
+        notificationBackgroundBlur.userInteractionEnabled = false
     }
     
     private func positionNotificationBackgroundBlur () {
