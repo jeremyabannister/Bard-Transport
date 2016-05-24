@@ -22,6 +22,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     // MARK: Properties
     // MARK:
     
+    
     // MARK: Delegate
     public var delegate: ScheduleSelectorDelegate?
     
