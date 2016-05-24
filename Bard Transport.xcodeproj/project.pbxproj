@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8701BD2C1CF3F23B000785B3 /* ScheduleSelectorButtonsLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701BD2B1CF3F23B000785B3 /* ScheduleSelectorButtonsLayer.swift */; };
+		8701BD2F1CF447C0000785B3 /* ScheduleSelectorMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701BD2E1CF447C0000785B3 /* ScheduleSelectorMenu.swift */; };
 		8720E7541CED038F002E6187 /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7531CED038F002E6187 /* Triangle.png */; };
 		8720E7561CED03F1002E6187 /* Church St.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7551CED03F1002E6187 /* Church St.png */; };
 		8720E75E1CED071E002E6187 /* Ward Gate.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E75D1CED071E002E6187 /* Ward Gate.png */; };
@@ -188,6 +189,7 @@
 		4AD68225478E78229D345496 /* Pods-Bard TransportUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CD51063176D469D7FF775F0 /* Pods-Bard TransportUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8701BD2B1CF3F23B000785B3 /* ScheduleSelectorButtonsLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSelectorButtonsLayer.swift; sourceTree = "<group>"; };
+		8701BD2E1CF447C0000785B3 /* ScheduleSelectorMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSelectorMenu.swift; sourceTree = "<group>"; };
 		8720E7531CED038F002E6187 /* Triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Triangle.png; sourceTree = "<group>"; };
 		8720E7551CED03F1002E6187 /* Church St.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Church St.png"; sourceTree = "<group>"; };
 		8720E75D1CED071E002E6187 /* Ward Gate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ward Gate.png"; sourceTree = "<group>"; };
@@ -362,6 +364,14 @@
 				8701BD2B1CF3F23B000785B3 /* ScheduleSelectorButtonsLayer.swift */,
 			);
 			name = "Buttons Layer";
+			sourceTree = "<group>";
+		};
+		8701BD301CF447C4000785B3 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				8701BD2E1CF447C0000785B3 /* ScheduleSelectorMenu.swift */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		872789C01CE7B57200D6CD06 /* Components */ = {
@@ -865,6 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				87ECF3FA1CE7BA500093C2AE /* Shuttle Stop Stack */,
+				8701BD301CF447C4000785B3 /* Menu */,
 				8701BD2D1CF3F24C000785B3 /* Buttons Layer */,
 				87ECF3F71CE7BA330093C2AE /* Help Screen */,
 				87ECF3F51CE7BA1F0093C2AE /* Schedule Sheet */,
@@ -1455,6 +1466,7 @@
 				87C3C50D1CEE439300005CDF /* Global.swift in Sources */,
 				87ECF4061CE7BB180093C2AE /* ScheduleSelectorHelpScreen.swift in Sources */,
 				872789DB1CE7B74200D6CD06 /* SmartTimesPaneEndOfLineErrorView.swift in Sources */,
+				8701BD2F1CF447C0000785B3 /* ScheduleSelectorMenu.swift in Sources */,
 				87ECF40A1CE7BB4D0093C2AE /* ShuttleStopStack.swift in Sources */,
 				873448B51CE7AE0C005A17AC /* AppDelegate.swift in Sources */,
 				873448FA1CE7B2AC005A17AC /* ScheduledTime.swift in Sources */,

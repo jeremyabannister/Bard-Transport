@@ -12,6 +12,7 @@ import JABSwiftCore
 public enum ScheduleSelectorState {
     case Normal
     case SidebarOpen
+    case MenuEngorged
     case MenuOpen
     case HelpOpen
 }
@@ -47,6 +48,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private let helpButton = JABButton()
     
     private let blurLayer = UIVisualEffectView()
+    private let menu = ScheduleSelectorMenu()
     
     private let scheduleSheet = ScheduleSheet()
     
@@ -85,6 +87,13 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private var heightOfHelpButton = CGFloat(0)
     private var horizontalContentInsetForHelpButton = CGFloat(0)
     private var verticalContentInsetForHelpButton = CGFloat(0)
+    
+    
+    private var engorgedBufferForMenu = CGFloat(0)
+    private var leftBufferForMenu = CGFloat(0)
+    private var bufferBetweenMenuAndHelpButton = CGFloat(0)
+    private var widthOfMenu = CGFloat(0)
+    private var heightOfMenu = CGFloat(0)
     
     
     private var topBufferForScheduleSheet = CGFloat(0)
@@ -164,6 +173,13 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         verticalContentInsetForHelpButton = horizontalContentInsetForHelpButton
         
         
+        engorgedBufferForMenu = 0.001
+        leftBufferForMenu = leftBufferForHelpButton
+        bufferBetweenMenuAndHelpButton = 0.005
+        widthOfMenu = 0.4
+        heightOfMenu = 0.2
+        
+        
         topBufferForScheduleSheet = 0.42
         widthOfScheduleSheet = 0.95
         
@@ -197,6 +213,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         addHelpButton()
         
         addBlurLayer()
+        addMenu()
         
         addScheduleSheet()
         
@@ -244,6 +261,9 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         configureBlurLayer()
         positionBlurLayer()
+        
+        configureMenu()
+        positionMenu()
         
         
         
@@ -300,6 +320,10 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     private func addBlurLayer () {
         addSubview(blurLayer)
+    }
+    
+    private func addMenu () {
+        addSubview(menu)
     }
     
     
@@ -598,7 +622,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     // MARK: Blur Layer
     private func configureBlurLayer () {
         
-        if state == .MenuOpen {
+        
+        if state == .MenuOpen || state == .MenuEngorged {
             blurLayer.effect = UIBlurEffect(style: .Light)
         } else {
             blurLayer.effect = nil
@@ -611,6 +636,55 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private func positionBlurLayer () {
         blurLayer.frame = bounds
     }
+    
+    
+    
+    
+    // MARK: Menu
+    private func configureMenu () {
+        
+        menu.cornerRadius = 10
+        menu.clipsToBounds = true
+        
+        if state == .MenuOpen || state == .MenuEngorged {
+            menu.opacity = 1
+        } else {
+            menu.opacity = 0
+        }
+        
+    }
+    
+    private func positionMenu () {
+        
+        var newFrame = CGRectZero
+        
+        
+        if state == .MenuOpen {
+            newFrame.size.width = width * widthOfMenu
+            newFrame.size.height = width * heightOfMenu
+            
+            newFrame.origin.x = width * leftBufferForMenu
+            newFrame.origin.y = helpButton.y - newFrame.size.height - (width * bufferBetweenMenuAndHelpButton)
+            
+        } else if state == .MenuEngorged {
+            
+            newFrame.size.width = (width * widthOfHelpButton) + (2 * width * engorgedBufferForMenu)
+            newFrame.size.height = (width * heightOfHelpButton) + (2 * width * engorgedBufferForMenu)
+            
+            newFrame.origin.x = helpButton.x - (width * engorgedBufferForMenu)
+            newFrame.origin.y = helpButton.y - (width * engorgedBufferForMenu)
+            
+        } else {
+            
+            newFrame = helpButton.frame
+            
+        }
+        
+        
+        menu.frame = newFrame
+        
+    }
+    
     
     
     
@@ -681,12 +755,19 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     public func openMenu (completion: (Bool) -> () ) {
         
+        helpButton.printFrame()
+        
         bringSubviewToFront(blurLayer)
+        bringSubviewToFront(menu)
         bringSubviewToFront(helpButton)
         bringSubviewToFront(scheduleSheet)
         
-        state = .MenuOpen
-        animatedUpdate(completion: completion)
+        
+        state = .MenuEngorged
+        animatedUpdate(2) { (Bool) in
+            self.state = .MenuOpen
+            self.animatedUpdate(completion: completion)
+        }
         
     }
     
@@ -697,9 +778,11 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     public func closeMenu (completion: (Bool) -> () ) {
         
-        state = .Normal
-        animatedUpdate(completion: completion)
-        
+        state = .MenuEngorged
+        animatedUpdate(2) { (Bool) in
+            self.state = .Normal
+            self.animatedUpdate(completion: completion)
+        }
     }
     
     
