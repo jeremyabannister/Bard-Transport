@@ -12,6 +12,7 @@ import JABSwiftCore
 public enum ScheduleSelectorState {
     case Normal
     case SidebarOpen
+    case MenuOpen
     case HelpOpen
 }
 
@@ -43,6 +44,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private let mapButton = JABButton()
     private let stackTransitionButton = JABButton()
     private let helpButton = JABButton()
+    
+    private let blurLayer = UIVisualEffectView()
     
     private let scheduleSheet = ScheduleSheet()
     
@@ -192,6 +195,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         addStackTransitionButton()
         addHelpButton()
         
+        addBlurLayer()
+        
         addScheduleSheet()
         
     }
@@ -236,6 +241,10 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         
         
+        configureBlurLayer()
+        positionBlurLayer()
+        
+        
         
         configureScheduleSheet()
         positionScheduleSheet()
@@ -250,6 +259,21 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     private func addOmniPanTouchCover () {
         addSubview(omniPanTouchCover)
+    }
+    
+    
+    
+    
+    private func addDimmer () {
+        addSubview(dimmer)
+    }
+    
+    private func addShuttleStopStack () {
+        addSubview(shuttleStopStack)
+    }
+    
+    private func addHelpScreen () {
+        addSubview(helpScreen)
     }
     
     
@@ -273,16 +297,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
-    private func addDimmer () {
-        addSubview(dimmer)
-    }
-    
-    private func addShuttleStopStack () {
-        addSubview(shuttleStopStack)
-    }
-    
-    private func addHelpScreen () {
-        addSubview(helpScreen)
+    private func addBlurLayer () {
+        addSubview(blurLayer)
     }
     
     
@@ -318,152 +334,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
-    // MARK: Sidebar Button
-    private func configureSidebarButton () {
-        
-        sidebarButton.buttonDelegate = self
-        sidebarButton.type = JABButtonType.Image
-        
-        sidebarButton.horizontalContentInset = width * horizontalContentInsetForSidebarButton
-        sidebarButton.verticalContentInset = width * verticalContentInsetForSidebarButton
-        
-        sidebarButton.image = UIImage(named: "Sidebar Button.png")
-        
-        if state == .HelpOpen || state == .SidebarOpen {
-            sidebarButton.userInteractionEnabled = false
-        } else {
-            sidebarButton.userInteractionEnabled = true
-        }
-        
-        sidebarButton.updateAllUI()
-    }
-    
-    private func positionSidebarButton () {
-        
-        var newFrame = CGRectZero
-        
-        newFrame.size.width = (width * widthOfSidebarButton) + (2 * width * horizontalContentInsetForSidebarButton)
-        newFrame.size.height = (width * heightOfSidebarButton) + (2 * width * verticalContentInsetForSidebarButton)
-        
-        newFrame.origin.x = width * (leftBufferForSidebarButton - horizontalContentInsetForSidebarButton)
-        newFrame.origin.y = width * (topBufferForSidebarButton - verticalContentInsetForSidebarButton)
-        
-        sidebarButton.frame = newFrame
-    }
-    
-    
-    // MARK: Map Button
-    private func configureMapButton () {
-        
-        mapButton.buttonDelegate = self
-        mapButton.type = JABButtonType.Image
-        
-        mapButton.horizontalContentInset = width * horizontalContentInsetForMapButton
-        mapButton.verticalContentInset = width * verticalContentInsetForMapButton
-        
-        mapButton.image = UIImage(named: "Map Button 2D.png")
-        
-        if state == .HelpOpen || state == .SidebarOpen {
-            mapButton.userInteractionEnabled = false
-        } else {
-            mapButton.userInteractionEnabled = true
-        }
-        
-        mapButton.updateAllUI()
-        
-    }
-    
-    private func positionMapButton () {
-        
-        var newFrame = CGRectZero
-        
-        newFrame.size.width = (width * widthOfMapButton) + (2 * width * horizontalContentInsetForMapButton)
-        newFrame.size.height = (width * heightOfMapButton) + (2 * width * verticalContentInsetForMapButton)
-        
-        newFrame.origin.x = width - newFrame.size.width + (width * horizontalContentInsetForMapButton) - (width * rightBufferForMapButton)
-        newFrame.origin.y = width * (topBufferForMapButton - verticalContentInsetForMapButton)
-        
-        mapButton.frame = newFrame
-        
-    }
-    
-    
-    // MARK: Stack Transform Button
-    private func configureStackTransitionButton () {
-        
-        stackTransitionButton.buttonDelegate = self
-        stackTransitionButton.type = JABButtonType.Image
-        
-        stackTransitionButton.horizontalContentInset = width * horizontalContentInsetForStackTransitionButton
-        stackTransitionButton.verticalContentInset = width * verticalContentInsetForStackTransitionButton
-        
-        if shuttleStopStack.mode == ShuttleStopStackMode.MainStops {
-            stackTransitionButton.image = UIImage(named: "Plus Button.png")
-        } else {
-            stackTransitionButton.image = UIImage(named: "Minus Button.png")
-        }
-        
-        
-        if state == .HelpOpen || scheduleSheetOpen || shuttleStopStackIsAnimating {
-            stackTransitionButton.userInteractionEnabled = false
-        } else {
-            stackTransitionButton.userInteractionEnabled = true
-        }
-        
-        stackTransitionButton.updateAllUI()
-        
-    }
-    
-    private func positionStackTransitionButton () {
-        
-        var newFrame = CGRectZero
-        
-        newFrame.width = (width * widthOfStackTransitionButton) + (2 * width * horizontalContentInsetForStackTransitionButton)
-        newFrame.height = (width * heightOfStackTransitionButton) + (2 * width * verticalContentInsetForStackTransitionButton)
-        
-        newFrame.x = width - (width * widthOfStackTransitionButton) - (width * (rightBufferForStackTransitionButton + horizontalContentInsetForStackTransitionButton))
-        newFrame.y = height - newFrame.size.height - (width * (bottomBufferForStackTransitionButton - verticalContentInsetForStackTransitionButton))
-        
-        stackTransitionButton.frame = newFrame
-        
-    }
-    
-    
-    // MARK: Help Button
-    private func configureHelpButton () {
-        
-        helpButton.buttonDelegate = self
-        helpButton.type = JABButtonType.Image
-        
-        helpButton.horizontalContentInset = width * horizontalContentInsetForHelpButton
-        helpButton.verticalContentInset = width * verticalContentInsetForHelpButton
-        
-        helpButton.image = UIImage(named: "Help Button.png")
-        
-        if state == .HelpOpen || scheduleSheetOpen {
-            helpButton.userInteractionEnabled = false
-        } else {
-            helpButton.userInteractionEnabled = true
-        }
-        
-        helpButton.updateAllUI()
-    }
-    
-    private func positionHelpButton () {
-        
-        var newFrame = CGRectZero
-        
-        newFrame.width = (width * widthOfHelpButton) + (2 * width * horizontalContentInsetForHelpButton)
-        newFrame.height = (width * heightOfHelpButton) + (2 * width * verticalContentInsetForHelpButton)
-        
-        newFrame.x = width * (leftBufferForHelpButton - horizontalContentInsetForHelpButton)
-        newFrame.y = height - newFrame.size.height - (width * (bottomBufferForHelpButton - verticalContentInsetForHelpButton))
-        
-        helpButton.frame = newFrame
-    }
-    
-    
-    
     
     
     
@@ -495,12 +365,13 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
+    
     // MARK: Shuttle Stop Stack
     private func configureShuttleStopStack () {
         
         shuttleStopStack.delegate = self
         
-        if scheduleSheetOpen || state == .HelpOpen {
+        if scheduleSheetOpen || state == .HelpOpen || state == .MenuOpen {
             shuttleStopStack.userInteractionEnabled = false
         } else {
             shuttleStopStack.userInteractionEnabled = true
@@ -573,6 +444,178 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
+    // MARK: Sidebar Button
+    private func configureSidebarButton () {
+        
+        sidebarButton.buttonDelegate = self
+        sidebarButton.type = JABButtonType.Image
+        
+        sidebarButton.horizontalContentInset = width * horizontalContentInsetForSidebarButton
+        sidebarButton.verticalContentInset = width * verticalContentInsetForSidebarButton
+        
+        sidebarButton.image = UIImage(named: "Sidebar Button.png")
+        
+        if state == .HelpOpen || state == .MenuOpen || state == .SidebarOpen {
+            sidebarButton.userInteractionEnabled = false
+        } else {
+            sidebarButton.userInteractionEnabled = true
+        }
+        
+        sidebarButton.updateAllUI()
+    }
+    
+    private func positionSidebarButton () {
+        
+        var newFrame = CGRectZero
+        
+        newFrame.size.width = (width * widthOfSidebarButton) + (2 * width * horizontalContentInsetForSidebarButton)
+        newFrame.size.height = (width * heightOfSidebarButton) + (2 * width * verticalContentInsetForSidebarButton)
+        
+        newFrame.origin.x = width * (leftBufferForSidebarButton - horizontalContentInsetForSidebarButton)
+        newFrame.origin.y = width * (topBufferForSidebarButton - verticalContentInsetForSidebarButton)
+        
+        sidebarButton.frame = newFrame
+    }
+    
+    
+    // MARK: Map Button
+    private func configureMapButton () {
+        
+        mapButton.buttonDelegate = self
+        mapButton.type = JABButtonType.Image
+        
+        mapButton.horizontalContentInset = width * horizontalContentInsetForMapButton
+        mapButton.verticalContentInset = width * verticalContentInsetForMapButton
+        
+        mapButton.image = UIImage(named: "Map Button 2D.png")
+        
+        if state == .HelpOpen || state == .MenuOpen || state == .SidebarOpen {
+            mapButton.userInteractionEnabled = false
+        } else {
+            mapButton.userInteractionEnabled = true
+        }
+        
+        mapButton.updateAllUI()
+        
+    }
+    
+    private func positionMapButton () {
+        
+        var newFrame = CGRectZero
+        
+        newFrame.size.width = (width * widthOfMapButton) + (2 * width * horizontalContentInsetForMapButton)
+        newFrame.size.height = (width * heightOfMapButton) + (2 * width * verticalContentInsetForMapButton)
+        
+        newFrame.origin.x = width - newFrame.size.width + (width * horizontalContentInsetForMapButton) - (width * rightBufferForMapButton)
+        newFrame.origin.y = width * (topBufferForMapButton - verticalContentInsetForMapButton)
+        
+        mapButton.frame = newFrame
+        
+    }
+    
+    
+    // MARK: Stack Transform Button
+    private func configureStackTransitionButton () {
+        
+        stackTransitionButton.buttonDelegate = self
+        stackTransitionButton.type = JABButtonType.Image
+        
+        stackTransitionButton.horizontalContentInset = width * horizontalContentInsetForStackTransitionButton
+        stackTransitionButton.verticalContentInset = width * verticalContentInsetForStackTransitionButton
+        
+        if shuttleStopStack.mode == ShuttleStopStackMode.MainStops {
+            stackTransitionButton.image = UIImage(named: "Plus Button.png")
+        } else {
+            stackTransitionButton.image = UIImage(named: "Minus Button.png")
+        }
+        
+        
+        if state == .HelpOpen || state == .MenuOpen || scheduleSheetOpen || shuttleStopStackIsAnimating {
+            stackTransitionButton.userInteractionEnabled = false
+        } else {
+            stackTransitionButton.userInteractionEnabled = true
+        }
+        
+        stackTransitionButton.updateAllUI()
+        
+    }
+    
+    private func positionStackTransitionButton () {
+        
+        var newFrame = CGRectZero
+        
+        newFrame.width = (width * widthOfStackTransitionButton) + (2 * width * horizontalContentInsetForStackTransitionButton)
+        newFrame.height = (width * heightOfStackTransitionButton) + (2 * width * verticalContentInsetForStackTransitionButton)
+        
+        newFrame.x = width - (width * widthOfStackTransitionButton) - (width * (rightBufferForStackTransitionButton + horizontalContentInsetForStackTransitionButton))
+        newFrame.y = height - newFrame.size.height - (width * (bottomBufferForStackTransitionButton - verticalContentInsetForStackTransitionButton))
+        
+        stackTransitionButton.frame = newFrame
+        
+    }
+    
+    
+    // MARK: Help Button
+    private func configureHelpButton () {
+        
+        helpButton.buttonDelegate = self
+        helpButton.type = JABButtonType.Image
+        
+        helpButton.horizontalContentInset = width * horizontalContentInsetForHelpButton
+        helpButton.verticalContentInset = width * verticalContentInsetForHelpButton
+        
+        helpButton.image = UIImage(named: "Help Button.png")
+        
+        if state == .HelpOpen || state == .MenuOpen || scheduleSheetOpen {
+            helpButton.userInteractionEnabled = false
+        } else {
+            helpButton.userInteractionEnabled = true
+        }
+        
+        helpButton.updateAllUI()
+    }
+    
+    private func positionHelpButton () {
+        
+        var newFrame = CGRectZero
+        
+        newFrame.width = (width * widthOfHelpButton) + (2 * width * horizontalContentInsetForHelpButton)
+        newFrame.height = (width * heightOfHelpButton) + (2 * width * verticalContentInsetForHelpButton)
+        
+        newFrame.x = width * (leftBufferForHelpButton - horizontalContentInsetForHelpButton)
+        newFrame.y = height - newFrame.size.height - (width * (bottomBufferForHelpButton - verticalContentInsetForHelpButton))
+        
+        helpButton.frame = newFrame
+    }
+    
+    
+    
+    
+    
+    
+    
+    // MARK: Blur Layer
+    private func configureBlurLayer () {
+        
+        if state == .MenuOpen {
+            blurLayer.effect = UIBlurEffect(style: .Light)
+        } else {
+            blurLayer.effect = nil
+        }
+        
+        blurLayer.userInteractionEnabled = false
+        
+    }
+    
+    private func positionBlurLayer () {
+        blurLayer.frame = bounds
+    }
+    
+    
+    
+    
+    
+    
     
     // MARK: Schedule Sheet
     private func configureScheduleSheet () {
@@ -630,6 +673,55 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     }
     
     
+    
+    public func openMenu () {
+        openMenu { (Bool) -> () in }
+    }
+    
+    public func openMenu (completion: (Bool) -> () ) {
+        
+        bringSubviewToFront(blurLayer)
+        bringSubviewToFront(helpButton)
+        bringSubviewToFront(scheduleSheet)
+        
+        state = .MenuOpen
+        animatedUpdate(completion: completion)
+        
+    }
+    
+    
+    public func closeMenu () {
+        closeMenu { (Bool) -> () in }
+    }
+    
+    public func closeMenu (completion: (Bool) -> () ) {
+        
+        state = .Normal
+        animatedUpdate(completion: completion)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    public func openHelpScreen () {
+        openHelpScreen { (Bool) -> () in }
+    }
+    
+    public func openHelpScreen (completion: (Bool) -> () ) {
+        
+         state = .HelpOpen
+         animatedUpdate(defaultAnimationDuration) { (Bool) -> () in
+         self.helpScreen.open = true
+         self.helpScreen.animatedUpdate(0.05, completion: completion)
+         }
+        
+    }
+    
+    
     private func closeHelpScreen () {
         closeHelpScreen { (Bool) -> () in }
     }
@@ -644,18 +736,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     }
     
     
-    public func openHelpScreen () {
-        openHelpScreen { (Bool) -> () in }
-    }
-    
-    public func openHelpScreen (completion: (Bool) -> () ) {
-        
-        state = .HelpOpen
-        animatedUpdate(defaultAnimationDuration) { (Bool) -> () in
-            self.helpScreen.open = true
-            self.helpScreen.animatedUpdate(0.05, completion: completion)
-        }
-    }
     
     
     
@@ -707,7 +787,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         if state == .SidebarOpen {
             delegate?.scheduleSelectorHelpButtonWasPressed(self)
         } else {
-            openHelpScreen()
+//            openHelpScreen()
+            openMenu()
         }
     }
     
@@ -782,6 +863,14 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         if scheduleSheetOpen {
             
             releaseScheduleSheet(yVelocity, methodCallNumber: methodCallNumber, panGestureInitiated: panGestureInitiated)
+            
+        } else if state == .MenuOpen {
+            
+            if methodCallNumber < 5 {
+                
+                closeMenu()
+                
+            }
             
         } else if state == .HelpOpen {
             
