@@ -169,15 +169,15 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         bottomBufferForHelpButton = 0.03
         widthOfHelpButton = 0.1
         heightOfHelpButton = widthOfHelpButton
-        horizontalContentInsetForHelpButton = 0.05
+        horizontalContentInsetForHelpButton = leftBufferForHelpButton
         verticalContentInsetForHelpButton = horizontalContentInsetForHelpButton
         
         
         engorgedBufferForMenu = 0.001
         leftBufferForMenu = leftBufferForHelpButton
         bufferBetweenMenuAndHelpButton = 0.005
-        widthOfMenu = 0.4
-        heightOfMenu = 0.2
+        widthOfMenu = 0.6
+        heightOfMenu = 0.35
         
         
         topBufferForScheduleSheet = 0.42
@@ -668,15 +668,19 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
             
         } else if state == .MenuEngorged {
             
-            newFrame.size.width = (width * widthOfHelpButton) + (2 * width * engorgedBufferForMenu)
-            newFrame.size.height = (width * heightOfHelpButton) + (2 * width * engorgedBufferForMenu)
+            newFrame.size.width = (width * widthOfHelpButton) + (2 * width * horizontalContentInsetForHelpButton) + (2 * width * engorgedBufferForMenu)
+            newFrame.size.height = (width * heightOfHelpButton) + (2 * width * verticalContentInsetForHelpButton) + (2 * width * engorgedBufferForMenu)
             
             newFrame.origin.x = helpButton.x - (width * engorgedBufferForMenu)
             newFrame.origin.y = helpButton.y - (width * engorgedBufferForMenu)
             
         } else {
             
-            newFrame = helpButton.frame
+            newFrame.size.width = width * widthOfHelpButton
+            newFrame.size.height = width * heightOfHelpButton
+            
+            newFrame.origin.x = helpButton.x + (width * horizontalContentInsetForHelpButton)
+            newFrame.origin.y = helpButton.y + (width * verticalContentInsetForHelpButton)
             
         }
         
@@ -755,7 +759,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     public func openMenu (completion: (Bool) -> () ) {
         
-        helpButton.printFrame()
         
         bringSubviewToFront(blurLayer)
         bringSubviewToFront(menu)
@@ -764,9 +767,9 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         
         state = .MenuEngorged
-        animatedUpdate(2) { (Bool) in
+        animatedUpdate(defaultAnimationDuration/2, options: .CurveLinear) { (Bool) in
             self.state = .MenuOpen
-            self.animatedUpdate(completion: completion)
+            self.animatedUpdate(defaultAnimationDuration/2, options: .CurveEaseOut, completion: completion)
         }
         
     }
@@ -779,9 +782,9 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     public func closeMenu (completion: (Bool) -> () ) {
         
         state = .MenuEngorged
-        animatedUpdate(2) { (Bool) in
+        animatedUpdate(defaultAnimationDuration/2, options: .CurveLinear) { (Bool) in
             self.state = .Normal
-            self.animatedUpdate(completion: completion)
+            self.animatedUpdate(defaultAnimationDuration/2, options: .CurveEaseOut, completion: completion)
         }
     }
     
