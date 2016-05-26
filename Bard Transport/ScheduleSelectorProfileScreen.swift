@@ -156,7 +156,7 @@ public class ScheduleSelectorProfileScreen: JABView, JABButtonDelegate {
     // MARK: Instruction Label
     private func configureInstructionLabel () {
         
-        instructionLabel.text = "To view the shuttle schedule, drag your finger along your route and let go."
+        instructionLabel.text = "User profiles are not supported at this time."
         instructionLabel.textAlignment = NSTextAlignment.Center
         instructionLabel.textColor = textColor
         instructionLabel.font = UIFont(name: "Avenir", size: 15)

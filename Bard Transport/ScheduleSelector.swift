@@ -15,9 +15,10 @@ public enum ScheduleSelectorState {
     case MenuEngorged
     case MenuOpen
     case HelpOpen
+    case ProfileOpen
 }
 
-public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelectorHelpScreenDelegate, JABTouchableViewDelegate, JABButtonDelegate, ScheduleSelectorMenuDelegate, ScheduleSheetDelegate {
+public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableViewDelegate, JABButtonDelegate, ScheduleSelectorHelpScreenDelegate, ScheduleSelectorProfileScreenDelegate, ScheduleSelectorMenuDelegate, ScheduleSheetDelegate {
     
     // MARK:
     // MARK: Properties
@@ -48,6 +49,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     private let blurLayer = UIVisualEffectView()
     private let helpScreen = ScheduleSelectorHelpScreen()
+    private let profileScreen = ScheduleSelectorProfileScreen()
     private let menu = ScheduleSelectorMenu()
     
     private let scheduleSheet = ScheduleSheet()
@@ -213,6 +215,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         addBlurLayer()
         addHelpScreen()
+        addProfileScreen()
         addMenu()
         
         addScheduleSheet()
@@ -262,6 +265,9 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         configureHelpScreen()
         positionHelpScreen()
+        
+        configureProfileScreen()
+        positionProfileScreen()
         
         configureMenu()
         positionMenu()
@@ -322,6 +328,10 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     private func addHelpScreen () {
         addSubview(helpScreen)
+    }
+    
+    private func addProfileScreen () {
+        addSubview(profileScreen)
     }
     
     private func addMenu () {
@@ -396,7 +406,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         shuttleStopStack.delegate = self
         
-        if scheduleSheetOpen || state == .HelpOpen || state == .MenuOpen {
+        if scheduleSheetOpen || state == .HelpOpen || state == .ProfileOpen || state == .MenuOpen {
             shuttleStopStack.userInteractionEnabled = false
         } else {
             shuttleStopStack.userInteractionEnabled = true
@@ -436,7 +446,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         sidebarButton.image = UIImage(named: "Sidebar Button.png")
         
-        if state == .HelpOpen || state == .MenuOpen || state == .SidebarOpen {
+        if state == .HelpOpen || state == .ProfileOpen || state == .MenuOpen || state == .SidebarOpen {
             sidebarButton.userInteractionEnabled = false
         } else {
             sidebarButton.userInteractionEnabled = true
@@ -470,7 +480,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         mapButton.image = UIImage(named: "Map Button 2D.png")
         
-        if state == .HelpOpen || state == .MenuOpen || state == .SidebarOpen {
+        if state == .HelpOpen || state == .ProfileOpen || state == .MenuOpen || state == .SidebarOpen {
             mapButton.userInteractionEnabled = false
         } else {
             mapButton.userInteractionEnabled = true
@@ -511,7 +521,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         }
         
         
-        if state == .HelpOpen || state == .MenuOpen || scheduleSheetOpen || shuttleStopStackIsAnimating {
+        if state == .HelpOpen || state == .ProfileOpen || state == .MenuOpen || scheduleSheetOpen || shuttleStopStackIsAnimating {
             stackTransitionButton.userInteractionEnabled = false
         } else {
             stackTransitionButton.userInteractionEnabled = true
@@ -547,7 +557,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         menuButton.image = UIImage(named: "Menu Button.png")
         
-        if state == .HelpOpen || state == .MenuOpen || scheduleSheetOpen {
+        if state == .MenuOpen || scheduleSheetOpen {
             menuButton.userInteractionEnabled = false
         } else {
             menuButton.userInteractionEnabled = true
@@ -579,7 +589,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private func configureBlurLayer () {
         
         
-        if state == .MenuOpen || state == .MenuEngorged || state == .HelpOpen {
+        if state == .MenuOpen || state == .MenuEngorged || state == .HelpOpen || state == .ProfileOpen {
             blurLayer.effect = UIBlurEffect(style: .Light)
         } else {
             blurLayer.effect = nil
@@ -640,6 +650,49 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     }
     
     
+    
+    
+    // MARK: Profile Screen
+    private func configureProfileScreen () {
+        
+        profileScreen.delegate = self
+        profileScreen.cornerRadius = 10
+        profileScreen.clipsToBounds = true
+        
+        if state == .ProfileOpen {
+            profileScreen.opacity = 1
+        } else {
+            profileScreen.opacity = 0
+        }
+        
+    }
+    
+    private func positionProfileScreen () {
+        
+        var newFrame = CGRectZero
+        
+        if state == .ProfileOpen {
+            
+            newFrame.size.width = width * widthOfNotifications
+            newFrame.size.height = width * heightOfNotifications
+            
+            newFrame.origin.x = (width - newFrame.size.width)/2
+            newFrame.origin.y = shuttleStopStack.y + (shuttleStopStack.height - newFrame.size.height)/2
+            
+        } else {
+            
+            newFrame.size.width = 0
+            newFrame.size.height = 0
+            
+            newFrame.origin.x = menuButton.center.x - newFrame.size.width/2
+            newFrame.origin.y = menuButton.center.y - newFrame.size.height/2
+            
+        }
+        
+        
+        profileScreen.frame = newFrame
+        
+    }
     
     
     
@@ -751,19 +804,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     // MARK:
     
     // MARK: Navigation
-    private func closeScheduleSheet () {
-        closeScheduleSheet { (Bool) -> () in }
-    }
-    
-    private func closeScheduleSheet (completion: (Bool) -> () ) {
-        
-        scheduleSheetOpen = false
-        shuttleStopStack.animateDeselection()
-        animatedUpdate(defaultAnimationDuration, options: .CurveEaseInOut, completion: completion)
-    }
-    
-    
-    
     
     
     public func openHelpScreen () {
@@ -796,6 +836,35 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
+    public func openProfileScreen () {
+        openProfileScreen { (Bool) -> () in }
+    }
+    
+    public func openProfileScreen (completion: (Bool) -> () ) {
+        
+        state = .ProfileOpen
+        animatedUpdate(defaultAnimationDuration) { (Bool) -> () in
+            self.profileScreen.open = true
+            self.profileScreen.animatedUpdate(0.05, completion: completion)
+        }
+        
+    }
+    
+    
+    private func closeProfileScreen () {
+        closeProfileScreen { (Bool) -> () in }
+    }
+    
+    private func closeProfileScreen (completion: (Bool) -> () ) {
+        
+        profileScreen.open = false
+        profileScreen.animatedUpdate(0.05, completion: { (Bool) -> () in
+            self.state = .Normal
+            self.animatedUpdate(defaultAnimationDuration, completion: completion)
+        })
+    }
+    
+    
     
     
     public func openMenu () {
@@ -807,6 +876,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         bringSubviewToFront(blurLayer)
         bringSubviewToFront(helpScreen)
+        bringSubviewToFront(profileScreen)
         bringSubviewToFront(menu)
         bringSubviewToFront(menuButton)
         bringSubviewToFront(scheduleSheet)
@@ -836,6 +906,18 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
+    
+    
+    private func closeScheduleSheet () {
+        closeScheduleSheet { (Bool) -> () in }
+    }
+    
+    private func closeScheduleSheet (completion: (Bool) -> () ) {
+        
+        scheduleSheetOpen = false
+        shuttleStopStack.animateDeselection()
+        animatedUpdate(defaultAnimationDuration, options: .CurveEaseInOut, completion: completion)
+    }
     
     
     
@@ -925,10 +1007,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         animatedUpdate()
     }
     
-    // MARK: Help Screen
-    public func scheduleSelectorHelpScreenCloseButtonWasPressed(scheduleSelectorHelpScreen: ScheduleSelectorHelpScreen) {
-        closeHelpScreen()
-    }
     
     // MARK: Touchable View
     public func touchableViewTouchDidBegin(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer) {
@@ -940,7 +1018,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
                 panGestureInitiated = true
             }
         } else {
-            if state != .HelpOpen && state != .MenuOpen && state != .MenuEngorged {
+            if state != .HelpOpen && state != .ProfileOpen && state != .MenuOpen && state != .MenuEngorged {
                 panGestureInitiated = true
             }
         }
@@ -978,6 +1056,14 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
             if methodCallNumber < 5 {
                 
                 closeHelpScreen()
+                
+            }
+            
+        } else if state == .ProfileOpen {
+            
+            if methodCallNumber < 5 {
+                
+                closeProfileScreen()
                 
             }
             
@@ -1031,6 +1117,18 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
+    // MARK: Help Screen
+    public func scheduleSelectorHelpScreenCloseButtonWasPressed(scheduleSelectorHelpScreen: ScheduleSelectorHelpScreen) {
+        closeHelpScreen()
+    }
+    
+    
+    // MARK: Profile Screen
+    public func scheduleSelectorProfileScreenCloseButtonWasPressed(scheduleSelectorProfileScreen: ScheduleSelectorProfileScreen) {
+        closeProfileScreen()
+    }
+    
+    
     
     // MARK: Schedule Selector Menu
     public func scheduleSelectorMenuDidSelectMenuItemWithIdentifier(scheduleSelectorMenu: ScheduleSelectorMenu, identifier: String) {
@@ -1038,6 +1136,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         switch identifier {
         case "help":
             openHelpScreen()
+        case "profile":
+            openProfileScreen()
         default:
             print("ScheduleSelectorMenu did select item with unknown identifier: \(identifier)")
         }
