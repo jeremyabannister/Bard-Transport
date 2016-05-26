@@ -40,7 +40,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     private let dimmer = UIView()
     private let shuttleStopStack = ShuttleStopStack()
-    private let helpScreen = ScheduleSelectorHelpScreen()
     
     private let sidebarButton = JABButton()
     private let mapButton = JABButton()
@@ -48,6 +47,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private let menuButton = JABButton()
     
     private let blurLayer = UIVisualEffectView()
+    private let helpScreen = ScheduleSelectorHelpScreen()
     private let menu = ScheduleSelectorMenu()
     
     private let scheduleSheet = ScheduleSheet()
@@ -205,7 +205,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         addDimmer()
         addShuttleStopStack()
-        addHelpScreen()
         
         addSidebarButton()
         addMapButton()
@@ -213,6 +212,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         addMenuButton()
         
         addBlurLayer()
+        addHelpScreen()
         addMenu()
         
         addScheduleSheet()
@@ -240,9 +240,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         configureShuttleStopStack()
         positionShuttleStopStack()
         
-        configureHelpScreen()
-        positionHelpScreen()
-        
         
         
         configureSidebarButton()
@@ -259,8 +256,12 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         
         
+        
         configureBlurLayer()
         positionBlurLayer()
+        
+        configureHelpScreen()
+        positionHelpScreen()
         
         configureMenu()
         positionMenu()
@@ -293,10 +294,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         addSubview(shuttleStopStack)
     }
     
-    private func addHelpScreen () {
-        addSubview(helpScreen)
-    }
-    
     
     
     private func addSidebarButton () {
@@ -318,8 +315,13 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
+    
     private func addBlurLayer () {
         addSubview(blurLayer)
+    }
+    
+    private func addHelpScreen () {
+        addSubview(helpScreen)
     }
     
     private func addMenu () {
@@ -373,8 +375,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         if scheduleSheetOpen {
             dimmer.opacity = dimmedOpacity
-        } else if state == .HelpOpen {
-            dimmer.opacity = dimmedOpacity
         } else {
             dimmer.opacity = 0
         }
@@ -415,50 +415,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         newFrame.y = width * topBufferForShuttleStopStack
         
         shuttleStopStack.frame = newFrame
-        
-    }
-    
-    
-    // MARK: Help Screen
-    private func configureHelpScreen () {
-        
-        helpScreen.delegate = self
-//        helpScreen.backgroundColor = blackColor
-        helpScreen.cornerRadius = 10
-        helpScreen.clipsToBounds = true
-        
-        if state == .HelpOpen {
-            helpScreen.opacity = 1
-        } else {
-            helpScreen.opacity = 0
-        }
-        
-    }
-    
-    private func positionHelpScreen () {
-        
-        var newFrame = CGRectZero
-        
-        if state == .HelpOpen {
-            
-            newFrame.size.width = width * widthOfNotifications
-            newFrame.size.height = width * heightOfNotifications
-            
-            newFrame.origin.x = (width - newFrame.size.width)/2
-            newFrame.origin.y = shuttleStopStack.y + (shuttleStopStack.height - newFrame.size.height)/2
-            
-        } else {
-            
-            newFrame.size.width = 0
-            newFrame.size.height = 0
-            
-            newFrame.origin.x = menuButton.center.x - newFrame.size.width/2
-            newFrame.origin.y = menuButton.center.y - newFrame.size.height/2
-            
-        }
-        
-        
-        helpScreen.frame = newFrame
         
     }
     
@@ -623,7 +579,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private func configureBlurLayer () {
         
         
-        if state == .MenuOpen || state == .MenuEngorged {
+        if state == .MenuOpen || state == .MenuEngorged || state == .HelpOpen {
             blurLayer.effect = UIBlurEffect(style: .Light)
         } else {
             blurLayer.effect = nil
@@ -636,6 +592,55 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private func positionBlurLayer () {
         blurLayer.frame = bounds
     }
+    
+    
+    
+    
+    
+    // MARK: Help Screen
+    private func configureHelpScreen () {
+        
+        helpScreen.delegate = self
+        helpScreen.cornerRadius = 10
+        helpScreen.clipsToBounds = true
+        
+        if state == .HelpOpen {
+            helpScreen.opacity = 1
+        } else {
+            helpScreen.opacity = 0
+        }
+        
+    }
+    
+    private func positionHelpScreen () {
+        
+        var newFrame = CGRectZero
+        
+        if state == .HelpOpen {
+            
+            newFrame.size.width = width * widthOfNotifications
+            newFrame.size.height = width * heightOfNotifications
+            
+            newFrame.origin.x = (width - newFrame.size.width)/2
+            newFrame.origin.y = shuttleStopStack.y + (shuttleStopStack.height - newFrame.size.height)/2
+            
+        } else {
+            
+            newFrame.size.width = 0
+            newFrame.size.height = 0
+            
+            newFrame.origin.x = menuButton.center.x - newFrame.size.width/2
+            newFrame.origin.y = menuButton.center.y - newFrame.size.height/2
+            
+        }
+        
+        
+        helpScreen.frame = newFrame
+        
+    }
+    
+    
+    
     
     
     
@@ -759,6 +764,40 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
+    
+    
+    public func openHelpScreen () {
+        openHelpScreen { (Bool) -> () in }
+    }
+    
+    public func openHelpScreen (completion: (Bool) -> () ) {
+        
+        state = .HelpOpen
+        animatedUpdate(defaultAnimationDuration) { (Bool) -> () in
+            self.helpScreen.open = true
+            self.helpScreen.animatedUpdate(0.05, completion: completion)
+        }
+        
+    }
+    
+    
+    private func closeHelpScreen () {
+        closeHelpScreen { (Bool) -> () in }
+    }
+    
+    private func closeHelpScreen (completion: (Bool) -> () ) {
+        
+        helpScreen.open = false
+        helpScreen.animatedUpdate(0.05, completion: { (Bool) -> () in
+            self.state = .Normal
+            self.animatedUpdate(defaultAnimationDuration, completion: completion)
+        })
+    }
+    
+    
+    
+    
+    
     public func openMenu () {
         openMenu { (Bool) -> () in }
     }
@@ -767,6 +806,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         
         bringSubviewToFront(blurLayer)
+        bringSubviewToFront(helpScreen)
         bringSubviewToFront(menu)
         bringSubviewToFront(menuButton)
         bringSubviewToFront(scheduleSheet)
@@ -798,35 +838,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     
-    
-    
-    public func openHelpScreen () {
-        openHelpScreen { (Bool) -> () in }
-    }
-    
-    public func openHelpScreen (completion: (Bool) -> () ) {
-        
-         state = .HelpOpen
-         animatedUpdate(defaultAnimationDuration) { (Bool) -> () in
-         self.helpScreen.open = true
-         self.helpScreen.animatedUpdate(0.05, completion: completion)
-         }
-        
-    }
-    
-    
-    private func closeHelpScreen () {
-        closeHelpScreen { (Bool) -> () in }
-    }
-    
-    private func closeHelpScreen (completion: (Bool) -> () ) {
-        
-        helpScreen.open = false
-        helpScreen.animatedUpdate(0.05, completion: { (Bool) -> () in
-            self.state = .Normal
-            self.animatedUpdate(defaultAnimationDuration, completion: completion)
-        })
-    }
     
     
     
@@ -1026,9 +1037,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         switch identifier {
         case "help":
-            closeMenu({ (Bool) in
-                self.openHelpScreen()
-            })
+            openHelpScreen()
         default:
             print("ScheduleSelectorMenu did select item with unknown identifier: \(identifier)")
         }

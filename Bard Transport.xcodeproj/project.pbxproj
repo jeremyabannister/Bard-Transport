@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8701BD2F1CF447C0000785B3 /* ScheduleSelectorMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701BD2E1CF447C0000785B3 /* ScheduleSelectorMenu.swift */; };
+		8701BD321CF6A0B6000785B3 /* ScheduleSelectorProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701BD311CF6A0B6000785B3 /* ScheduleSelectorProfileScreen.swift */; };
 		8720E7541CED038F002E6187 /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7531CED038F002E6187 /* Triangle.png */; };
 		8720E7561CED03F1002E6187 /* Church St.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7551CED03F1002E6187 /* Church St.png */; };
 		8720E75E1CED071E002E6187 /* Ward Gate.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E75D1CED071E002E6187 /* Ward Gate.png */; };
@@ -192,6 +193,7 @@
 		4AD68225478E78229D345496 /* Pods-Bard TransportUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CD51063176D469D7FF775F0 /* Pods-Bard TransportUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8701BD2E1CF447C0000785B3 /* ScheduleSelectorMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSelectorMenu.swift; sourceTree = "<group>"; };
+		8701BD311CF6A0B6000785B3 /* ScheduleSelectorProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSelectorProfileScreen.swift; sourceTree = "<group>"; };
 		8720E7531CED038F002E6187 /* Triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Triangle.png; sourceTree = "<group>"; };
 		8720E7551CED03F1002E6187 /* Church St.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Church St.png"; sourceTree = "<group>"; };
 		8720E75D1CED071E002E6187 /* Ward Gate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ward Gate.png"; sourceTree = "<group>"; };
@@ -372,6 +374,14 @@
 				875B3F7F1CF62A8600C6276E /* Model */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		8701BD331CF6A0B9000785B3 /* Profile Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8701BD311CF6A0B6000785B3 /* ScheduleSelectorProfileScreen.swift */,
+			);
+			name = "Profile Screen";
 			sourceTree = "<group>";
 		};
 		872789C01CE7B57200D6CD06 /* Components */ = {
@@ -909,6 +919,7 @@
 				87ECF3FA1CE7BA500093C2AE /* Shuttle Stop Stack */,
 				8701BD301CF447C4000785B3 /* Menu */,
 				87ECF3F71CE7BA330093C2AE /* Help Screen */,
+				8701BD331CF6A0B9000785B3 /* Profile Screen */,
 				87ECF3F51CE7BA1F0093C2AE /* Schedule Sheet */,
 			);
 			name = Components;
@@ -1494,6 +1505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87ECF3FE1CE7BA980093C2AE /* ScheduledSheetTableViewSectionHeader.swift in Sources */,
+				8701BD321CF6A0B6000785B3 /* ScheduleSelectorProfileScreen.swift in Sources */,
 				873448B71CE7AE0C005A17AC /* ViewController.swift in Sources */,
 				872789BD1CE7B48E00D6CD06 /* ShuttleStopManager.swift in Sources */,
 				87ECF3EC1CE7B9810093C2AE /* Map.swift in Sources */,

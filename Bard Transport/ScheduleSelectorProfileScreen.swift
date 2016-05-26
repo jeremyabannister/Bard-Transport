@@ -1,22 +1,22 @@
 //
-//  ScheduleSelectorHelpScreen.swift
+//  ProfileScreen.swift
 //  Bard Transport
 //
-//  Created by Jeremy Bannister on 8/24/15.
-//  Copyright (c) 2015 Jeremy Alexander Bannister. All rights reserved.
+//  Created by Jeremy Bannister on 5/25/16.
+//  Copyright © 2016 Jeremy Bannister. All rights reserved.
 //
 
 import UIKit
 import JABSwiftCore
 
-public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
+public class ScheduleSelectorProfileScreen: JABView, JABButtonDelegate {
     
     // MARK:
     // MARK: Properties
     // MARK:
     
     // MARK: Delegate
-    public var delegate: ScheduleSelectorHelpScreenDelegate?
+    public var delegate: ScheduleSelectorProfileScreenDelegate?
     
     // MARK: State
     public var open = false
@@ -230,7 +230,7 @@ public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
     
     // MARK: Buttons
     private func closeButtonPressed () {
-        delegate?.scheduleSelectorHelpScreenCloseButtonWasPressed(self)
+        delegate?.scheduleSelectorProfileScreenCloseButtonWasPressed(self)
     }
     
     
@@ -250,7 +250,7 @@ public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
             case closeButton:
                 closeButtonPressed()
             default:
-                print("Hit default when switching over button in ScheduleSelectorHelpScreen.buttonWasUntouched:")
+                print("Hit default when switching over button in ScheduleSelectorProfileScreen.buttonWasUntouched:")
             }
         }
         
@@ -259,6 +259,6 @@ public class ScheduleSelectorHelpScreen: JABView, JABButtonDelegate {
 }
 
 
-public protocol ScheduleSelectorHelpScreenDelegate {
-    func scheduleSelectorHelpScreenCloseButtonWasPressed (scheduleSelectorHelpScreen: ScheduleSelectorHelpScreen)
+public protocol ScheduleSelectorProfileScreenDelegate {
+    func scheduleSelectorProfileScreenCloseButtonWasPressed (scheduleSelectorHelpScreen: ScheduleSelectorProfileScreen)
 }
