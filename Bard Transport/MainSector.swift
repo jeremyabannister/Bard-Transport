@@ -422,7 +422,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
         animatedUpdate()
     }
     
-    public func scheduleSelectorHelpButtonWasPressed(scheduleSelector: ScheduleSelector) {
+    public func scheduleSelectorMenuButtonWasPressed(scheduleSelector: ScheduleSelector) {
         
         if state == MainSectorState.Sidebar {
             state = MainSectorState.ScheduleSelector
@@ -431,7 +431,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
         
         
         animatedUpdate { (Bool) -> Void in
-            scheduleSelector.openHelpScreen()
+            scheduleSelector.openMenu()
         }
         
     }

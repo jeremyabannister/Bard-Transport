@@ -17,7 +17,7 @@ public enum ScheduleSelectorState {
     case HelpOpen
 }
 
-public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelectorHelpScreenDelegate, JABTouchableViewDelegate, JABButtonDelegate, ScheduleSheetDelegate {
+public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelectorHelpScreenDelegate, JABTouchableViewDelegate, JABButtonDelegate, ScheduleSelectorMenuDelegate, ScheduleSheetDelegate {
     
     // MARK:
     // MARK: Properties
@@ -45,7 +45,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private let sidebarButton = JABButton()
     private let mapButton = JABButton()
     private let stackTransitionButton = JABButton()
-    private let helpButton = JABButton()
+    private let menuButton = JABButton()
     
     private let blurLayer = UIVisualEffectView()
     private let menu = ScheduleSelectorMenu()
@@ -81,17 +81,17 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     private var horizontalContentInsetForStackTransitionButton = CGFloat(0)
     private var verticalContentInsetForStackTransitionButton = CGFloat(0)
     
-    private var leftBufferForHelpButton = CGFloat(0)
-    private var bottomBufferForHelpButton = CGFloat(0)
-    private var widthOfHelpButton = CGFloat(0)
-    private var heightOfHelpButton = CGFloat(0)
-    private var horizontalContentInsetForHelpButton = CGFloat(0)
-    private var verticalContentInsetForHelpButton = CGFloat(0)
+    private var leftBufferForMenuButton = CGFloat(0)
+    private var bottomBufferForMenuButton = CGFloat(0)
+    private var widthOfMenuButton = CGFloat(0)
+    private var heightOfMenuButton = CGFloat(0)
+    private var horizontalContentInsetForMenuButton = CGFloat(0)
+    private var verticalContentInsetForMenuButton = CGFloat(0)
     
     
     private var engorgedBufferForMenu = CGFloat(0)
     private var leftBufferForMenu = CGFloat(0)
-    private var bufferBetweenMenuAndHelpButton = CGFloat(0)
+    private var bufferBetweenMenuAndMenuButton = CGFloat(0)
     private var widthOfMenu = CGFloat(0)
     private var heightOfMenu = CGFloat(0)
     
@@ -165,19 +165,19 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         horizontalContentInsetForStackTransitionButton = 0.05
         verticalContentInsetForStackTransitionButton = horizontalContentInsetForStackTransitionButton
         
-        leftBufferForHelpButton = 0.03
-        bottomBufferForHelpButton = 0.03
-        widthOfHelpButton = 0.1
-        heightOfHelpButton = widthOfHelpButton
-        horizontalContentInsetForHelpButton = leftBufferForHelpButton
-        verticalContentInsetForHelpButton = horizontalContentInsetForHelpButton
+        leftBufferForMenuButton = 0.03
+        bottomBufferForMenuButton = 0.02
+        widthOfMenuButton = 0.1
+        heightOfMenuButton = widthOfMenuButton
+        horizontalContentInsetForMenuButton = leftBufferForMenuButton
+        verticalContentInsetForMenuButton = horizontalContentInsetForMenuButton
         
         
         engorgedBufferForMenu = 0.001
-        leftBufferForMenu = leftBufferForHelpButton
-        bufferBetweenMenuAndHelpButton = 0.005
+        leftBufferForMenu = leftBufferForMenuButton
+        bufferBetweenMenuAndMenuButton = 0.005
         widthOfMenu = 0.6
-        heightOfMenu = 0.35
+        heightOfMenu = widthOfMenu * menu.heightToWidthRatio
         
         
         topBufferForScheduleSheet = 0.42
@@ -210,7 +210,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         addSidebarButton()
         addMapButton()
         addStackTransitionButton()
-        addHelpButton()
+        addMenuButton()
         
         addBlurLayer()
         addMenu()
@@ -254,8 +254,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         configureStackTransitionButton()
         positionStackTransitionButton()
         
-        configureHelpButton()
-        positionHelpButton()
+        configureMenuButton()
+        positionMenuButton()
         
         
         
@@ -311,8 +311,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         addSubview(stackTransitionButton)
     }
     
-    private func addHelpButton () {
-        addSubview(helpButton)
+    private func addMenuButton () {
+        addSubview(menuButton)
     }
     
     
@@ -452,8 +452,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
             newFrame.size.width = 0
             newFrame.size.height = 0
             
-            newFrame.origin.x = helpButton.center.x - newFrame.size.width/2
-            newFrame.origin.y = helpButton.center.y - newFrame.size.height/2
+            newFrame.origin.x = menuButton.center.x - newFrame.size.width/2
+            newFrame.origin.y = menuButton.center.y - newFrame.size.height/2
             
         }
         
@@ -581,36 +581,36 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     
     
     // MARK: Help Button
-    private func configureHelpButton () {
+    private func configureMenuButton () {
         
-        helpButton.buttonDelegate = self
-        helpButton.type = JABButtonType.Image
+        menuButton.buttonDelegate = self
+        menuButton.type = JABButtonType.Image
         
-        helpButton.horizontalContentInset = width * horizontalContentInsetForHelpButton
-        helpButton.verticalContentInset = width * verticalContentInsetForHelpButton
+        menuButton.horizontalContentInset = width * horizontalContentInsetForMenuButton
+        menuButton.verticalContentInset = width * verticalContentInsetForMenuButton
         
-        helpButton.image = UIImage(named: "Help Button.png")
+        menuButton.image = UIImage(named: "Menu Button.png")
         
         if state == .HelpOpen || state == .MenuOpen || scheduleSheetOpen {
-            helpButton.userInteractionEnabled = false
+            menuButton.userInteractionEnabled = false
         } else {
-            helpButton.userInteractionEnabled = true
+            menuButton.userInteractionEnabled = true
         }
         
-        helpButton.updateAllUI()
+        menuButton.updateAllUI()
     }
     
-    private func positionHelpButton () {
+    private func positionMenuButton () {
         
         var newFrame = CGRectZero
         
-        newFrame.width = (width * widthOfHelpButton) + (2 * width * horizontalContentInsetForHelpButton)
-        newFrame.height = (width * heightOfHelpButton) + (2 * width * verticalContentInsetForHelpButton)
+        newFrame.width = (width * widthOfMenuButton) + (2 * width * horizontalContentInsetForMenuButton)
+        newFrame.height = (width * heightOfMenuButton) + (2 * width * verticalContentInsetForMenuButton)
         
-        newFrame.x = width * (leftBufferForHelpButton - horizontalContentInsetForHelpButton)
-        newFrame.y = height - newFrame.size.height - (width * (bottomBufferForHelpButton - verticalContentInsetForHelpButton))
+        newFrame.x = width * (leftBufferForMenuButton - horizontalContentInsetForMenuButton)
+        newFrame.y = height - newFrame.size.height - (width * (bottomBufferForMenuButton - verticalContentInsetForMenuButton))
         
-        helpButton.frame = newFrame
+        menuButton.frame = newFrame
     }
     
     
@@ -643,13 +643,19 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
     // MARK: Menu
     private func configureMenu () {
         
+        menu.delegate = self
         menu.cornerRadius = 10
         menu.clipsToBounds = true
         
-        if state == .MenuOpen || state == .MenuEngorged {
+        if state == .MenuOpen {
             menu.opacity = 1
+            menu.open = true
+        } else if state == .MenuEngorged {
+            menu.opacity = 1
+            menu.open = false
         } else {
             menu.opacity = 0
+            menu.open = false
         }
         
     }
@@ -664,23 +670,23 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
             newFrame.size.height = width * heightOfMenu
             
             newFrame.origin.x = width * leftBufferForMenu
-            newFrame.origin.y = helpButton.y - newFrame.size.height - (width * bufferBetweenMenuAndHelpButton)
+            newFrame.origin.y = menuButton.y - newFrame.size.height - (width * bufferBetweenMenuAndMenuButton)
             
         } else if state == .MenuEngorged {
             
-            newFrame.size.width = (width * widthOfHelpButton) + (2 * width * horizontalContentInsetForHelpButton) + (2 * width * engorgedBufferForMenu)
-            newFrame.size.height = (width * heightOfHelpButton) + (2 * width * verticalContentInsetForHelpButton) + (2 * width * engorgedBufferForMenu)
+            newFrame.size.width = (width * widthOfMenuButton) + (2 * width * horizontalContentInsetForMenuButton) + (2 * width * engorgedBufferForMenu)
+            newFrame.size.height = (width * heightOfMenuButton) + (2 * width * verticalContentInsetForMenuButton) + (2 * width * engorgedBufferForMenu)
             
-            newFrame.origin.x = helpButton.x - (width * engorgedBufferForMenu)
-            newFrame.origin.y = helpButton.y - (width * engorgedBufferForMenu)
+            newFrame.origin.x = menuButton.x - (width * engorgedBufferForMenu)
+            newFrame.origin.y = menuButton.y - (width * engorgedBufferForMenu)
             
         } else {
             
-            newFrame.size.width = width * widthOfHelpButton
-            newFrame.size.height = width * heightOfHelpButton
+            newFrame.size.width = width * widthOfMenuButton
+            newFrame.size.height = width * heightOfMenuButton
             
-            newFrame.origin.x = helpButton.x + (width * horizontalContentInsetForHelpButton)
-            newFrame.origin.y = helpButton.y + (width * verticalContentInsetForHelpButton)
+            newFrame.origin.x = menuButton.x + (width * horizontalContentInsetForMenuButton)
+            newFrame.origin.y = menuButton.y + (width * verticalContentInsetForMenuButton)
             
         }
         
@@ -762,7 +768,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         
         bringSubviewToFront(blurLayer)
         bringSubviewToFront(menu)
-        bringSubviewToFront(helpButton)
+        bringSubviewToFront(menuButton)
         bringSubviewToFront(scheduleSheet)
         
         
@@ -869,12 +875,11 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
         }
     }
     
-    private func helpButtonPressed () {
+    private func menuButtonPressed () {
         
         if state == .SidebarOpen {
-            delegate?.scheduleSelectorHelpButtonWasPressed(self)
+            delegate?.scheduleSelectorMenuButtonWasPressed(self)
         } else {
-//            openHelpScreen()
             openMenu()
         }
     }
@@ -924,7 +929,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
                 panGestureInitiated = true
             }
         } else {
-            if state != .HelpOpen {
+            if state != .HelpOpen && state != .MenuOpen && state != .MenuEngorged {
                 panGestureInitiated = true
             }
         }
@@ -1004,13 +1009,30 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, ScheduleSelect
                     mapButtonPressed()
                 case stackTransitionButton:
                     stackTransitionButtonPressed()
-                case helpButton:
-                    helpButtonPressed()
+                case menuButton:
+                    menuButtonPressed()
                 default:
                     print("Hit default when switching over button in ScheduleSelector.buttonWasTouched:")
                 }
             }
         }
+    }
+    
+    
+    
+    
+    // MARK: Schedule Selector Menu
+    public func scheduleSelectorMenuDidSelectMenuItemWithIdentifier(scheduleSelectorMenu: ScheduleSelectorMenu, identifier: String) {
+        
+        switch identifier {
+        case "help":
+            closeMenu({ (Bool) in
+                self.openHelpScreen()
+            })
+        default:
+            print("ScheduleSelectorMenu did select item with unknown identifier: \(identifier)")
+        }
+        
     }
     
     
@@ -1037,6 +1059,6 @@ public protocol ScheduleSelectorDelegate {
     
     func scheduleSelectorSidebarButtonWasPressed(scheduleSelector: ScheduleSelector)
     func scheduleSelectorMapButtonWasPressed(scheduleSelector: ScheduleSelector)
-    func scheduleSelectorHelpButtonWasPressed(scheduleSelector: ScheduleSelector)
+    func scheduleSelectorMenuButtonWasPressed(scheduleSelector: ScheduleSelector)
     
 }
