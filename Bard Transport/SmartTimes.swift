@@ -96,6 +96,8 @@ public class SmartTimes: SidebarItem, SmartTimeErrorSubscriber, SmartTimesInsuff
     // MARK: All
     override public func addAllUI() {
         
+        super.addAllUI() // This is because the generic sidebar item adds a blur layer to itself which must happen first
+        
         addNorthboundSmartTimePane()
         addDivider()
         addSouthboundSmartTimePane()
@@ -106,6 +108,8 @@ public class SmartTimes: SidebarItem, SmartTimeErrorSubscriber, SmartTimesInsuff
     }
     
     override public func updateAllUI() {
+        
+        super.updateAllUI() // This is because the generic sidebar item adds a blur layer to itself which must happen first
         
         updateParameters()
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FD238DD9912292EDD9D9612 /* Pods_Bard_TransportTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66F965643608901E7C16736 /* Pods_Bard_TransportTests.framework */; };
 		8701BD2F1CF447C0000785B3 /* ScheduleSelectorMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701BD2E1CF447C0000785B3 /* ScheduleSelectorMenu.swift */; };
 		8701BD321CF6A0B6000785B3 /* ScheduleSelectorProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701BD311CF6A0B6000785B3 /* ScheduleSelectorProfileScreen.swift */; };
 		8720E7541CED038F002E6187 /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8720E7531CED038F002E6187 /* Triangle.png */; };
@@ -141,10 +142,9 @@
 		87FEF25B1CEFBC3D0009EF84 /* Campus Rd Fancy Flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF25A1CEFBC3D0009EF84 /* Campus Rd Fancy Flag.png */; };
 		87FEF25D1CEFBC470009EF84 /* Campus Rd.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF25C1CEFBC470009EF84 /* Campus Rd.png */; };
 		87FEF25E1CEFBC470009EF84 /* Campus Rd.png in Resources */ = {isa = PBXBuildFile; fileRef = 87FEF25C1CEFBC470009EF84 /* Campus Rd.png */; };
-		ACFCAD336FAE297D15F9E540 /* libPods-Bard TransportUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F82C0370A4B529A21020169 /* libPods-Bard TransportUITests.a */; };
 		C9E020D06975074D146011F0 /* Pods_Bard_Transport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFE4C7379C2E8C885D5F87D /* Pods_Bard_Transport.framework */; };
 		DFC233999A4BC865FF358317 /* Pods_Smart_Times.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85F07E6325BA3288176A496 /* Pods_Smart_Times.framework */; };
-		FCE861816149412621EF79FE /* libPods-Bard TransportTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A36E2B87F6E720771D2BB10 /* libPods-Bard TransportTests.a */; };
+		F4F24160CD9005ED6D07E56C /* Pods_Bard_TransportUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8E425323493A06EF35F452 /* Pods_Bard_TransportUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,8 +186,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0A36E2B87F6E720771D2BB10 /* libPods-Bard TransportTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bard TransportTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F82C0370A4B529A21020169 /* libPods-Bard TransportUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bard TransportUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B57D946C888C432C82FF583 /* Pods-Bard TransportTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.release.xcconfig"; sourceTree = "<group>"; };
 		2CFE4C7379C2E8C885D5F87D /* Pods_Bard_Transport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_Transport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD68225478E78229D345496 /* Pods-Bard TransportUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportUITests/Pods-Bard TransportUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -307,6 +305,8 @@
 		B85F07E6325BA3288176A496 /* Pods_Smart_Times.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Times.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C31E7096300E189A51B4ACBB /* Pods-Bard TransportTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard TransportTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard TransportTests/Pods-Bard TransportTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D08E9CC2CD8BD6E2C24E87C8 /* Pods-Smart Times.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Times.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Times/Pods-Smart Times.debug.xcconfig"; sourceTree = "<group>"; };
+		E66F965643608901E7C16736 /* Pods_Bard_TransportTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_TransportTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA8E425323493A06EF35F452 /* Pods_Bard_TransportUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bard_TransportUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE76ED6E6D31ED7136B6B32A /* Pods-Bard Transport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.debug.xcconfig"; sourceTree = "<group>"; };
 		F0F30AF1F0D810678021DEA2 /* Pods-Smart Times.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Times.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Times/Pods-Smart Times.release.xcconfig"; sourceTree = "<group>"; };
 		F9A81179F26047D46D697A83 /* Pods-Bard Transport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bard Transport.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bard Transport/Pods-Bard Transport.release.xcconfig"; sourceTree = "<group>"; };
@@ -326,7 +326,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCE861816149412621EF79FE /* libPods-Bard TransportTests.a in Frameworks */,
+				5FD238DD9912292EDD9D9612 /* Pods_Bard_TransportTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +334,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACFCAD336FAE297D15F9E540 /* libPods-Bard TransportUITests.a in Frameworks */,
+				F4F24160CD9005ED6D07E56C /* Pods_Bard_TransportUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1091,8 +1091,8 @@
 				87FA064E1CED8ACE009375F1 /* NotificationCenter.framework */,
 				2CFE4C7379C2E8C885D5F87D /* Pods_Bard_Transport.framework */,
 				B85F07E6325BA3288176A496 /* Pods_Smart_Times.framework */,
-				0A36E2B87F6E720771D2BB10 /* libPods-Bard TransportTests.a */,
-				1F82C0370A4B529A21020169 /* libPods-Bard TransportUITests.a */,
+				E66F965643608901E7C16736 /* Pods_Bard_TransportTests.framework */,
+				EA8E425323493A06EF35F452 /* Pods_Bard_TransportUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

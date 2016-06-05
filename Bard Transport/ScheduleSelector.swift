@@ -37,6 +37,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     
     // MARK: UI
     private let backgroundImageView = UIImageView()
+    private let sidebarTouchCover = JABTouchableView()
     private let omniPanTouchCover = JABTouchableView()
     
     private let dimmer = UIView()
@@ -56,6 +57,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
+    
+    private var widthOfSidebarTouchCover = CGFloat(0)
     
     private var topBufferForShuttleStopStack = CGFloat(0)
     private var bottomBufferForShuttleStopStack = CGFloat(0)
@@ -139,6 +142,9 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     override public func updateParameters() {
         
         
+        widthOfSidebarTouchCover = 0.05
+        
+        
         topBufferForShuttleStopStack = 0.18
         bottomBufferForShuttleStopStack = 0.1
         widthOfShuttleStopStack = 0.23
@@ -204,6 +210,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
         
         addBackgroundImageView()
         addOmniPanTouchCover()
+        addSidebarTouchCover()
         
         addDimmer()
         addShuttleStopStack()
@@ -233,6 +240,9 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
         
         configureOmniPanTouchCover()
         positionOmniPanTouchCover()
+        
+        configureSidebarTouchCover()
+        positionSidebarTouchCover()
         
         
         
@@ -287,6 +297,10 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     
     private func addOmniPanTouchCover () {
         addSubview(omniPanTouchCover)
+    }
+    
+    private func addSidebarTouchCover () {
+        addSubview(sidebarTouchCover)
     }
     
     
@@ -365,6 +379,28 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     private func positionOmniPanTouchCover () {
         omniPanTouchCover.frame = relativeFrame
     }
+    
+    // MARK: Sidebar Touch Cover
+    private func configureSidebarTouchCover () {
+        
+        sidebarTouchCover.delegate = self
+        
+    }
+    
+    private func positionSidebarTouchCover () {
+        
+        var newFrame = CGRectZero
+        
+        newFrame.size.width = width * widthOfSidebarTouchCover
+        newFrame.size.height = height
+        
+        newFrame.origin.x = 0
+        newFrame.origin.y = (height - newFrame.size.height)/2
+        
+        sidebarTouchCover.frame = newFrame
+        
+    }
+    
     
     
     
@@ -1011,13 +1047,15 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     // MARK: Touchable View
     public func touchableViewTouchDidBegin(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer) {
         
-        let location = gestureRecognizer.locationInView(self)
-        
-        if scheduleSheetOpen {
-            if location.x < scheduleSheet.left || location.x > scheduleSheet.right || state == .SidebarOpen {
-                panGestureInitiated = true
+        if touchableView == omniPanTouchCover {
+            let location = gestureRecognizer.locationInView(self)
+            
+            if scheduleSheetOpen {
+                if location.x < scheduleSheet.left || location.x > scheduleSheet.right || state == .SidebarOpen {
+                    panGestureInitiated = true
+                }
             }
-        } else {
+        } else if touchableView == sidebarTouchCover {
             if state != .HelpOpen && state != .ProfileOpen && state != .MenuOpen && state != .MenuEngorged {
                 panGestureInitiated = true
             }
@@ -1028,7 +1066,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     public func touchableViewTouchDidChange(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         if panGestureInitiated {
-            delegate?.scheduleSelectorWasDragged(self, distance: xDistance, velocity: xVelocity, methodCallNumber: methodCallNumber)
+            delegate?.scheduleSelectorSidebarTouchCoverWasDragged(self, distance: xDistance, velocity: xVelocity, methodCallNumber: methodCallNumber)
         } else {
             if scheduleSheetOpen {
                 panScheduleSheet(yDistance)
@@ -1075,7 +1113,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
         }
         
         if panGestureInitiated {
-            delegate?.scheduleSelectorWasReleased(self, velocity: xVelocity, methodCallNumber: methodCallNumber)
+            delegate?.scheduleSelectorSidebarTouchCoverWasReleased(self, velocity: xVelocity, methodCallNumber: methodCallNumber)
         }
         
         panGestureInitiated = false
@@ -1084,7 +1122,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     
     public func touchableViewTouchDidCancel(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
-        delegate?.scheduleSelectorWasReleased(self, velocity: xVelocity, methodCallNumber: methodCallNumber)
+        delegate?.scheduleSelectorSidebarTouchCoverWasReleased(self, velocity: xVelocity, methodCallNumber: methodCallNumber)
         panGestureInitiated = false
         
     }
@@ -1163,8 +1201,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
 
 public protocol ScheduleSelectorDelegate {
     
-    func scheduleSelectorWasDragged(scheduleSelector: ScheduleSelector, distance: CGFloat, velocity: CGFloat, methodCallNumber: Int)
-    func scheduleSelectorWasReleased(scheduleSelector: ScheduleSelector, velocity: CGFloat, methodCallNumber: Int)
+    func scheduleSelectorSidebarTouchCoverWasDragged(scheduleSelector: ScheduleSelector, distance: CGFloat, velocity: CGFloat, methodCallNumber: Int)
+    func scheduleSelectorSidebarTouchCoverWasReleased(scheduleSelector: ScheduleSelector, velocity: CGFloat, methodCallNumber: Int)
     
     func scheduleSelectorSidebarButtonWasPressed(scheduleSelector: ScheduleSelector)
     func scheduleSelectorMapButtonWasPressed(scheduleSelector: ScheduleSelector)

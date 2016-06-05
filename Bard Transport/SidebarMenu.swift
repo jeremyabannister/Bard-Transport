@@ -91,6 +91,8 @@ public class SidebarMenu: SidebarItem, SidebarMenuHeaderDelegate, UITableViewDat
     // MARK: All
     override public func addAllUI() {
         
+        super.addAllUI() // This is because the generic sidebar item adds a blur layer to itself which must happen first
+        
         addHeader()
         addTableView()
         addTextView()
@@ -98,6 +100,8 @@ public class SidebarMenu: SidebarItem, SidebarMenuHeaderDelegate, UITableViewDat
     }
     
     override public func updateAllUI() {
+        
+        super.updateAllUI() // This is because the generic sidebar item adds a blur layer to itself which must happen first
         
         updateParameters()
         
@@ -158,6 +162,7 @@ public class SidebarMenu: SidebarItem, SidebarMenuHeaderDelegate, UITableViewDat
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = clearColor
         
         tableView.registerClass(SidebarMenuTableViewCell.self, forCellReuseIdentifier: "SidebarMenuTableViewCell")
         
@@ -317,10 +322,13 @@ public class SidebarMenu: SidebarItem, SidebarMenuHeaderDelegate, UITableViewDat
                 cell.menuItem = menuItems[indexPath.row]
             }
             
+            cell.backgroundColor = clearColor
             return cell
         }
         
-        return SidebarMenuTableViewCell()
+        let newCell = SidebarMenuTableViewCell()
+        newCell.backgroundColor = clearColor
+        return newCell
         
     }
     

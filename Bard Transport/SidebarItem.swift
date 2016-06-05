@@ -21,6 +21,7 @@ public class SidebarItem: JABView {
     public var heightToWidthRatio = CGFloat(1.0)
     
     // MARK: UI
+    private let blurLayer = UIVisualEffectView()
     
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
@@ -80,6 +81,8 @@ public class SidebarItem: JABView {
     // MARK: All
     override public func addAllUI() {
         
+        addBlurLayer()
+        
     }
     
     override public func updateAllUI() {
@@ -87,16 +90,29 @@ public class SidebarItem: JABView {
         updateParameters()
         
         
-        
+        configureBlurLayer()
+        positionBlurLayer()
         
     }
     
     
     // MARK: Adding
+    private func addBlurLayer () {
+        addSubview(blurLayer)
+    }
     
     
-    // MARK: Individual UI Elements (delete this)
-    // MARK:
+    
+    // MARK: Blur Layer
+    private func configureBlurLayer () {
+        
+        blurLayer.effect = UIBlurEffect(style: .ExtraLight)
+        
+    }
+    
+    private func positionBlurLayer () {
+        blurLayer.frame = bounds
+    }
     
     
     // MARK:

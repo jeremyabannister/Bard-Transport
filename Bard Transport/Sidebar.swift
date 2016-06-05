@@ -21,6 +21,7 @@ public class Sidebar: JABView, SmartTimesDelegate {
     public var visibleWidth = CGFloat(0)
     
     // MARK: UI
+    private var blurLayer = UIVisualEffectView()
     private var items = [SidebarItem]()
     
     private let smartTimes = SmartTimes()
@@ -89,6 +90,7 @@ public class Sidebar: JABView, SmartTimesDelegate {
     // MARK: All
     override public func addAllUI() {
         
+        addBlurLayer()
         addSmartTimes()
         addMenu()
         
@@ -97,6 +99,10 @@ public class Sidebar: JABView, SmartTimesDelegate {
     override public func updateAllUI() {
         
         updateParameters()
+        
+        
+        configureBlurLayer()
+        positionBlurLayer()
         
         
         configureSmartTimes()
@@ -108,6 +114,10 @@ public class Sidebar: JABView, SmartTimesDelegate {
     
     
     // MARK: Adding
+    private func addBlurLayer () {
+        addSubview(blurLayer)
+    }
+    
     private func addSmartTimes () {
         addSubview(smartTimes)
         items.append(smartTimes)
@@ -121,12 +131,28 @@ public class Sidebar: JABView, SmartTimesDelegate {
     
     
     
+    
+    // MARK: Blur Layer
+    private func configureBlurLayer () {
+        
+        blurLayer.effect = UIBlurEffect(style: .Light)
+        
+    }
+    
+    private func positionBlurLayer () {
+        
+        blurLayer.frame = bounds
+        
+    }
+    
+    
+    
+    
     // MARK: Smart Times
     private func configureSmartTimes () {
         
         smartTimes.delegate = self
         
-        smartTimes.backgroundColor = whiteColor
         smartTimes.cornerRadius = 10
         smartTimes.clipsToBounds = true
         
@@ -136,7 +162,6 @@ public class Sidebar: JABView, SmartTimesDelegate {
     // MARK: Menu
     private func configureMenu () {
         
-        menu.backgroundColor = whiteColor
         menu.cornerRadius = 10
         menu.clipsToBounds = true
         

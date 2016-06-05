@@ -12,7 +12,7 @@ import JABSwiftCore
 
 public enum MainSectorState {
     case ScheduleSelector
-    case Sidebar
+    case SidebarOpen
     case Map
 }
 
@@ -28,13 +28,13 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     public var state = MainSectorState.ScheduleSelector
     
     // MARK: UI
-    let sidebar = Sidebar()
     let map = Map()
     let scheduleSelector = ScheduleSelector()
+    let sidebar = Sidebar()
     
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
-    private var widthOfOpenSidebarVisibleSelector = CGFloat(0)
+    private var widthOfSidebar = CGFloat(0)
     
     
     
@@ -72,7 +72,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     // MARK: Parameters
     override public func updateParameters() {
         
-        widthOfOpenSidebarVisibleSelector = 0.15
+        widthOfSidebar = 0.8
         
         if iPad {
             
@@ -92,9 +92,9 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     // MARK: All
     override public func addAllUI() {
         
-        addSidebar()
         addMap()
         addScheduleSelector()
+        addSidebar()
         
     }
     
@@ -103,14 +103,14 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
         updateParameters()
         
         
-        configureSidebar()
-        positionSidebar()
-        
         configureMap()
         positionMap()
         
         configureScheduleSelector()
         positionScheduleSelector()
+        
+        configureSidebar()
+        positionSidebar()
         
     }
     
@@ -118,60 +118,43 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     // MARK: Adding
     
-    func addSidebar () {
-        addSubview(sidebar)
-    }
-    
-    func addMap () {
+    private func addMap () {
         addSubview(map)
     }
     
-    func addScheduleSelector () {
+    private func addScheduleSelector () {
         addSubview(scheduleSelector)
     }
     
-    
-    // MARK: Sidebar
-    func configureSidebar () {
-        
-        sidebar.backgroundColor = UIColor(red: (112.0/255.0), green: (17.0/255.0), blue: (9.0/255.0), alpha: 1)
-        sidebar.visibleWidth = width - (width * widthOfOpenSidebarVisibleSelector)
-        
-        if state == MainSectorState.Sidebar {
-            insertSubview(sidebar, aboveSubview: map)
-        }
-        
-        sidebar.updateAllUI()
-        
+    private func addSidebar () {
+        addSubview(sidebar)
     }
     
-    func positionSidebar () {
-        sidebar.frame = relativeFrame
-    }
+    
     
     
     // MARK: Map
-    func configureMap () {
+    private func configureMap () {
         
         map.delegate = self
         map.backgroundColor = whiteColor
         
-        if state == MainSectorState.Map {
+        if state == .Map {
             insertSubview(map, aboveSubview: sidebar)
         }
         
         map.updateAllUI()
     }
     
-    func positionMap () {
+    private func positionMap () {
         
         var newFrame = relativeFrame
         
-        if state == MainSectorState.ScheduleSelector {
+        if state == .ScheduleSelector {
             
             newFrame.x = width * partialSlideFraction
             
-        } else if state == MainSectorState.Sidebar {
+        } else if state == .SidebarOpen {
             
             newFrame.x = width
             
@@ -182,7 +165,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     }
     
     // MARK: Schedule Selector
-    func configureScheduleSelector () {
+    private func configureScheduleSelector () {
         
         scheduleSelector.delegate = self
         scheduleSelector.backgroundColor = UIColor(red: (19.0/255.0), green: (180.0/255.0), blue: (25.0/255.0), alpha: 1)
@@ -190,22 +173,18 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
         scheduleSelector.shadowRadius = 5
         scheduleSelector.shadowOpacity = 0.3
         
-        if state == MainSectorState.Sidebar {
-            scheduleSelector.state = ScheduleSelectorState.SidebarOpen
+        if state == .SidebarOpen {
+            scheduleSelector.state = .SidebarOpen
         }
         
         scheduleSelector.updateAllUI()
     }
     
-    func positionScheduleSelector () {
+    private func positionScheduleSelector () {
         
-        var newFrame = relativeFrame
+        var newFrame = bounds
         
-        if state == MainSectorState.Sidebar {
-            
-            newFrame.x = width - (width * widthOfOpenSidebarVisibleSelector)
-            
-        } else if state == MainSectorState.Map {
+        if state == .Map {
             
             newFrame.x = -width
             
@@ -214,6 +193,33 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
         scheduleSelector.frame = newFrame
     }
     
+    
+    // MARK: Sidebar
+    private func configureSidebar () {
+        
+        sidebar.visibleWidth = width * widthOfSidebar
+        
+        sidebar.updateAllUI()
+        
+    }
+    
+    private func positionSidebar () {
+        
+        var newFrame = CGRectZero
+        
+        newFrame.size.width = width * widthOfSidebar
+        newFrame.size.height = height
+        
+        newFrame.origin.y = 0
+        
+        if state == .SidebarOpen {
+            newFrame.origin.x = 0
+        } else {
+            newFrame.origin.x = -newFrame.size.width
+        }
+        
+        sidebar.frame = newFrame
+    }
     
     
     
@@ -224,7 +230,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     // MARK: Map
     public func mapBackPanTouchCoverWasDragged(map: Map, distance: CGFloat, velocity: CGFloat) {
         
-        if state == MainSectorState.Map {
+        if state == .Map {
             
             var newFrame = scheduleSelector.frame
             newFrame.x += distance
@@ -239,7 +245,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     public func mapBackPanTouchCoverWasReleased(map: Map, velocity: CGFloat) {
         
-        if state == MainSectorState.Map {
+        if state == .Map {
             
             var durationToRetainVelocity:CGFloat = 0.3
             let velocityMultiplier: CGFloat = 0.2
@@ -250,7 +256,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
             if prospectiveX > mapPullInflectionPoint {
                 
                 durationToRetainVelocity = scheduleSelector.x/velocity
-                state = MainSectorState.ScheduleSelector
+                state = .ScheduleSelector
                 
             } else {
                 
@@ -284,9 +290,9 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     public func mapBackButtonWasPressed(map: Map) {
         
-        if state == MainSectorState.Map {
-            state = MainSectorState.ScheduleSelector
-            scheduleSelector.state = ScheduleSelectorState.Normal
+        if state == .Map {
+            state = .ScheduleSelector
+            scheduleSelector.state = .Normal
         }
         
         animatedUpdate()
@@ -296,77 +302,65 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     
     // MARK: Schedule Selector
-    public func scheduleSelectorWasDragged(scheduleSelector: ScheduleSelector, distance: CGFloat, velocity: CGFloat, methodCallNumber: Int) {
+    public func scheduleSelectorSidebarTouchCoverWasDragged(scheduleSelector: ScheduleSelector, distance: CGFloat, velocity: CGFloat, methodCallNumber: Int) {
         
-        var newScheduleSelectorFrame = scheduleSelector.frame
-        newScheduleSelectorFrame.x += distance
-        
-        if newScheduleSelectorFrame.x < 0 {
-            insertSubview(map, aboveSubview: sidebar)
-        } else if newScheduleSelectorFrame.right > width {
-            insertSubview(sidebar, aboveSubview: map)
-        }
-        
-        scheduleSelector.frame = newScheduleSelectorFrame
-        
-        
-        var newMapFrame = map.frame
-        newMapFrame.x += partialSlideFraction * distance
-        map.frame = newMapFrame
+        var newSidebarFrame = sidebar.frame
+        newSidebarFrame.x += distance
+        sidebar.frame = newSidebarFrame
         
     }
     
-    public func scheduleSelectorWasReleased(scheduleSelector: ScheduleSelector, velocity: CGFloat, methodCallNumber: Int) {
+    public func scheduleSelectorSidebarTouchCoverWasReleased(scheduleSelector: ScheduleSelector, velocity: CGFloat, methodCallNumber: Int) {
         var durationToRetainVelocity:CGFloat = 0.3
         let velocityMultiplier: CGFloat = 0.2
         
-        let prospectiveX = scheduleSelector.x + (velocity * velocityMultiplier)
-        let sidebarPullInflectionPoint = (width - widthOfOpenSidebarVisibleSelector)/2
+        let prospectiveRight = sidebar.right + (velocity * velocityMultiplier)
+        let sidebarPullInflectionPoint = (width * widthOfSidebar)/2
         let mapPullInflectionPoint = -width/2
         
         var animationCurve = UIViewAnimationOptions.CurveLinear
         
         
-        if state == MainSectorState.ScheduleSelector {
+        if state == .ScheduleSelector {
             
-            if prospectiveX > sidebarPullInflectionPoint {
+            if prospectiveRight > sidebarPullInflectionPoint {
                 
-                state = MainSectorState.Sidebar
-                scheduleSelector.state = ScheduleSelectorState.SidebarOpen
-                durationToRetainVelocity = (width - widthOfOpenSidebarVisibleSelector - scheduleSelector.x)/velocity
+                state = .SidebarOpen
+                scheduleSelector.state = .SidebarOpen
+                durationToRetainVelocity = -sidebar.x/velocity
                 
-            } else if prospectiveX < mapPullInflectionPoint {
+            } else if prospectiveRight < mapPullInflectionPoint {
                 
-                state = MainSectorState.Map
+                state = .Map
                 durationToRetainVelocity = scheduleSelector.right/velocity
                 
             }
             
-        } else if state == MainSectorState.Sidebar {
+        } else if state == .SidebarOpen {
             
             if methodCallNumber < 5 {
                 
-                state = MainSectorState.ScheduleSelector
-                scheduleSelector.state = ScheduleSelectorState.Normal
+                state = .ScheduleSelector
+                scheduleSelector.state = .Normal
                 durationToRetainVelocity = CGFloat(defaultAnimationDuration)
                 animationCurve = UIViewAnimationOptions.CurveEaseInOut
                 
             } else {
-                if prospectiveX < sidebarPullInflectionPoint {
+                if prospectiveRight < sidebarPullInflectionPoint {
                     
-                    state = MainSectorState.ScheduleSelector
-                    scheduleSelector.state = ScheduleSelectorState.Normal
+                    state = .ScheduleSelector
+                    scheduleSelector.state = .Normal
                     durationToRetainVelocity = scheduleSelector.x/velocity
                     
                 }
             }
             
-        } else if state == MainSectorState.Map {
+        } else if state == .Map {
             
-            if prospectiveX > mapPullInflectionPoint {
+            if prospectiveRight > mapPullInflectionPoint {
                 
-                state = MainSectorState.ScheduleSelector
-                scheduleSelector.state = ScheduleSelectorState.Normal
+                state = .ScheduleSelector
+                scheduleSelector.state = .Normal
                 durationToRetainVelocity = (width - scheduleSelector.right)/velocity
                 
             }
@@ -396,15 +390,15 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     public func scheduleSelectorSidebarButtonWasPressed(scheduleSelector: ScheduleSelector) {
         
-        if state == MainSectorState.ScheduleSelector {
+        if state == .ScheduleSelector {
             
-            state = MainSectorState.Sidebar
-            scheduleSelector.state = ScheduleSelectorState.SidebarOpen
+            state = .SidebarOpen
+            scheduleSelector.state = .SidebarOpen
             
-        } else if state == MainSectorState.Sidebar {
+        } else if state == .SidebarOpen {
             
-            state = MainSectorState.ScheduleSelector
-            scheduleSelector.state = ScheduleSelectorState.Normal
+            state = .ScheduleSelector
+            scheduleSelector.state = .Normal
             
         }
         animatedUpdate()
@@ -413,9 +407,9 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     public func scheduleSelectorMapButtonWasPressed(scheduleSelector: ScheduleSelector) {
         
-        if state == MainSectorState.ScheduleSelector {
+        if state == .ScheduleSelector {
             
-            state = MainSectorState.Map
+            state = .Map
             
         }
         
@@ -424,9 +418,9 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     public func scheduleSelectorMenuButtonWasPressed(scheduleSelector: ScheduleSelector) {
         
-        if state == MainSectorState.Sidebar {
-            state = MainSectorState.ScheduleSelector
-            scheduleSelector.state = ScheduleSelectorState.Normal
+        if state == .SidebarOpen {
+            state = .ScheduleSelector
+            scheduleSelector.state = .Normal
         }
         
         
