@@ -33,6 +33,7 @@ public class Sidebar: JABView, SmartTimesDelegate {
     private var topBufferForTopItem = CGFloat(0)
     private var sideBufferForItems = CGFloat(0)
     private var betweenBufferForItems = CGFloat(0)
+    private var bottomBufferForBottomItem = CGFloat(0)
     
     
     // **********************************************************************************************************************
@@ -71,6 +72,7 @@ public class Sidebar: JABView, SmartTimesDelegate {
         topBufferForTopItem = 0.1
         sideBufferForItems = 0.05
         betweenBufferForItems = 0.05
+        bottomBufferForBottomItem = 0.05
         
         if iPad {
             
@@ -165,6 +167,8 @@ public class Sidebar: JABView, SmartTimesDelegate {
         menu.cornerRadius = 10
         menu.clipsToBounds = true
         
+        menu.heightToWidthRatio = (height - (visibleWidth * (topBufferForTopItem + ((CGFloat(items.count) - 1) * betweenBufferForItems) + bottomBufferForBottomItem)) - (visibleWidth * smartTimes.heightToWidthRatio))/(visibleWidth * (1 - (2 * sideBufferForItems)))
+        
     }
     
     
@@ -183,7 +187,7 @@ public class Sidebar: JABView, SmartTimesDelegate {
             newFrame.size.width = visibleWidth - (visibleWidth * 2 * sideBufferForItems)
             newFrame.size.height = newFrame.size.width * item.heightToWidthRatio
             
-            newFrame.origin.x = (visibleWidth - newFrame.size.width)/2
+            newFrame.origin.x = (width - visibleWidth) + (visibleWidth - newFrame.size.width)/2
             
             if firstItem {
                 newFrame.origin.y = visibleWidth * topBufferForTopItem

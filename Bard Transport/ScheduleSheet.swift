@@ -188,6 +188,11 @@ public class ScheduleSheet: JABView, ScheduleSheetHeaderDelegate, ScheduleSheetB
     // MARK: Actions
     // MARK:
     
+    // MARK: Public
+    public func reloadTableData () {
+        body.reloadTableData()
+    }
+    
     // MARK: Body
     public func loadWithOrigin (origin: ShuttleStop, destination: ShuttleStop) {
         

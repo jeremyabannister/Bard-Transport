@@ -16,7 +16,7 @@ public enum MainSectorState {
     case Map
 }
 
-public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
+public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate, JABTouchableViewDelegate {
     
     // MARK:
     // MARK: Properties
@@ -26,16 +26,21 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     // MARK: State
     public var state = MainSectorState.ScheduleSelector
+    private var mapTemporarilyDisallowed = false
     
     // MARK: UI
-    let map = Map()
-    let scheduleSelector = ScheduleSelector()
-    let sidebar = Sidebar()
+    private let map = Map()
+    private let scheduleSelector = ScheduleSelector()
+    
+    private let sidebarDimmer = UIView()
+    private let sidebar = Sidebar()
+
+    
     
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
-    private var widthOfSidebar = CGFloat(0)
-    
+    private var widthOfVisibleScheduleSelectorSidebarOpen = CGFloat(0)
+    private var widthOfSidebarTouchCover = CGFloat(0)
     
     
     
@@ -72,7 +77,13 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     // MARK: Parameters
     override public func updateParameters() {
         
-        widthOfSidebar = 0.8
+        widthOfVisibleScheduleSelectorSidebarOpen = 0.22
+        
+        if state == .SidebarOpen {
+            widthOfSidebarTouchCover = widthOfVisibleScheduleSelectorSidebarOpen
+        } else {
+            widthOfSidebarTouchCover = 0.1
+        }
         
         if iPad {
             
@@ -112,6 +123,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
         configureSidebar()
         positionSidebar()
         
+        
     }
     
     
@@ -133,15 +145,12 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     
     
+    
     // MARK: Map
     private func configureMap () {
         
         map.delegate = self
         map.backgroundColor = whiteColor
-        
-        if state == .Map {
-            insertSubview(map, aboveSubview: sidebar)
-        }
         
         map.updateAllUI()
     }
@@ -168,7 +177,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     private func configureScheduleSelector () {
         
         scheduleSelector.delegate = self
-        scheduleSelector.backgroundColor = UIColor(red: (19.0/255.0), green: (180.0/255.0), blue: (25.0/255.0), alpha: 1)
+//        scheduleSelector.backgroundColor = UIColor(red: (19.0/255.0), green: (180.0/255.0), blue: (25.0/255.0), alpha: 1)
         
         scheduleSelector.shadowRadius = 5
         scheduleSelector.shadowOpacity = 0.3
@@ -197,7 +206,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     // MARK: Sidebar
     private func configureSidebar () {
         
-        sidebar.visibleWidth = width * widthOfSidebar
+        sidebar.visibleWidth = width - (width * widthOfVisibleScheduleSelectorSidebarOpen)
         
         sidebar.updateAllUI()
         
@@ -205,21 +214,19 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     
     private func positionSidebar () {
         
-        var newFrame = CGRectZero
-        
-        newFrame.size.width = width * widthOfSidebar
-        newFrame.size.height = height
-        
-        newFrame.origin.y = 0
+        var newFrame = bounds
         
         if state == .SidebarOpen {
-            newFrame.origin.x = 0
+            newFrame.origin.x = -width * widthOfVisibleScheduleSelectorSidebarOpen
         } else {
             newFrame.origin.x = -newFrame.size.width
         }
         
         sidebar.frame = newFrame
     }
+    
+    
+    
     
     
     
@@ -305,9 +312,26 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
     public func scheduleSelectorSidebarTouchCoverWasDragged(scheduleSelector: ScheduleSelector, distance: CGFloat, velocity: CGFloat, methodCallNumber: Int) {
         
         var newSidebarFrame = sidebar.frame
-        newSidebarFrame.x += distance
+        
+        
+        if sidebar.right < (width - (width * widthOfVisibleScheduleSelectorSidebarOpen)) {
+            newSidebarFrame.x += distance
+        } else {
+            newSidebarFrame.x += distance/3
+        }
+        
+        
         sidebar.frame = newSidebarFrame
         
+        if (sidebar.right > 40) {
+            mapTemporarilyDisallowed = true
+        }
+        
+        
+        if (sidebar.right <= 0 ) {
+            scheduleSelector.x += distance
+            map.x += distance/3
+        }
     }
     
     public func scheduleSelectorSidebarTouchCoverWasReleased(scheduleSelector: ScheduleSelector, velocity: CGFloat, methodCallNumber: Int) {
@@ -315,7 +339,7 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
         let velocityMultiplier: CGFloat = 0.2
         
         let prospectiveRight = sidebar.right + (velocity * velocityMultiplier)
-        let sidebarPullInflectionPoint = (width * widthOfSidebar)/2
+        let sidebarPullInflectionPoint = (width - (width * widthOfVisibleScheduleSelectorSidebarOpen))/2
         let mapPullInflectionPoint = -width/2
         
         var animationCurve = UIViewAnimationOptions.CurveLinear
@@ -327,12 +351,14 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
                 
                 state = .SidebarOpen
                 scheduleSelector.state = .SidebarOpen
-                durationToRetainVelocity = -sidebar.x/velocity
+                durationToRetainVelocity = ((width - (width * widthOfVisibleScheduleSelectorSidebarOpen)) - sidebar.right)/velocity
                 
             } else if prospectiveRight < mapPullInflectionPoint {
                 
-                state = .Map
-                durationToRetainVelocity = scheduleSelector.right/velocity
+                if (!mapTemporarilyDisallowed) {
+                    state = .Map
+                    durationToRetainVelocity = scheduleSelector.right/velocity
+                }
                 
             }
             
@@ -382,6 +408,8 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
         }
         
         animatedUpdate(castedDuration, options: animationCurve)
+        
+        mapTemporarilyDisallowed = false
     }
     
     
@@ -430,5 +458,97 @@ public class MainSector: JABView, MapDelegate, ScheduleSelectorDelegate {
         
     }
     
+    
+    
+    
+    // MARK: Touchable View
+    public func touchableViewTouchDidBegin(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer) {
+        
+    }
+    
+    public func touchableViewTouchDidChange(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+        
+        if touchableView == "sidebarTouchCover" { // sidebarTouchCover used to be a variable, keeping it around because there is potentially important code here
+            
+            var newSidebarFrame = sidebar.frame
+            
+            if sidebar.right < (width - (width * widthOfVisibleScheduleSelectorSidebarOpen)) {
+                newSidebarFrame.x += xDistance
+            } else {
+                newSidebarFrame.x += xDistance/3
+            }
+            
+            sidebar.frame = newSidebarFrame
+        }
+        
+    }
+    
+    public func touchableViewTouchDidEnd(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+        
+        if touchableView == "sidebarTouchCover" { // sidebarTouchCover used to be a variable, keeping it around because there is potentially important code here
+            
+            var durationToRetainVelocity:CGFloat = 0.3
+            let velocityMultiplier: CGFloat = 0.2
+            
+            let prospectiveRight = sidebar.right + (xVelocity * velocityMultiplier)
+            let inflectionPoint = (width - (width * widthOfVisibleScheduleSelectorSidebarOpen))/2
+            
+            var animationCurve = UIViewAnimationOptions.CurveLinear
+            
+            
+            if state == .ScheduleSelector {
+                
+                if prospectiveRight > inflectionPoint {
+                    
+                    state = .SidebarOpen
+                    scheduleSelector.state = .SidebarOpen
+                    durationToRetainVelocity = ((width - (width * widthOfVisibleScheduleSelectorSidebarOpen)) - sidebar.right)/xVelocity
+                    
+                }
+                
+            } else if state == .SidebarOpen {
+                
+                if methodCallNumber < 5 {
+                    
+                    state = .ScheduleSelector
+                    scheduleSelector.state = .Normal
+                    durationToRetainVelocity = CGFloat(defaultAnimationDuration)
+                    animationCurve = UIViewAnimationOptions.CurveEaseInOut
+                    
+                } else {
+                    if prospectiveRight < inflectionPoint {
+                        
+                        state = .ScheduleSelector
+                        scheduleSelector.state = .Normal
+                        durationToRetainVelocity = scheduleSelector.x/xVelocity
+                        
+                    }
+                }
+                
+            }
+            
+            var castedDuration = abs(Double(durationToRetainVelocity))
+            let maximumAllowedDuration = 0.3
+            let minimumAllowedDuration = 0.1
+            
+            if castedDuration > maximumAllowedDuration {
+                
+                castedDuration = maximumAllowedDuration
+                
+            } else if castedDuration < minimumAllowedDuration {
+                
+                castedDuration = minimumAllowedDuration
+                
+            }
+            
+            animatedUpdate(castedDuration, options: animationCurve)
+            
+        }
+        
+    }
+    
+    public func touchableViewTouchDidCancel(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+        
+    }
     
 }

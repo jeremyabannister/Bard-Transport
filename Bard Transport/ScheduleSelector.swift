@@ -36,7 +36,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     private var buttonsDisabled = false
     
     // MARK: UI
-    private let backgroundImageView = UIImageView()
+    private let background = UIImageView()
     private let sidebarTouchCover = JABTouchableView()
     private let omniPanTouchCover = JABTouchableView()
     
@@ -208,7 +208,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     // MARK: All
     override public func addAllUI() {
         
-        addBackgroundImageView()
+        addBackground()
         addOmniPanTouchCover()
         addSidebarTouchCover()
         
@@ -235,8 +235,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
         updateParameters()
         
         
-        configureBackgroundImageView()
-        positionBackgroundImageView()
+        configureBackground()
+        positionBackground()
         
         configureOmniPanTouchCover()
         positionOmniPanTouchCover()
@@ -291,8 +291,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     
     
     // MARK: Adding
-    private func addBackgroundImageView () {
-        addSubview(backgroundImageView)
+    private func addBackground () {
+        addSubview(background)
     }
     
     private func addOmniPanTouchCover () {
@@ -361,14 +361,15 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     
     
     
-    // MARK: Background Image View
-    private func configureBackgroundImageView () {
-        backgroundImageView.image = UIImage(named: "Main Background-4 Inch.JPG")
+    // MARK: Background
+    private func configureBackground () {
+        background.image = UIImage(named:"Main Background-4 Inch.JPG")
+        
     }
     
-    private func positionBackgroundImageView () {
+    private func positionBackground () {
         
-        backgroundImageView.frame = self.relativeFrame
+        background.frame = relativeFrame
     }
     
     // MARK: Omni-Pan Touch Cover
@@ -384,7 +385,6 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
     private func configureSidebarTouchCover () {
         
         sidebarTouchCover.delegate = self
-        
     }
     
     private func positionSidebarTouchCover () {
@@ -489,6 +489,7 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
         }
         
         sidebarButton.updateAllUI()
+        
     }
     
     private func positionSidebarButton () {
@@ -613,6 +614,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
         newFrame.y = height - newFrame.size.height - (width * (bottomBufferForMenuButton - verticalContentInsetForMenuButton))
         
         menuButton.frame = newFrame
+        
+        
     }
     
     
@@ -1040,13 +1043,15 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
         scheduleSheet.loadWithOrigin(origin, destination: destination)
         
         scheduleSheetOpen = true
-        animatedUpdate()
+        animatedUpdate(completion: { (Bool) in
+            self.scheduleSheet.reloadTableData() // This is just a sloppy fix for the 
+        })
+        
     }
     
     
     // MARK: Touchable View
     public func touchableViewTouchDidBegin(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer) {
-        
         if touchableView == omniPanTouchCover {
             let location = gestureRecognizer.locationInView(self)
             
@@ -1054,6 +1059,8 @@ public class ScheduleSelector: JABView, ShuttleStopStackDelegate, JABTouchableVi
                 if location.x < scheduleSheet.left || location.x > scheduleSheet.right || state == .SidebarOpen {
                     panGestureInitiated = true
                 }
+            } else {
+                panGestureInitiated = true
             }
         } else if touchableView == sidebarTouchCover {
             if state != .HelpOpen && state != .ProfileOpen && state != .MenuOpen && state != .MenuEngorged {

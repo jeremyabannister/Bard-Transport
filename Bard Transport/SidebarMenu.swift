@@ -194,6 +194,8 @@ public class SidebarMenu: SidebarItem, SidebarMenuHeaderDelegate, UITableViewDat
     // MARK: Text View
     private func configureTextView () {
         
+        textView.backgroundColor = clearColor
+        
         textView.text = currentMenuItem?.text
         textView.textAlignment = NSTextAlignment.Center
         textView.textColor = blackColor
